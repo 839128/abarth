@@ -1,0 +1,258 @@
+version: 3.6.6
+
+logging:
+  level:
+    org.aoju: DEBUG
+
+spring:
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+  session:
+    store-type: none
+  application:
+    name: abarth
+  # 文件上传配置
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+  # 默认数据库信息
+  datasource:
+    name: hi_abarth
+    url: jdbc:mysql://127.0.0.1:3006/hi_abarth?useSSL=false&useUnicode=true&characterEncoding=utf8
+    username: abarth
+    password: Hi0.abarth
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+    # privateKey: 5c3ec809eaa7ecc5287dcff9
+    # 多数据源配置
+    multi:
+      - key: ds1
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3006/hi_abarth?useSSL=false&useUnicode=true&characterEncoding=utf8
+        username: abarth
+        password: Hi0.abarth
+        filters: stat
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+      - key: ds2
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3006/hi_abarth?useSSL=false&useUnicode=true&characterEncoding=utf8
+        username: abarth
+        password: Hi0.abarth
+        filters: stat
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+
+extend:
+  # 缓存支持
+  cache:
+    type: default
+    prefix: 'SOCIAL::STATE::'
+    timeout: 1h
+  # 跨域支持
+  cors:
+    allowedOrigins: '*'
+    allowedHeaders: '*'
+    allowedMethods:  GET,DELETE, POST, PUT,OPTIONS
+    allowCredentials: true
+    maxAge: 1800
+    path: /**
+  # 数据源连接池监控
+  druid:
+    enabled: enabled
+    druid-stat-view: /druid/*
+    druid-web-stat-filter: /*
+    allow: 127.0.0.1
+    deny: 192.168.1.1
+    login-username: admin
+    login-password: 123456
+    exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+    reset-enable: false
+  # dubbo配置
+  dubbo:
+    container: logback,spring
+    basePackage: org.aoju.abarth.service
+    application:
+      id: lincoln
+      name: lincoln
+      enableQrs: false
+    registry:
+      address: zookeeper://172.171.0.2:2001
+      provider:
+      timeout: 30000
+      port: 28009
+    consumer:
+      timeout: 30000
+      check: false
+      retries: 0
+    protocol:
+      id: dubbo
+      name: dubbo
+      port: 28009
+      status: server
+      threadpool: cached
+      threads: 500
+      accepts: 1000
+      dispatcher: message
+  # 国际化
+  i18n:
+    base-names[0]: i18n/validation/ValidationMessages
+    default-encoding: UTF-8
+  # HTTP支持
+  http:
+    max-idle-connections: 200
+    keep-alive-duration: 300000
+    connect-timeout: 30000
+    read-timeout: 30000
+    write-timeout: 30000
+  # mybatis配置
+  mybatis:
+    basePackage:
+      org.aoju.abarth.mapper
+    xmlLocation: classpath:mapper/**/*.xml
+    autoDelimitKeywords: true
+    reasonable: false
+    supportMethodsArguments: true
+    returnPageInfo: check
+    params: count=countSql
+  # 第三方授权
+  oauth:
+    cache:
+      type: default
+      timeout: 1h
+    type:
+      github:
+        client-id: 2d25******d5f01086
+        client-secret: 5a2919b************************d7871306d1
+        redirect-uri: http://oauth.aoju.org//github/callback
+      dingtalk:
+        client-id: ding1xqvzg2gafw8ygj6
+        client-secret: hLbaM7yOXJ31UxoYajJyYPVnjYVhGWTZoJqCNxllx3mrpjI9r_X1RLFXUaBIWWDd
+        redirect-uri: http://oauth.aoju.org//wechat/callback
+  # 数据脱敏加解密配置
+  sensitive:
+    debug: false
+    encrypt:
+      key: 5c3ec809eaa7ecc5287dcff9
+      type: AES
+    decrypt:
+      key: 5c3ec809eaa7ecc5287dcff9
+      type: AES
+  # swagger配置
+  storage:
+    cache:
+      type: DEFAULT
+      timeout: 1L
+    type:
+      aliyun:
+        accessKey: 10******85
+        secretKey: 1f7d************************d629e
+        prefix: http://oauth.aoju.org/qq/callback
+      local:
+        region: /data/800x/file/upload
+  # 文件在线预览
+  preview:
+    cache:
+      type: default
+      timeout: 2h
+    format: pdf
+    #officeHome: C:/Program Files (x86)/OpenOffice
+    protocol: SOCKET
+    names: 8100
+    port-numbers: 2102
+    url: https://localhost:8001
+    # working-dir: working-dir
+    pool-size: 1
+    kill-existing-process: true
+    process-timeout: 180000
+    process-retry-interval: 1000
+    max-tasks-per-process: 20
+    task-execution-timeout: 60000
+    task-queue-timeout: 60000
+    document-format-registry: classpath:document-formats.json
+    format-options:
+      html:
+        store:
+          TEXT:
+            FilterOptions: EmbedImages
+      xhtml:
+        store:
+          TEXT:
+            FilterOptions: EmbedImages
+      txt:
+        load:
+          FilterOptions: utf16
+        store:
+          TEXT:
+            FilterOptions: utf16
+  # swagger配置
+  swagger:
+    basePackage:
+      org.aoju.abarth.spring,
+    title: xTest Restful APIs
+    serviceUrl: www.aoju.org
+    description: 测试项目
+    contact: developer
+    version: 1.0
+  # 防止重复提交
+  wrapper:
+    enabled: true
+    name: hi-wrapper
+    order: 100
+
+server:
+  error:
+    whitelabel:
+      enabled: false
+  undertow:
+    # 设置IO线程数, 它主要执行非阻塞的任务,它们会负责多个连接, 默认设置每个CPU核心一个线程
+    io-threads: 4
+    # 阻塞任务线程池, 当执行类似servlet请求阻塞操作, undertow会从这个线程池中取得线程,它的值设置取决于系统的负载
+    worker-threads: 32
+    # 以下的配置会影响buffer,这些buffer会用于服务器连接的IO操作,有点类似netty的池化内存管理
+    # 每块buffer的空间大小,越小的空间被利用越充分
+    buffer-size: 1024
+    # 是否分配的直接内存
+    direct-buffers: true
