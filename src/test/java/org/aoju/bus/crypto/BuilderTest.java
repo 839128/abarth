@@ -8,8 +8,8 @@ import org.aoju.bus.core.utils.ResourceUtils;
 import org.aoju.bus.crypto.algorithm.asymmetric.KeyType;
 import org.aoju.bus.crypto.algorithm.asymmetric.RSA;
 import org.aoju.bus.logger.Logger;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.security.KeyPair;
 import java.security.PrivateKey;
@@ -20,13 +20,13 @@ public class BuilderTest {
     @Test
     public void readPrivateKeyTest() {
         PrivateKey privateKey = Builder.readPrivateKey(ResourceUtils.getStream("test_private_key.pem"));
-        Assert.assertNotNull(privateKey);
+        Assertions.assertNotNull(privateKey);
     }
 
     @Test
     public void readPublicKeyTest() {
         PublicKey publicKey = Builder.readPublicKey(ResourceUtils.getStream("test_public_key.csr"));
-        Assert.assertNotNull(publicKey);
+        Assertions.assertNotNull(publicKey);
     }
 
     @Test
@@ -35,11 +35,11 @@ public class BuilderTest {
         PublicKey publicKey = Builder.readPublicKey(ResourceUtils.getStream("test_public_key.csr"));
 
         RSA rsa = new RSA(privateKey, publicKey);
-        String str = "你好，Hutool";//测试字符串
+        String str = "你好";//测试字符串
 
         String encryptStr = rsa.encryptBase64(str, KeyType.PublicKey);
         String decryptStr = rsa.decryptStr(encryptStr, KeyType.PrivateKey);
-        Assert.assertEquals(str, decryptStr);
+        Assertions.assertEquals(str, decryptStr);
     }
 
     @Test

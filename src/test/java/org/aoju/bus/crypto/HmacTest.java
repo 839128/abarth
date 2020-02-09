@@ -4,8 +4,8 @@ import org.aoju.bus.core.lang.Algorithm;
 import org.aoju.bus.core.lang.Charset;
 import org.aoju.bus.core.utils.IoUtils;
 import org.aoju.bus.crypto.algorithm.digest.HMac;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * Hmac单元测试
@@ -20,10 +20,10 @@ public class HmacTest {
         HMac mac = new HMac(Algorithm.HmacMD5, key);
 
         String macHex1 = mac.digestHex(testStr);
-        Assert.assertEquals("b977f4b13f93f549e06140971bded384", macHex1);
+        Assertions.assertEquals("b977f4b13f93f549e06140971bded384", macHex1);
 
         String macHex2 = mac.digestHex(IoUtils.toStream(testStr, Charset.UTF_8));
-        Assert.assertEquals("b977f4b13f93f549e06140971bded384", macHex2);
+        Assertions.assertEquals("b977f4b13f93f549e06140971bded384", macHex2);
     }
 
     @Test
@@ -33,10 +33,10 @@ public class HmacTest {
         HMac mac = Builder.hmacMd5("password");
 
         String macHex1 = mac.digestHex(testStr);
-        Assert.assertEquals("b977f4b13f93f549e06140971bded384", macHex1);
+        Assertions.assertEquals("b977f4b13f93f549e06140971bded384", macHex1);
 
         String macHex2 = mac.digestHex(IoUtils.toStream(testStr, Charset.UTF_8));
-        Assert.assertEquals("b977f4b13f93f549e06140971bded384", macHex2);
+        Assertions.assertEquals("b977f4b13f93f549e06140971bded384", macHex2);
     }
 
     @Test
@@ -46,10 +46,10 @@ public class HmacTest {
         HMac mac = Builder.hmacSha1("password");
 
         String macHex1 = mac.digestHex(testStr);
-        Assert.assertEquals("1dd68d2f119d5640f0d416e99d3f42408b88d511", macHex1);
+        Assertions.assertEquals("1dd68d2f119d5640f0d416e99d3f42408b88d511", macHex1);
 
         String macHex2 = mac.digestHex(IoUtils.toStream(testStr, Charset.UTF_8));
-        Assert.assertEquals("1dd68d2f119d5640f0d416e99d3f42408b88d511", macHex2);
+        Assertions.assertEquals("1dd68d2f119d5640f0d416e99d3f42408b88d511", macHex2);
     }
 
 }
