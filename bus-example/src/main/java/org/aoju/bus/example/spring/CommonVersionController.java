@@ -1,9 +1,9 @@
-package org.aoju.abarth.spring;
+package org.aoju.bus.example.spring;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.aoju.abarth.entity.CommonVersion;
-import org.aoju.abarth.service.CommonVersionService;
+import org.aoju.bus.example.entity.CommonVersion;
+import org.aoju.bus.example.service.CommonVersionService;
 import org.aoju.bus.base.consts.ErrorCode;
 import org.aoju.bus.base.entity.Result;
 import org.aoju.bus.base.spring.BaseController;

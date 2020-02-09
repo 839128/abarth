@@ -1,4 +1,4 @@
-package org.aoju.abarth;
+package org.aoju.bus.example;
 
 import org.aoju.bus.starter.annotation.*;
 import org.springframework.boot.SpringApplication;

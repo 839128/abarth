@@ -12,7 +12,7 @@ spring:
   session:
     store-type: none
   application:
-    name: abarth
+    name: example
   # 文件上传配置
   servlet:
     multipart:
@@ -24,10 +24,10 @@ spring:
     default-property-inclusion: non_null
   # 默认数据库信息
   datasource:
-    name: hi_abarth
-    url: jdbc:mysql://127.0.0.1:3006/hi_abarth?useSSL=false&useUnicode=true&characterEncoding=utf8
-    username: abarth
-    password: Hi0.abarth
+    name: hi_example
+    url: jdbc:mysql://127.0.0.1:3006/hi_example?useSSL=false&useUnicode=true&characterEncoding=utf8
+    username: hiexample
+    password: Hi0.example
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
     filters: stat
@@ -49,9 +49,9 @@ spring:
       - key: ds1
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://127.0.0.1:3006/hi_abarth?useSSL=false&useUnicode=true&characterEncoding=utf8
-        username: abarth
-        password: Hi0.abarth
+        url: jdbc:mysql://127.0.0.1:3006/hi_example?useSSL=false&useUnicode=true&characterEncoding=utf8
+        username: hiexample
+        password: Hi0.example
         filters: stat
         maxActive: 20
         initialSize: 1
@@ -68,9 +68,9 @@ spring:
       - key: ds2
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://127.0.0.1:3006/hi_abarth?useSSL=false&useUnicode=true&characterEncoding=utf8
-        username: abarth
-        password: Hi0.abarth
+        url: jdbc:mysql://127.0.0.1:3006/hi_example?useSSL=false&useUnicode=true&characterEncoding=utf8
+        username: hiexample
+        password: Hi0.example
         filters: stat
         maxActive: 20
         initialSize: 1
@@ -113,7 +113,7 @@ extend:
   # dubbo配置
   dubbo:
     container: logback,spring
-    basePackage: org.aoju.abarth.service
+    basePackage: org.aoju.bus.example.service
     application:
       id: lincoln
       name: lincoln
@@ -150,7 +150,7 @@ extend:
   # mybatis配置
   mybatis:
     basePackage:
-      org.aoju.abarth.mapper
+      org.aoju.bus.example.mapper
     xmlLocation: classpath:mapper/**/*.xml
     autoDelimitKeywords: true
     reasonable: false
@@ -230,8 +230,8 @@ extend:
   # swagger配置
   swagger:
     basePackage:
-      org.aoju.abarth.spring,
-    title: xTest Restful APIs
+      org.aoju.bus.example.spring,
+    title: Example Restful APIs
     serviceUrl: www.aoju.org
     description: 测试项目
     contact: developer

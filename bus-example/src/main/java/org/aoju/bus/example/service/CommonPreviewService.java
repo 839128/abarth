@@ -16,9 +16,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aoju.abarth.service;
+package org.aoju.bus.example.service;
 
-import org.aoju.abarth.entity.CommonVersion;
+import org.aoju.bus.example.entity.CommonVersion;
 import org.aoju.bus.base.service.BaseService;
 
 import java.io.InputStream;

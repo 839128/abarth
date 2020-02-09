@@ -16,13 +16,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aoju.abarth.spring;
+package org.aoju.bus.example.spring;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.aoju.abarth.entity.CommonVersion;
-import org.aoju.abarth.service.CommonPreviewService;
+import org.aoju.bus.example.entity.CommonVersion;
+import org.aoju.bus.example.service.CommonPreviewService;
 import org.aoju.bus.base.consts.ErrorCode;
 import org.aoju.bus.base.spring.BaseController;
 import org.aoju.bus.core.key.ObjectID;

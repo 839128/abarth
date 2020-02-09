@@ -1,8 +1,8 @@
-package org.aoju.abarth.service.impl;
+package org.aoju.bus.example.service.impl;
 
-import org.aoju.abarth.entity.CommonVersion;
-import org.aoju.abarth.mapper.CommonVersionMapper;
-import org.aoju.abarth.service.CommonVersionService;
+import org.aoju.bus.example.entity.CommonVersion;
+import org.aoju.bus.example.mapper.CommonVersionMapper;
+import org.aoju.bus.example.service.CommonVersionService;
 import org.aoju.bus.base.service.impl.BaseServiceImpl;
 import org.springframework.stereotype.Service;
 

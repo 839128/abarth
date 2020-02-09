@@ -1,4 +1,4 @@
-package org.aoju.abarth.entity;
+package org.aoju.bus.example.entity;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
