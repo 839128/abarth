@@ -4,7 +4,7 @@ import org.aoju.bus.core.lang.Algorithm;
 import org.aoju.bus.core.lang.Charset;
 import org.aoju.bus.core.utils.RandomUtils;
 import org.aoju.bus.core.utils.StringUtils;
-import org.aoju.bus.crypto.algorithm.symmetric.*;
+import org.aoju.bus.crypto.symmetric.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

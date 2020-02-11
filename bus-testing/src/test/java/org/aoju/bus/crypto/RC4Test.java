@@ -1,6 +1,6 @@
 package org.aoju.bus.crypto;
 
-import org.aoju.bus.crypto.algorithm.symmetric.RC4;
+import org.aoju.bus.crypto.symmetric.RC4;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -5,8 +5,8 @@ import org.aoju.bus.core.key.UUID;
 import org.aoju.bus.core.lang.Algorithm;
 import org.aoju.bus.core.lang.Charset;
 import org.aoju.bus.core.utils.ResourceUtils;
-import org.aoju.bus.crypto.algorithm.asymmetric.KeyType;
-import org.aoju.bus.crypto.algorithm.asymmetric.RSA;
+import org.aoju.bus.crypto.asymmetric.KeyType;
+import org.aoju.bus.crypto.asymmetric.RSA;
 import org.aoju.bus.logger.Logger;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -73,9 +73,9 @@ public class BuilderTest {
         key = Base64Encoder.encode(pair.getPrivate().getEncoded()) + ","
                 + Base64Encoder.encode(pair.getPublic().getEncoded());
         Logger.error("RSA-K:" + key);
-        value = Builder.encrypt(Algorithm.RSA, key + "," + Algorithm.TYPE_PRIVATE_KEY, value, Charset.UTF_8);
+        value = Builder.encrypt(Algorithm.RSA, key, value, Charset.UTF_8);
         Logger.error("RSA-E:" + value);
-        value = Builder.decrypt(Algorithm.RSA, key + "," + Algorithm.TYPE_PUBLIC_KEY, value, Charset.UTF_8);
+        value = Builder.decrypt(Algorithm.RSA, key, value, Charset.UTF_8);
         Logger.error("RSA-D:" + value);
 
         /** SM2 加解密 */

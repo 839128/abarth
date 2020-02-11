@@ -3,8 +3,9 @@ package org.aoju.bus.crypto;
 import org.aoju.bus.core.lang.Charset;
 import org.aoju.bus.core.utils.HexUtils;
 import org.aoju.bus.core.utils.StringUtils;
-import org.aoju.bus.crypto.algorithm.asymmetric.KeyType;
-import org.aoju.bus.crypto.algorithm.asymmetric.SM2;
+import org.aoju.bus.crypto.asymmetric.KeyType;
+import org.aoju.bus.crypto.asymmetric.SM2;
+import org.aoju.bus.crypto.asymmetric.SM2Engine;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -40,7 +41,7 @@ public class SM2Test {
         byte[] publicKey = pair.getPublic().getEncoded();
 
         SM2 sm2 = Builder.sm2(privateKey, publicKey);
-        sm2.setMode(SM2.SM2Mode.C1C3C2);
+        sm2.setMode(SM2Engine.SM2Mode.C1C3C2);
 
         // 公钥加密，私钥解密
         byte[] encrypt = sm2.encrypt(StringUtils.bytes("我是一段测试aaaa", Charset.UTF_8), KeyType.PublicKey);

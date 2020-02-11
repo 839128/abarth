@@ -3,7 +3,7 @@ package org.aoju.bus.crypto;
 import org.aoju.bus.core.lang.Algorithm;
 import org.aoju.bus.core.utils.MapUtils;
 import org.aoju.bus.core.utils.StringUtils;
-import org.aoju.bus.crypto.algorithm.asymmetric.Sign;
+import org.aoju.bus.crypto.asymmetric.Sign;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

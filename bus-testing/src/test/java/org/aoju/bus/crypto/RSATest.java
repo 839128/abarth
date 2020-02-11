@@ -2,8 +2,8 @@ package org.aoju.bus.crypto;
 
 import org.aoju.bus.core.lang.Charset;
 import org.aoju.bus.core.utils.StringUtils;
-import org.aoju.bus.crypto.algorithm.asymmetric.KeyType;
-import org.aoju.bus.crypto.algorithm.asymmetric.RSA;
+import org.aoju.bus.crypto.asymmetric.KeyType;
+import org.aoju.bus.crypto.asymmetric.RSA;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

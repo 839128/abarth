@@ -128,4 +128,11 @@ public class ValidatorTest {
         Assertions.assertFalse(general);
     }
 
+    @Test
+    public void isPasswordTest() {
+        Assertions.assertFalse(Validator.isPassword("12345678d"));
+        Assertions.assertTrue(Validator.isPassword("12345678d", true));
+        Assertions.assertTrue(Validator.isPassword("12345678d#"));
+    }
+
 }

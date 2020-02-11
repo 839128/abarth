@@ -1,6 +1,5 @@
 package org.aoju.bus.crypto.digest;
 
-import org.aoju.bus.crypto.algorithm.digest.MD5;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

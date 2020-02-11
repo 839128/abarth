@@ -3,7 +3,7 @@ package org.aoju.bus.crypto;
 import org.aoju.bus.core.lang.Algorithm;
 import org.aoju.bus.core.lang.Charset;
 import org.aoju.bus.core.utils.IoUtils;
-import org.aoju.bus.crypto.algorithm.digest.HMac;
+import org.aoju.bus.crypto.digest.HMac;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
