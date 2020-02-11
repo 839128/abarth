@@ -103,13 +103,13 @@ public class ValidatorTest {
     @Test
     public void isMatchTest() {
         String url = "http://aaa-bbb.somthing.com/a.php?a=b&c=2";
-        Assertions.assertTrue(Validator.isMactchRegex(RegEx.URL_HTTP, url));
+        Assertions.assertTrue(Validator.isMatchRegex(RegEx.URL_HTTP, url));
 
         url = "https://aaa-bbb.somthing.com/a.php?a=b&c=2";
-        Assertions.assertTrue(Validator.isMactchRegex(RegEx.URL_HTTP, url));
+        Assertions.assertTrue(Validator.isMatchRegex(RegEx.URL_HTTP, url));
 
         url = "https://aaa-bbb.somthing.com:8080/a.php?a=b&c=2";
-        Assertions.assertTrue(Validator.isMactchRegex(RegEx.URL_HTTP, url));
+        Assertions.assertTrue(Validator.isMatchRegex(RegEx.URL_HTTP, url));
     }
 
     @Test
