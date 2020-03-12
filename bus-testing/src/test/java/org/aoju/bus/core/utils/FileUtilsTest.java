@@ -82,7 +82,7 @@ public class FileUtilsTest {
         File srcFile = FileUtils.file("/驱动");
         File destFile = FileUtils.file("d/驱动备份");
 
-        FileUtils.copyFilesFromDir(srcFile, destFile, true);
+        FileUtils.copyFile(srcFile, destFile, true);
     }
 
     @Test

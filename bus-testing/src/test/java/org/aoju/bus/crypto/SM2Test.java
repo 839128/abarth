@@ -73,7 +73,7 @@ public class SM2Test {
 
         // 公钥加密，私钥解密
         String encryptStr = sm2.encryptBcd(text, KeyType.PublicKey);
-        String decryptStr = StringUtils.utf8Str(sm2.decryptFromBcd(encryptStr, KeyType.PrivateKey));
+        String decryptStr = StringUtils.str(sm2.decryptFromBcd(encryptStr, KeyType.PrivateKey));
         Assertions.assertEquals(text, decryptStr);
     }
 
@@ -89,7 +89,7 @@ public class SM2Test {
 
         // 公钥加密，私钥解密
         String encryptStr = sm2.encryptBase64(text.toString(), KeyType.PublicKey);
-        String decryptStr = StringUtils.utf8Str(sm2.decrypt(encryptStr, KeyType.PrivateKey));
+        String decryptStr = StringUtils.str(sm2.decrypt(encryptStr, KeyType.PrivateKey));
         Assertions.assertEquals(text.toString(), decryptStr);
 
         // 测试自定义密钥后是否生效
@@ -99,7 +99,7 @@ public class SM2Test {
         sm2 = Builder.sm2();
         sm2.setPrivateKey(privateKey);
         sm2.setPublicKey(publicKey);
-        String decryptStr2 = StringUtils.utf8Str(sm2.decrypt(encryptStr, KeyType.PrivateKey));
+        String decryptStr2 = StringUtils.str(sm2.decrypt(encryptStr, KeyType.PrivateKey));
         Assertions.assertEquals(text.toString(), decryptStr2);
     }
 

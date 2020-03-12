@@ -235,7 +235,7 @@ public class BeanUtilsTest {
         person.setAge(1);
         person.setName("  张三 ");
         person.setOpenid(null);
-        Person person2 = BeanUtils.trimStrFields(person);
+        Person person2 = BeanUtils.trimStrField(person);
 
         // 是否改变原对象
         Assertions.assertEquals("张三", person.getName());

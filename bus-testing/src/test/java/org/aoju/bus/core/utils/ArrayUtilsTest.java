@@ -218,13 +218,6 @@ public class ArrayUtilsTest {
     }
 
     @Test
-    public void distinctTest() {
-        String[] array = {"aa", "bb", "cc", "dd", "bb", "dd"};
-        String[] distinct = ArrayUtils.distinct(array);
-        Assertions.assertArrayEquals(new String[]{"aa", "bb", "cc", "dd"}, distinct);
-    }
-
-    @Test
     public void toStingTest() {
         int[] a = {1, 3, 56, 6, 7};
         Assertions.assertEquals("[1, 3, 56, 6, 7]", ArrayUtils.toString(a));

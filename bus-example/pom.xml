@@ -7,7 +7,7 @@
 
     <groupId>org.aoju</groupId>
     <artifactId>bus-example</artifactId>
-    <version>5.2.6</version>
+    <version>5.6.6</version>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
@@ -15,7 +15,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.1.RELEASE</version>
+        <version>2.2.5.RELEASE</version>
     </parent>
 
     <properties>
@@ -28,7 +28,7 @@
         <dependency>
             <groupId>org.aoju</groupId>
             <artifactId>bus-all</artifactId>
-            <version>5.5.5</version>
+            <version>5.6.8</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -129,6 +129,100 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>../../bus/bus-all/src</outputDirectory>
+                            <overwrite>true</overwrite>
+                            <resources>
+                                <resource>
+                                    <directory>../../bus/bus-base/src/</directory>
+                                </resource>
+                                <resource>
+                                    <directory>../../bus/bus-cache/src/</directory>
+                                </resource>
+                                <resource>
+                                    <directory>../../bus/bus-core/src/</directory>
+                                </resource>
+                                <resource>
+                                    <directory>../../bus/bus-cron/src/</directory>
+                                </resource>
+                                <resource>
+                                    <directory>../../bus/bus-crypto/src/</directory>
+                                </resource>
+                                <resource>
+                                    <directory>../../bus/bus-extra/src/</directory>
+                                </resource>
+                                <resource>
+                                    <directory>../../bus/bus-forest/src/</directory>
+                                </resource>
+                                <resource>
+                                    <directory>../../bus/bus-health/src/</directory>
+                                </resource>
+                                <resource>
+                                    <directory>../../bus/bus-http/src/</directory>
+                                </resource>
+                                <resource>
+                                    <directory>../../bus/bus-limiter/src/</directory>
+                                </resource>
+                                <resource>
+                                    <directory>../../bus/bus-logger/src/</directory>
+                                </resource>
+                                <resource>
+                                    <directory>../../bus/bus-mapper/src/</directory>
+                                </resource>
+                                <resource>
+                                    <directory>../../bus/bus-oauth/src/</directory>
+                                </resource>
+                                <resource>
+                                    <directory>../../bus/bus-office/src/</directory>
+                                </resource>
+                                <resource>
+                                    <directory>../../bus/bus-pager/src/</directory>
+                                </resource>
+                                <resource>
+                                    <directory>../../bus/bus-proxy/src/</directory>
+                                </resource>
+                                <resource>
+                                    <directory>../../bus/bus-sensitive/src/</directory>
+                                </resource>
+                                <resource>
+                                    <directory>../../bus/bus-setting/src/</directory>
+                                </resource>
+                                <resource>
+                                    <directory>../../bus/bus-shade/src/</directory>
+                                </resource>
+                                <resource>
+                                    <directory>../../bus/bus-socket/src/</directory>
+                                </resource>
+                                <resource>
+                                    <directory>../../bus/bus-starter/src/</directory>
+                                </resource>
+                                <resource>
+                                    <directory>../../bus/bus-storage/src/</directory>
+                                </resource>
+                                <resource>
+                                    <directory>../../bus/bus-tracer/src/</directory>
+                                </resource>
+                                <resource>
+                                    <directory>../../bus/bus-validate/src/</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 

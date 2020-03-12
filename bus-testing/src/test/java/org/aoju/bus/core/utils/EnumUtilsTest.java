@@ -43,7 +43,7 @@ public class EnumUtilsTest {
 
     @Test
     public void getNameFieldMapTest() {
-        Map<String, Object> enumMap = EnumUtils.getNameFieldMap(TestEnum.class, "type");
+        Map<String, Object> enumMap = EnumUtils.getFieldNames(TestEnum.class, "type");
         Assertions.assertEquals("type1", enumMap.get("TEST1"));
     }
 
