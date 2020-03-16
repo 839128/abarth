@@ -3,11 +3,12 @@ package org.aoju.bus.core.utils;
 import org.aoju.bus.core.date.Boundary;
 import org.aoju.bus.core.date.DateTime;
 import org.aoju.bus.core.date.TimeInterval;
-import org.aoju.bus.core.date.format.FastDateFormat;
+import org.aoju.bus.core.date.format.FormatBuilder;
 import org.aoju.bus.core.lang.Fields;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -190,58 +191,6 @@ public class DateUtilsTest {
     }
 
     @Test
-    public void localTest1() {
-        final SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-
-        int lunarDay = 9;
-        int lunarMonth = 12;
-        int lunarYear = 1048;
-        Assertions.assertEquals("初九", DateUtils.getDayName(lunarDay));
-        Assertions.assertEquals("腊", DateUtils.getMonthName(lunarMonth));
-        Assertions.assertEquals("一〇四八", DateUtils.getYearName(lunarYear));
-
-        Calendar c = Calendar.getInstance();
-        c.set(Calendar.YEAR, 2019);
-        c.set(Calendar.MONTH, 2);
-        c.set(Calendar.DATE, 31);
-        DateUtils lunar = new DateUtils(c);
-        System.out.println(df.format(c.getTime()) + " -> " + lunar);
-        Assertions.assertEquals("二〇一九年二月廿五", lunar.toString());
-
-        Calendar c1 = Calendar.getInstance();
-        Calendar c2 = Calendar.getInstance();
-        System.out.println(df.format(c1.getTime()));
-        c1.add(Calendar.MONTH, 10);
-        System.out.println(df.format(c1.getTime()));
-
-        c1.set(Calendar.YEAR, 1991);
-        c1.set(Calendar.MONTH, 3);
-        c1.set(Calendar.DATE, 1);
-
-
-        c2.set(Calendar.YEAR, 1991);
-        c2.set(Calendar.MONTH, 2);
-        c2.set(Calendar.DATE, 1);
-
-        System.out.println(DateUtils.solarDiff(c1, c2, Calendar.DATE));
-        System.out.println(df.format(c1.getTime()));
-        System.out.println(df.format(c2.getTime()));
-    }
-
-    @Test
-    public void localTest3() {
-        java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd");
-        Calendar c1 = Calendar.getInstance();
-
-        c1.set(Calendar.YEAR, 2046);
-        c1.set(Calendar.MONTH, 01);
-        c1.set(Calendar.DATE, 06);
-        DateUtils luanr = DateUtils.solar2Lunar(c1);
-        System.out.println();
-        System.out.println("Solar：" + df.format(c1.getTime()) + "Lunar：" + luanr);
-    }
-
-    @Test
     public void formatBetweenTest() {
         String dateStr1 = "2020-01-01 22:34:23";
         Date date1 = DateUtils.parse(dateStr1);
@@ -341,7 +290,7 @@ public class DateUtilsTest {
         Assertions.assertEquals("20190321", ymd);
     }
 
-    @SuppressWarnings("ConstantConditions")
+
     @Test
     public void parseTest5() {
         // 测试时间解析
@@ -368,7 +317,7 @@ public class DateUtilsTest {
 
     }
 
-    @SuppressWarnings("ConstantConditions")
+
     @Test
     public void parseTest6() {
         String str = "Tue Jun 4 16:25:15 +0800 2019";
@@ -383,7 +332,7 @@ public class DateUtilsTest {
         Assertions.assertEquals("2019-06-01 19:45:43", dateTime.toString());
     }
 
-    @SuppressWarnings("ConstantConditions")
+
     @Test
     public void parseAndOffsetTest() {
         // 检查UTC时间偏移是否准确
@@ -471,7 +420,6 @@ public class DateUtilsTest {
         Assertions.assertEquals(dt1, dt2);
     }
 
-    @SuppressWarnings("ConstantConditions")
     @Test
     public void parseUTCTest() {
         String dateStr1 = "2018-09-13T05:34:31Z";
@@ -532,7 +480,7 @@ public class DateUtilsTest {
         Assertions.assertEquals("2018-09-13 13:34:39.999", dateStr);
     }
 
-    @SuppressWarnings("ConstantConditions")
+
     @Test
     public void parseCSTTest() {
         String dateStr = "Wed Sep 16 11:26:23 CST 2009";
@@ -543,7 +491,7 @@ public class DateUtilsTest {
         Assertions.assertEquals("2009-09-17 01:26:23", dateTime.toString());
     }
 
-    @SuppressWarnings("ConstantConditions")
+
     @Test
     public void parseJDkTest() {
         String dateStr = "Thu May 16 17:57:18 GMT+08:00 2019";
@@ -700,13 +648,116 @@ public class DateUtilsTest {
     @Test
     public void timeZoneConvertTest() {
         DateTime dt = DateUtils.parse("2018-07-10 21:44:32",
-                FastDateFormat.getInstance(Fields.NORM_DATETIME_PATTERN, TimeZone.getTimeZone("GMT+8:00")));
+                FormatBuilder.getInstance(Fields.NORM_DATETIME_PATTERN, TimeZone.getTimeZone("GMT+8:00")));
         Assertions.assertEquals("2018-07-10 21:44:32", dt.toString());
 
         dt.setTimeZone(TimeZone.getTimeZone("Europe/London"));
         int hour = dt.getField(Fields.DateField.HOUR_OF_DAY);
         Assertions.assertEquals(14, hour);
         Assertions.assertEquals("2018-07-10 14:44:32", dt.toString());
+    }
+
+    /**
+     * 打印MINI_YEAR-01-31到MAX_YEAR-12-31所有的农历,并输出到txt中
+     */
+    @Test
+    public void localTest1() {
+        java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd");
+        // start
+        Calendar start = Calendar.getInstance();
+        start.set(Calendar.YEAR, DateUtils.MINI_YEAR);
+        start.set(Calendar.MONTH, 1);
+        start.set(Calendar.DATE, 12);
+        // end
+        Calendar end = Calendar.getInstance();
+        end.set(Calendar.YEAR, DateUtils.MAX_YEAR);
+        end.set(Calendar.MONTH, 11);
+        end.set(Calendar.DATE, 31);
+        FileOutputStream out = null;
+        PrintStream p = null;
+        try {
+            File testFile = new File("./resources/solar2lunar.txt");
+            if (!testFile.exists()) {
+                testFile.createNewFile();
+            }
+            out = new FileOutputStream(testFile);
+            p = new PrintStream(out);
+            Calendar t = start;
+            while (t.before(end) || t.equals(end)) {
+                DateUtils lunar = DateUtils.solar2Lunar(t);
+                System.out.println(df.format(t.getTime()) + " <====> " + lunar.getFullLunarName());
+                p.println(df.format(t.getTime()) + " <====> " + lunar.getFullLunarName());
+                t.add(Calendar.DATE, 1);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("未找到solar2lunar.txt文件，或者文件创建失败.");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("未找到solar2lunar.txt文件，或者文件创建失败.");
+            e.printStackTrace();
+        } finally {
+            try {
+                out.close();
+                p.close();
+            } catch (IOException e) {
+                System.out.println("关闭流出错。");
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Test
+    public void localTest2() {
+        final java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd");
+
+        int lunarDay = 9;
+        int lunarMonth = 12;
+        int lunarYear = 1048;
+        Assertions.assertEquals("初九", DateUtils.getDayName(lunarDay));
+        Assertions.assertEquals('腊', DateUtils.getMonthName(lunarMonth));
+        Assertions.assertEquals("一〇四八", DateUtils.getYearName(lunarYear));
+
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, 2019);
+        c.set(Calendar.MONTH, 2);
+        c.set(Calendar.DATE, 31);
+        DateUtils lunar = new DateUtils(c);
+        System.out.println(df.format(c.getTime()) + " -> " + lunar);
+        Assertions.assertEquals("二〇一九年二月廿五", lunar.toString());
+
+        Calendar c1 = Calendar.getInstance();
+        Calendar c2 = Calendar.getInstance();
+        System.out.println(df.format(c1.getTime()));
+        c1.add(Calendar.MONTH, 10);
+        System.out.println(df.format(c1.getTime()));
+        // int[] arr1900 = { 8, 131, 301, 331, 429, 528, 627, 726, 825, 924, 1023, 1122, 1222, 1320 };
+        // System.out.println(LunarCalendar.binSearch(arr1900, 1121));
+
+        c1.set(Calendar.YEAR, 1991);
+        c1.set(Calendar.MONTH, 3);
+        c1.set(Calendar.DATE, 1);
+
+
+        c2.set(Calendar.YEAR, 1991);
+        c2.set(Calendar.MONTH, 2);
+        c2.set(Calendar.DATE, 1);
+
+        System.out.println(DateUtils.solarDiff(c1, c2, Calendar.DATE));
+        System.out.println(df.format(c1.getTime()));
+        System.out.println(df.format(c2.getTime()));
+    }
+
+    @Test
+    public void localTest3() {
+        java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd");
+        Calendar c1 = Calendar.getInstance();
+
+        c1.set(Calendar.YEAR, 2046);
+        c1.set(Calendar.MONTH, 01);
+        c1.set(Calendar.DATE, 06);
+        DateUtils luanr = DateUtils.solar2Lunar(c1);
+        System.out.println();
+        System.out.println("Solar：" + df.format(c1.getTime()) + "Lunar：" + luanr);
     }
 
 }
