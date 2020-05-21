@@ -18,12 +18,12 @@ public class ExamInfoDict implements Serializable {
         return id;
     }
 
-    public Integer getId(Integer defaultValue) {
-        return this.id == null ? defaultValue : this.id;
-    }
-
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getId(Integer defaultValue) {
+        return this.id == null ? defaultValue : this.id;
     }
 
     public Integer getExamType() {

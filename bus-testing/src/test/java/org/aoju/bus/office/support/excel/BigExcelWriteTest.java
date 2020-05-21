@@ -1,0 +1,194 @@
+package org.aoju.bus.office.support.excel;
+
+import jdk.nashorn.internal.ir.annotations.Ignore;
+import org.aoju.bus.core.utils.*;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+public class BigExcelWriteTest {
+
+    @Test
+    @Ignore
+    public void writeTest2() {
+        List<String> row = CollUtils.newArrayList("姓名", "加班日期", "下班时间", "加班时长", "餐补", "车补次数", "车补", "总计");
+        BigExcelWriter overtimeWriter = ExcelUtils.getBigWriter("test.xlsx");
+        overtimeWriter.write(row);
+        overtimeWriter.close();
+    }
+
+    @Test
+    @Ignore
+    public void writeTest() {
+        List<?> row1 = CollUtils.newArrayList("aaaaa", "bb", "cc", "dd", DateUtils.date(), 3.22676575765);
+        List<?> row2 = CollUtils.newArrayList("aa1", "bb1", "cc1", "dd1", DateUtils.date(), 250.7676);
+        List<?> row3 = CollUtils.newArrayList("aa2", "bb2", "cc2", "dd2", DateUtils.date(), 0.111);
+        List<?> row4 = CollUtils.newArrayList("aa3", "bb3", "cc3", "dd3", DateUtils.date(), 35);
+        List<?> row5 = CollUtils.newArrayList("aa4", "bb4", "cc4", "dd4", DateUtils.date(), 28.00);
+
+        List<List<?>> rows = CollUtils.newArrayList(row1, row2, row3, row4, row5);
+        for (int i = 0; i < 400000; i++) {
+            //超大列表写出测试
+            rows.add(ObjectUtils.clone(row1));
+        }
+
+        String filePath = "e:/bigWriteTest.xlsx";
+        FileUtils.delete(filePath);
+        // 通过工具类创建writer
+        BigExcelWriter writer = ExcelUtils.getBigWriter(filePath);
+
+//		// 跳过当前行，即第一行，非必须，在此演示用
+//		writer.passCurrentRow();
+//		// 合并单元格后的标题行，使用默认标题样式
+//		writer.merge(row1.size() - 1, "大数据测试标题");
+        // 一次性写出内容，使用默认样式
+        writer.write(rows);
+//		writer.autoSizeColumn(0, true);
+        // 关闭writer，释放内存
+        writer.close();
+    }
+
+    @Test
+    @Ignore
+    public void mergeTest() {
+        List<?> row1 = CollUtils.newArrayList("aa", "bb", "cc", "dd", DateUtils.date(), 3.22676575765);
+        List<?> row2 = CollUtils.newArrayList("aa1", "bb1", "cc1", "dd1", DateUtils.date(), 250.7676);
+        List<?> row3 = CollUtils.newArrayList("aa2", "bb2", "cc2", "dd2", DateUtils.date(), 0.111);
+        List<?> row4 = CollUtils.newArrayList("aa3", "bb3", "cc3", "dd3", DateUtils.date(), 35);
+        List<?> row5 = CollUtils.newArrayList("aa4", "bb4", "cc4", "dd4", DateUtils.date(), 28.00);
+
+        List<List<?>> rows = CollUtils.newArrayList(row1, row2, row3, row4, row5);
+
+        // 通过工具类创建writer
+        BigExcelWriter writer = ExcelUtils.getBigWriter("test.xlsx");
+        CellStyle style = writer.getStyleSet().getHeadCellStyle();
+        StyleUtils.setColor(style, IndexedColors.RED, FillPatternType.SOLID_FOREGROUND);
+
+        // 跳过当前行，即第一行，非必须，在此演示用
+        writer.passCurrentRow();
+        // 合并单元格后的标题行，使用默认标题样式
+        writer.merge(row1.size() - 1, "测试标题");
+        // 一次性写出内容，使用默认样式
+        writer.write(rows);
+
+        // 合并单元格后的标题行，使用默认标题样式
+        writer.merge(7, 10, 4, 10, "测试Merge", false);
+
+        // 关闭writer，释放内存
+        writer.close();
+    }
+
+    @Test
+    @Ignore
+    public void writeMapTest() {
+        Map<String, Object> row1 = new LinkedHashMap<>();
+        row1.put("姓名", "张三");
+        row1.put("年龄", 23);
+        row1.put("成绩", 88.32);
+        row1.put("是否合格", true);
+        row1.put("考试日期", DateUtils.date());
+
+        Map<String, Object> row2 = new LinkedHashMap<>();
+        row2.put("姓名", "李四");
+        row2.put("年龄", 33);
+        row2.put("成绩", 59.50);
+        row2.put("是否合格", false);
+        row2.put("考试日期", DateUtils.date());
+
+        ArrayList<Map<String, Object>> rows = CollUtils.newArrayList(row1, row2);
+
+        // 通过工具类创建writer
+        String path = "e:/bigWriteMapTest.xlsx";
+        FileUtils.delete(path);
+        BigExcelWriter writer = ExcelUtils.getBigWriter(path);
+
+        //设置内容字体
+        Font font = writer.createFont();
+        font.setBold(true);
+        font.setColor(Font.COLOR_RED);
+        font.setItalic(true);
+        writer.getStyleSet().setFont(font, true);
+
+        // 合并单元格后的标题行，使用默认标题样式
+        writer.merge(row1.size() - 1, "一班成绩单");
+        // 一次性写出内容，使用默认样式
+        writer.write(rows);
+        // 关闭writer，释放内存
+        writer.close();
+    }
+
+    @Test
+    @Ignore
+    public void writeMapTest2() {
+        Map<String, Object> row1 = MapUtils.newHashMap(true);
+        row1.put("姓名", "张三");
+        row1.put("年龄", 23);
+        row1.put("成绩", 88.32);
+        row1.put("是否合格", true);
+        row1.put("考试日期", DateUtils.date());
+
+        // 通过工具类创建writer
+        String path = "test.xlsx";
+        FileUtils.delete(path);
+        BigExcelWriter writer = ExcelUtils.getBigWriter(path);
+
+        // 一次性写出内容，使用默认样式
+        writer.writeRow(row1, true);
+        // 关闭writer，释放内存
+        writer.close();
+    }
+
+    @Test
+    @Ignore
+    public void writeBeanTest() {
+        TestBean bean1 = new TestBean();
+        bean1.setName("张三");
+        bean1.setAge(22);
+        bean1.setPass(true);
+        bean1.setScore(66.30);
+        bean1.setExamDate(DateUtils.date());
+
+        TestBean bean2 = new TestBean();
+        bean2.setName("李四");
+        bean2.setAge(28);
+        bean2.setPass(false);
+        bean2.setScore(38.50);
+        bean2.setExamDate(DateUtils.date());
+
+        List<TestBean> rows = CollUtils.newArrayList(bean1, bean2);
+        // 通过工具类创建writer
+        String file = "test.xlsx";
+        FileUtils.delete(file);
+        BigExcelWriter writer = ExcelUtils.getBigWriter(file);
+        //自定义标题
+        writer.addHeaderAlias("name", "姓名");
+        writer.addHeaderAlias("age", "年龄");
+        writer.addHeaderAlias("score", "分数");
+        writer.addHeaderAlias("isPass", "是否通过");
+        writer.addHeaderAlias("examDate", "考试时间");
+        // 合并单元格后的标题行，使用默认标题样式
+        writer.merge(4, "一班成绩单");
+        // 一次性写出内容，使用默认样式
+        writer.write(rows);
+        // 关闭writer，释放内存
+        writer.close();
+    }
+
+    @Test
+    @Ignore
+    public void writeCellValueTest() {
+        String path = "test.xlsx";
+        FileUtils.delete(path);
+        BigExcelWriter writer = new BigExcelWriter(path);
+        writer.writeCellValue(3, 5, "aaa");
+        writer.close();
+    }
+
+}

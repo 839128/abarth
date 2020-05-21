@@ -18,8 +18,8 @@
  */
 package org.aoju.bus.example.service;
 
-import org.aoju.bus.example.entity.CommonVersion;
 import org.aoju.bus.base.service.BaseService;
+import org.aoju.bus.example.entity.CommonVersion;
 
 import java.io.InputStream;
 import java.io.OutputStream;

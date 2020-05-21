@@ -57,7 +57,7 @@ public class ZipUtilsTest {
 
         byte[] unGzip = ZipUtils.unGzip(gzip);
         //保证正常还原
-        Assertions.assertEquals(data, StringUtils.str(unGzip));
+        Assertions.assertEquals(data, StringUtils.toString(unGzip));
     }
 
     @Test
@@ -70,14 +70,14 @@ public class ZipUtilsTest {
         Assertions.assertEquals(62, gzip.length);
         byte[] unGzip = ZipUtils.unZlib(gzip);
         //保证正常还原
-        Assertions.assertEquals(data, StringUtils.str(unGzip));
+        Assertions.assertEquals(data, StringUtils.toString(unGzip));
 
         gzip = ZipUtils.zlib(bytes, 9);
         //保证zlib长度正常
         Assertions.assertEquals(56, gzip.length);
         byte[] unGzip2 = ZipUtils.unZlib(gzip);
         //保证正常还原
-        Assertions.assertEquals(data, StringUtils.str(unGzip2));
+        Assertions.assertEquals(data, StringUtils.toString(unGzip2));
     }
 
 }

@@ -1,14 +1,16 @@
-package org.aoju.bus.core.text.csv;
+package org.aoju.bus.core.utils;
 
 import org.aoju.bus.core.lang.Assert;
 import org.aoju.bus.core.lang.Charset;
-import org.aoju.bus.core.utils.CsvUtils;
-import org.aoju.bus.core.utils.FileUtils;
+import org.aoju.bus.core.text.csv.CsvData;
+import org.aoju.bus.core.text.csv.CsvReader;
+import org.aoju.bus.core.text.csv.CsvRow;
+import org.aoju.bus.core.text.csv.CsvWriter;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-public class CsvUtilTest {
+public class CsvUtilsTest {
 
     @Test
     public void readTest() {

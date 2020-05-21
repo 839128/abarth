@@ -26,7 +26,7 @@ public class XmlUtilsTest {
                 + "<successCounts>1</successCounts>"//
                 + "</returnsms>";
         Document docResult = XmlUtils.parseXml(result);
-        String elementText = XmlUtils.elementText(docResult.getDocumentElement(), "returnstatus");
+        String elementText = XmlUtils.getText(docResult.getDocumentElement(), "returnstatus");
         Assertions.assertEquals("Success", elementText);
     }
 
@@ -109,7 +109,7 @@ public class XmlUtilsTest {
                         + "<level>14</level>"//
                         + "</game>"//
                         + "</user>", //
-                XmlUtils.toStr(doc, false));
+                XmlUtils.toString(doc, false));
     }
 
     @Test

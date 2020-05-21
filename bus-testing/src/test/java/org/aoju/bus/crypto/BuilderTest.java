@@ -4,7 +4,7 @@ import org.aoju.bus.core.codec.Base64Encoder;
 import org.aoju.bus.core.key.UUID;
 import org.aoju.bus.core.lang.Algorithm;
 import org.aoju.bus.core.lang.Charset;
-import org.aoju.bus.core.utils.ResourceUtils;
+import org.aoju.bus.core.utils.FileUtils;
 import org.aoju.bus.crypto.asymmetric.KeyType;
 import org.aoju.bus.crypto.asymmetric.RSA;
 import org.aoju.bus.logger.Logger;
@@ -19,20 +19,20 @@ public class BuilderTest {
 
     @Test
     public void readPrivateKeyTest() {
-        PrivateKey privateKey = Builder.readPrivateKey(ResourceUtils.getStream("test_private_key.pem"));
+        PrivateKey privateKey = Builder.readPrivateKey(FileUtils.getStream("test_private_key.pem"));
         Assertions.assertNotNull(privateKey);
     }
 
     @Test
     public void readPublicKeyTest() {
-        PublicKey publicKey = Builder.readPublicKey(ResourceUtils.getStream("test_public_key.csr"));
+        PublicKey publicKey = Builder.readPublicKey(FileUtils.getStream("test_public_key.csr"));
         Assertions.assertNotNull(publicKey);
     }
 
     @Test
     public void validateKey() {
-        PrivateKey privateKey = Builder.readPrivateKey(ResourceUtils.getStream("test_private_key.pem"));
-        PublicKey publicKey = Builder.readPublicKey(ResourceUtils.getStream("test_public_key.csr"));
+        PrivateKey privateKey = Builder.readPrivateKey(FileUtils.getStream("test_private_key.pem"));
+        PublicKey publicKey = Builder.readPublicKey(FileUtils.getStream("test_public_key.csr"));
 
         RSA rsa = new RSA(privateKey, publicKey);
         String str = "你好";//测试字符串

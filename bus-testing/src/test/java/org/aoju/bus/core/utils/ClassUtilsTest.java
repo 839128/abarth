@@ -20,28 +20,6 @@ public class ClassUtilsTest {
         Assertions.assertEquals("ClassUtils", simpleClassName);
     }
 
-    static class TestClass {
-        private String privateField;
-        protected String field;
-
-        private void privateMethod() {
-        }
-
-        public void publicMethod() {
-        }
-    }
-
-    class TestSubClass extends TestClass {
-        private String subField;
-
-        private void privateSubMethod() {
-        }
-
-        public void publicSubMethod() {
-        }
-
-    }
-
     @Test
     public void getPublicMethod() {
         Method superPublicMethod = ClassUtils.getPublicMethod(TestSubClass.class, "publicMethod");
@@ -105,6 +83,28 @@ public class ClassUtilsTest {
 
         name = ClassUtils.loadClass("java.lang.Thread$State").getName();
         Assertions.assertEquals("java.lang.Thread$State", name);
+    }
+
+    static class TestClass {
+        protected String field;
+        private String privateField;
+
+        private void privateMethod() {
+        }
+
+        public void publicMethod() {
+        }
+    }
+
+    class TestSubClass extends TestClass {
+        private String subField;
+
+        private void privateSubMethod() {
+        }
+
+        public void publicSubMethod() {
+        }
+
     }
 
 }

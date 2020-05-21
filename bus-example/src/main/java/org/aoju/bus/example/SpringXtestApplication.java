@@ -11,12 +11,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @EnableMapper
 @EnableSwagger
-//@EnablePreview
+//@EnableOffice
 @EnableStorage
 @EnableValidate
 @EnableSensitive
-@EnableThirdAuth
-@EnableOnceFilter
+@EnableOAuth2
+@EnableWrapper
 @SpringBootApplication
 public class SpringXtestApplication {
 

@@ -19,7 +19,7 @@ public class BufferUtilsTest {
         ByteBuffer buffer = ByteBuffer.wrap(bytes);
 
         ByteBuffer buffer2 = BufferUtils.copy(buffer, ByteBuffer.allocate(5));
-        Assertions.assertEquals("AAABB", StringUtils.utf8Str(buffer2));
+        Assertions.assertEquals("AAABB", StringUtils.toString(buffer2));
     }
 
     @Test
@@ -28,7 +28,7 @@ public class BufferUtilsTest {
         ByteBuffer buffer = ByteBuffer.wrap(bytes);
 
         byte[] bs = BufferUtils.readBytes(buffer, 5);
-        Assertions.assertEquals("AAABB", StringUtils.utf8Str(bs));
+        Assertions.assertEquals("AAABB", StringUtils.toString(bs));
     }
 
     @Test
@@ -37,7 +37,7 @@ public class BufferUtilsTest {
         ByteBuffer buffer = ByteBuffer.wrap(bytes);
 
         byte[] bs = BufferUtils.readBytes(buffer, 5);
-        Assertions.assertEquals("AAABB", StringUtils.utf8Str(bs));
+        Assertions.assertEquals("AAABB", StringUtils.toString(bs));
     }
 
     @Test
@@ -58,7 +58,7 @@ public class BufferUtilsTest {
         Assertions.assertNull(line);
 
         // 读取剩余部分
-        Assertions.assertEquals("cc", StringUtils.utf8Str(BufferUtils.readBytes(buffer)));
+        Assertions.assertEquals("cc", StringUtils.toString(BufferUtils.readBytes(buffer)));
     }
 
 }

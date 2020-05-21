@@ -15,17 +15,17 @@ public class ObjectUtilsTest {
         Assertions.assertEquals("OK", obj2.doSomeThing());
     }
 
-    static class Obj extends Support<Obj> {
-        public String doSomeThing() {
-            return "OK";
-        }
-    }
-
     @Test
     public void toStringTest() {
         ArrayList<String> strings = CollUtils.newArrayList("1", "2");
         String result = ObjectUtils.toString(strings);
         Assertions.assertEquals("[1, 2]", result);
+    }
+
+    static class Obj extends Support<Obj> {
+        public String doSomeThing() {
+            return "OK";
+        }
     }
 
 }

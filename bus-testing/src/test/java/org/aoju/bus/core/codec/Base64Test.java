@@ -41,7 +41,7 @@ public class Base64Test {
     @Test
     public void urlSafeEncodeAndDecodeTest() {
         String a = "需要安全感123";
-        String encode = StringUtils.utf8Str(Base64.encodeUrlSafe(StringUtils.bytes(a), false));
+        String encode = StringUtils.toString(Base64.encodeUrlSafe(StringUtils.bytes(a), false));
         Assertions.assertEquals("6ZyA6KaB5a6J5YWo5oSfMTIz", encode);
 
         String decodeStr = Base64.decodeStr(encode);

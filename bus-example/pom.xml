@@ -7,7 +7,7 @@
 
     <groupId>org.aoju</groupId>
     <artifactId>bus-example</artifactId>
-    <version>5.8.2</version>
+    <version>5.9.2</version>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
@@ -22,67 +22,214 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <project.compiler.version>1.8</project.compiler.version>
+        <lombok.version>1.18.12</lombok.version>
+        <aspectj.version>1.9.5</aspectj.version>
+        <fastjson.version>1.2.67</fastjson.version>
+        <bouncycastle.version>1.60</bouncycastle.version>
+        <slf4j.version>1.7.30</slf4j.version>
+        <mybatis.version>3.5.3</mybatis.version>
+        <mybatis.spring.version>2.0.3</mybatis.spring.version>
+        <persistence.version>2.2</persistence.version>
+        <poi.version>4.1.2</poi.version>
+        <jsqlparser.version>3.1</jsqlparser.version>
+        <swagger.version>2.9.2</swagger.version>
+        <guava.version>28.0-jre</guava.version>
+        <guice.version>4.2.0</guice.version>
+        <yaml.version>1.25</yaml.version>
+        <jna.version>5.5.0</jna.version>
+        <office.version>4.1.2</office.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.aoju</groupId>
             <artifactId>bus-all</artifactId>
-            <version>5.8.2</version>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>1.1.20</version>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.18</version>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>${bouncycastle.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo</artifactId>
-            <version>2.7.3</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>${mybatis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>${mybatis.spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>${persistence.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>${guice.version}</version>
             <exclusions>
                 <exclusion>
-                    <artifactId>spring</artifactId>
-                    <groupId>org.springframework</groupId>
+                    <groupId>aopalliance</groupId>
+                    <artifactId>aopalliance</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-recipes</artifactId>
-            <version>4.2.0</version>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>${yaml.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-            <version>3.5.6</version>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna</artifactId>
+            <version>${jna.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna-platform</artifactId>
+            <version>${jna.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openoffice</groupId>
+            <artifactId>juh</artifactId>
+            <version>${office.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openoffice</groupId>
+            <artifactId>ridl</artifactId>
+            <version>${office.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openoffice</groupId>
+            <artifactId>unoil</artifactId>
+            <version>${office.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.version}</version>
             <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-aop</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-beans</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-context</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-expression</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-databind</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-annotations</artifactId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>byte-buddy</artifactId>
+                    <groupId>net.bytebuddy</groupId>
+                </exclusion>
                 <exclusion>
                     <artifactId>slf4j-api</artifactId>
                     <groupId>org.slf4j</groupId>
                 </exclusion>
                 <exclusion>
-                    <artifactId>log4j</artifactId>
-                    <groupId>log4j</groupId>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>guava</artifactId>
                 </exclusion>
                 <exclusion>
-                    <artifactId>slf4j-log4j12</artifactId>
-                    <groupId>org.slf4j</groupId>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-annotations</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.swagger</groupId>
+                    <artifactId>swagger-annotations</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.swagger</groupId>
+                    <artifactId>swagger-models</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.9.2</version>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>1.5.22</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-models</artifactId>
+            <version>1.5.22</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${poi.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-codec</artifactId>
+                    <groupId>commons-codec</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml-schemas</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.jsqlparser</groupId>
+            <artifactId>jsqlparser</artifactId>
+            <version>${jsqlparser.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -129,103 +276,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.1.0</version>
-                <executions>
-                    <execution>
-                        <id>copy</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>../../bus/bus-all/src</outputDirectory>
-                            <overwrite>true</overwrite>
-                            <resources>
-                                <resource>
-                                    <directory>../../bus/bus-base/src/</directory>
-                                </resource>
-                                <resource>
-                                    <directory>../../bus/bus-cache/src/</directory>
-                                </resource>
-                                <resource>
-                                    <directory>../../bus/bus-core/src/</directory>
-                                </resource>
-                                <resource>
-                                    <directory>../../bus/bus-cron/src/</directory>
-                                </resource>
-                                <resource>
-                                    <directory>../../bus/bus-crypto/src/</directory>
-                                </resource>
-                                <resource>
-                                    <directory>../../bus/bus-extra/src/</directory>
-                                </resource>
-                                <resource>
-                                    <directory>../../bus/bus-forest/src/</directory>
-                                </resource>
-                                <resource>
-                                    <directory>../../bus/bus-health/src/</directory>
-                                </resource>
-                                <resource>
-                                    <directory>../../bus/bus-http/src/</directory>
-                                </resource>
-                                <resource>
-                                    <directory>../../bus/bus-limiter/src/</directory>
-                                </resource>
-                                <resource>
-                                    <directory>../../bus/bus-logger/src/</directory>
-                                </resource>
-                                <resource>
-                                    <directory>../../bus/bus-mapper/src/</directory>
-                                </resource>
-                                <resource>
-                                    <directory>../../bus/bus-notify/src/</directory>
-                                </resource>
-                                <resource>
-                                    <directory>../../bus/bus-oauth/src/</directory>
-                                </resource>
-                                <resource>
-                                    <directory>../../bus/bus-office/src/</directory>
-                                </resource>
-                                <resource>
-                                    <directory>../../bus/bus-pager/src/</directory>
-                                </resource>
-                                <resource>
-                                    <directory>../../bus/bus-proxy/src/</directory>
-                                </resource>
-                                <resource>
-                                    <directory>../../bus/bus-sensitive/src/</directory>
-                                </resource>
-                                <resource>
-                                    <directory>../../bus/bus-setting/src/</directory>
-                                </resource>
-                                <resource>
-                                    <directory>../../bus/bus-shade/src/</directory>
-                                </resource>
-                                <resource>
-                                    <directory>../../bus/bus-socket/src/</directory>
-                                </resource>
-                                <resource>
-                                    <directory>../../bus/bus-starter/src/</directory>
-                                </resource>
-                                <resource>
-                                    <directory>../../bus/bus-storage/src/</directory>
-                                </resource>
-                                <resource>
-                                    <directory>../../bus/bus-tracer/src/</directory>
-                                </resource>
-                                <resource>
-                                    <directory>../../bus/bus-validate/src/</directory>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
         </plugins>
     </build>
 

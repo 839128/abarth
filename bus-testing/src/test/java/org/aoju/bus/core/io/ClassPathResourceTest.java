@@ -1,6 +1,7 @@
 package org.aoju.bus.core.io;
 
 import org.aoju.bus.core.io.resource.ClassPathResource;
+import org.aoju.bus.core.lang.Charset;
 import org.aoju.bus.core.utils.StringUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -16,14 +17,14 @@ public class ClassPathResourceTest {
     @Test
     public void readStringTest() {
         ClassPathResource resource = new ClassPathResource("test.properties");
-        String content = resource.readUtf8Str();
+        String content = resource.readString(Charset.UTF_8);
         Assertions.assertTrue(StringUtils.isNotEmpty(content));
     }
 
     @Test
     public void readStringTest2() {
         ClassPathResource resource = new ClassPathResource("/");
-        String content = resource.readUtf8Str();
+        String content = resource.readString(Charset.UTF_8);
         Assertions.assertTrue(StringUtils.isNotEmpty(content));
     }
 
@@ -41,11 +42,11 @@ public class ClassPathResourceTest {
     public void readFromJarTest() {
         final ClassPathResource resource = new ClassPathResource("test.properties");
 
-        String result = resource.readUtf8Str();
+        String result = resource.readString(Charset.UTF_8);
         Assertions.assertNotNull(result);
 
         //二次读取测试，用于测试关闭流对再次读取的影响
-        result = resource.readUtf8Str();
+        result = resource.readString(Charset.UTF_8);
         Assertions.assertNotNull(result);
     }
 

@@ -50,12 +50,11 @@ public class EnumUtilsTest {
     public enum TestEnum {
         TEST1("type1"), TEST2("type2"), TEST3("type3");
 
+        private String type;
+        private String name;
         TestEnum(String type) {
             this.type = type;
         }
-
-        private String type;
-        private String name;
 
         public String getType() {
             return this.type;

@@ -32,12 +32,12 @@ public class RSATest {
         // 公钥加密，私钥解密
         byte[] encrypt = rsa.encrypt(StringUtils.bytes("我是一段测试aaaa", Charset.UTF_8), KeyType.PublicKey);
         byte[] decrypt = rsa.decrypt(encrypt, KeyType.PrivateKey);
-        Assertions.assertEquals("我是一段测试aaaa", StringUtils.str(decrypt, Charset.UTF_8));
+        Assertions.assertEquals("我是一段测试aaaa", StringUtils.toString(decrypt, Charset.UTF_8));
 
         // 私钥加密，公钥解密
         byte[] encrypt2 = rsa.encrypt(StringUtils.bytes("我是一段测试aaaa", Charset.UTF_8), KeyType.PrivateKey);
         byte[] decrypt2 = rsa.decrypt(encrypt2, KeyType.PublicKey);
-        Assertions.assertEquals("我是一段测试aaaa", StringUtils.str(decrypt2, Charset.UTF_8));
+        Assertions.assertEquals("我是一段测试aaaa", StringUtils.toString(decrypt2, Charset.UTF_8));
     }
 
     @Test
@@ -54,12 +54,12 @@ public class RSATest {
         byte[] encrypt = rsa.encrypt(StringUtils.bytes("我是一段测试aaaa", Charset.UTF_8), KeyType.PublicKey);
 
         byte[] decrypt = rsa.decrypt(encrypt, KeyType.PrivateKey);
-        Assertions.assertEquals("我是一段测试aaaa", StringUtils.str(decrypt, Charset.UTF_8));
+        Assertions.assertEquals("我是一段测试aaaa", StringUtils.toString(decrypt, Charset.UTF_8));
 
         // 私钥加密，公钥解密
         byte[] encrypt2 = rsa.encrypt(StringUtils.bytes("我是一段测试aaaa", Charset.UTF_8), KeyType.PrivateKey);
         byte[] decrypt2 = rsa.decrypt(encrypt2, KeyType.PublicKey);
-        Assertions.assertEquals("我是一段测试aaaa", StringUtils.str(decrypt2, Charset.UTF_8));
+        Assertions.assertEquals("我是一段测试aaaa", StringUtils.toString(decrypt2, Charset.UTF_8));
     }
 
     @Test
@@ -76,12 +76,12 @@ public class RSATest {
         // 公钥加密，私钥解密
         byte[] encrypt = rsa.encrypt(StringUtils.bytes("我是一段测试aaaa", Charset.UTF_8), KeyType.PublicKey);
         byte[] decrypt = rsa.decrypt(encrypt, KeyType.PrivateKey);
-        Assertions.assertEquals("我是一段测试aaaa", StringUtils.str(decrypt, Charset.UTF_8));
+        Assertions.assertEquals("我是一段测试aaaa", StringUtils.toString(decrypt, Charset.UTF_8));
 
         // 私钥加密，公钥解密
         byte[] encrypt2 = rsa.encrypt(StringUtils.bytes("我是一段测试aaaa", Charset.UTF_8), KeyType.PrivateKey);
         byte[] decrypt2 = rsa.decrypt(encrypt2, KeyType.PublicKey);
-        Assertions.assertEquals("我是一段测试aaaa", StringUtils.str(decrypt2, Charset.UTF_8));
+        Assertions.assertEquals("我是一段测试aaaa", StringUtils.toString(decrypt2, Charset.UTF_8));
     }
 
     @Test
@@ -92,12 +92,12 @@ public class RSATest {
 
         // 公钥加密，私钥解密
         String encryptStr = rsa.encryptBcd(text, KeyType.PublicKey);
-        String decryptStr = StringUtils.str(rsa.decryptFromBcd(encryptStr, KeyType.PrivateKey));
+        String decryptStr = StringUtils.toString(rsa.decryptFromBcd(encryptStr, KeyType.PrivateKey));
         Assertions.assertEquals(text, decryptStr);
 
         // 私钥加密，公钥解密
         String encrypt2 = rsa.encryptBcd(text, KeyType.PrivateKey);
-        String decrypt2 = StringUtils.str(rsa.decryptFromBcd(encrypt2, KeyType.PublicKey));
+        String decrypt2 = StringUtils.toString(rsa.decryptFromBcd(encrypt2, KeyType.PublicKey));
         Assertions.assertEquals(text, decrypt2);
     }
 
@@ -113,12 +113,12 @@ public class RSATest {
 
         // 公钥加密，私钥解密
         String encryptStr = rsa.encryptBase64(text.toString(), KeyType.PublicKey);
-        String decryptStr = StringUtils.str(rsa.decrypt(encryptStr, KeyType.PrivateKey));
+        String decryptStr = StringUtils.toString(rsa.decrypt(encryptStr, KeyType.PrivateKey));
         Assertions.assertEquals(text.toString(), decryptStr);
 
         // 私钥加密，公钥解密
         String encrypt2 = rsa.encryptBase64(text.toString(), KeyType.PrivateKey);
-        String decrypt2 = StringUtils.str(rsa.decrypt(encrypt2, KeyType.PublicKey));
+        String decrypt2 = StringUtils.toString(rsa.decrypt(encrypt2, KeyType.PublicKey));
         Assertions.assertEquals(text.toString(), decrypt2);
     }
 

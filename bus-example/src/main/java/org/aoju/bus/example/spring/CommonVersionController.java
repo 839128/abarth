@@ -2,12 +2,12 @@ package org.aoju.bus.example.spring;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.aoju.bus.example.entity.CommonVersion;
-import org.aoju.bus.example.service.CommonVersionService;
 import org.aoju.bus.base.consts.ErrorCode;
 import org.aoju.bus.base.entity.Result;
 import org.aoju.bus.base.spring.BaseController;
 import org.aoju.bus.core.utils.StringUtils;
+import org.aoju.bus.example.entity.CommonVersion;
+import org.aoju.bus.example.service.CommonVersionService;
 import org.aoju.bus.oauth.Provider;
 import org.aoju.bus.oauth.Registry;
 import org.aoju.bus.sensitive.Builder;
@@ -42,7 +42,7 @@ public class CommonVersionController extends BaseController<CommonVersionService
         }
         Map<org.aoju.bus.storage.Registry, Context> map = storageProviderService.properties.getType();
 
-        Provider p = authProviderService.get(Registry.DINGTALK);
+        Provider p = authProviderService.require(Registry.DINGTALK);
         p.authorize("参数");
         CommonVersion param = new CommonVersion();
         param.setScope(entity.getScope());
