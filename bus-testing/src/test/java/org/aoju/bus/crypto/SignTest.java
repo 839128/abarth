@@ -1,8 +1,8 @@
 package org.aoju.bus.crypto;
 
 import org.aoju.bus.core.lang.Algorithm;
-import org.aoju.bus.core.utils.MapUtils;
-import org.aoju.bus.core.utils.StringUtils;
+import org.aoju.bus.core.toolkit.MapKit;
+import org.aoju.bus.core.toolkit.StringKit;
 import org.aoju.bus.crypto.asymmetric.Sign;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -60,7 +60,7 @@ public class SignTest {
      * @param Algorithm 算法
      */
     private void signAndVerify(String Algorithm) {
-        byte[] data = StringUtils.bytes("我是一段测试ab");
+        byte[] data = StringKit.bytes("我是一段测试ab");
         Sign sign = Builder.sign(Algorithm);
 
         // 签名
@@ -77,7 +77,7 @@ public class SignTest {
     @Test
     public void signAndVerify2() {
         String str = "wx2421b1c4370ec43b 支付测试 JSAPI支付测试 10000100 1add1a30ac87aa2db72f57a2375d8fec http://wxpay.wxutil.com/pub_v2/pay/notify.v2.php oUpF8uMuAJO_M2pxb1Q9zNjWeS6o 1415659990 14.23.150.211 1 JSAPI 0CB01533B8C1EF103065174F50BCA001";
-        byte[] data = StringUtils.bytes(str);
+        byte[] data = StringKit.bytes(str);
         Sign sign = Builder.sign(Algorithm.MD5withRSA);
 
         // 签名
@@ -90,7 +90,7 @@ public class SignTest {
 
     @Test
     public void signParamsTest() {
-        Map<String, String> build = MapUtils.builder(new HashMap<String, String>())
+        Map<String, String> build = MapKit.builder(new HashMap<String, String>())
                 .put("key1", "value1")
                 .put("key2", "value2").build();
 

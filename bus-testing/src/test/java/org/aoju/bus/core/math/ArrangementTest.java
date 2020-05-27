@@ -1,7 +1,7 @@
 package org.aoju.bus.core.math;
 
 import org.aoju.bus.core.lang.Console;
-import org.aoju.bus.core.utils.MathUtils;
+import org.aoju.bus.core.toolkit.MathKit;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -54,7 +54,7 @@ public class ArrangementTest {
 
     @Test
     public void selectTest2() {
-        List<String[]> list = MathUtils.arrangementSelect(new String[]{"1", "1", "3", "4"});
+        List<String[]> list = MathKit.arrangementSelect(new String[]{"1", "1", "3", "4"});
         for (String[] strings : list) {
             Console.log(strings);
         }

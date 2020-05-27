@@ -46,7 +46,7 @@
 
 
 #### 功能概述
-1. Java基础工具类，对文件、流、加密解密、转码、正则、线程、XML等JDK方法进行封装，组成各种Utils工具类；
+1. Java基础工具类，对文件、流、加密解密、转码、正则、线程、XML等JDK方法进行封装，组成各种工具类；
    以及结合springboot封装常用工具按需加载例如mybatis、xss、i18n、sensitive、validate等框架
 
 2. 详细说明以及使用姿势请参考每个模块下README介绍
@@ -58,13 +58,13 @@
 <dependency>
     <groupId>org.aoju</groupId>
     <artifactId>bus-all</artifactId>
-    <version>5.2.1</version>
+    <version>x.x.x</version>
 </dependency>
 ```
 
 ### Gradle
 ```
-implementation 'org.aoju:bus-all:5.2.1'
+implementation 'org.aoju:bus-all:x.x.x'
 ```
 
 ### Other
@@ -72,7 +72,6 @@ implementation 'org.aoju:bus-all:5.2.1'
 点击以下任一链接，下载`bus-*-x.x.x.jar`即可：
 
 - [Maven中央库①](https://repo1.maven.org/maven2/org/aoju)
-- [Maven中央库②](http://repo2.maven.org/maven2/org/aoju)
 
 > 注意
 > Bus项目支持JDK8+，对Android平台部分模块没有测试，不能保证所有工具类获工具方法可用。

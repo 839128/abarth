@@ -1,7 +1,7 @@
 package org.aoju.bus.core.convert;
 
 import org.aoju.bus.core.lang.Types;
-import org.aoju.bus.core.utils.CollUtils;
+import org.aoju.bus.core.toolkit.CollKit;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -122,7 +122,7 @@ public class ConvertToCollectionTest {
     public void toSetTest() {
         Object[] a = {"a", "你", "好", "", 1};
         LinkedHashSet<?> set = Convert.convert(LinkedHashSet.class, a);
-        ArrayList<?> list = CollUtils.newArrayList(set);
+        ArrayList<?> list = CollKit.newArrayList(set);
         Assertions.assertEquals("a", list.get(0));
         Assertions.assertEquals("你", list.get(1));
         Assertions.assertEquals("好", list.get(2));

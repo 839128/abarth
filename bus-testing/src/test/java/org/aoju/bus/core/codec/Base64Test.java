@@ -1,7 +1,7 @@
 package org.aoju.bus.core.codec;
 
 import org.aoju.bus.core.lang.Charset;
-import org.aoju.bus.core.utils.StringUtils;
+import org.aoju.bus.core.toolkit.StringKit;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -41,7 +41,7 @@ public class Base64Test {
     @Test
     public void urlSafeEncodeAndDecodeTest() {
         String a = "需要安全感123";
-        String encode = StringUtils.toString(Base64.encodeUrlSafe(StringUtils.bytes(a), false));
+        String encode = StringKit.toString(Base64.encodeUrlSafe(StringKit.bytes(a), false));
         Assertions.assertEquals("6ZyA6KaB5a6J5YWo5oSfMTIz", encode);
 
         String decodeStr = Base64.decodeStr(encode);

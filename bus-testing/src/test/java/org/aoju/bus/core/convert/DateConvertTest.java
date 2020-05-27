@@ -1,6 +1,6 @@
 package org.aoju.bus.core.convert;
 
-import org.aoju.bus.core.utils.DateUtils;
+import org.aoju.bus.core.toolkit.DateKit;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -14,9 +14,9 @@ public class DateConvertTest {
     public void toDateTest() {
         String a = "2017-05-06";
         Date value = Convert.toDate(a);
-        Assertions.assertEquals(a, DateUtils.formatDate(value));
+        Assertions.assertEquals(a, DateKit.formatDate(value));
 
-        long timeLong = DateUtils.date().getTime();
+        long timeLong = DateKit.date().getTime();
         Date value2 = Convert.toDate(timeLong);
         Assertions.assertEquals(timeLong, value2.getTime());
     }
@@ -38,7 +38,7 @@ public class DateConvertTest {
         LocalDateTime localDateTime = LocalDateTime.parse("2017-05-06T08:30:00", DateTimeFormatter.ISO_DATE_TIME);
         Date value = Convert.toDate(localDateTime);
         Assertions.assertNotNull(value);
-        Assertions.assertEquals("2017-05-06", DateUtils.formatDate(value));
+        Assertions.assertEquals("2017-05-06", DateKit.formatDate(value));
     }
 
     @Test
@@ -47,7 +47,7 @@ public class DateConvertTest {
         java.sql.Date value = Convert.convert(java.sql.Date.class, a);
         Assertions.assertEquals("2017-05-06", value.toString());
 
-        long timeLong = DateUtils.date().getTime();
+        long timeLong = DateKit.date().getTime();
         java.sql.Date value2 = Convert.convert(java.sql.Date.class, timeLong);
         Assertions.assertEquals(timeLong, value2.getTime());
     }

@@ -25,7 +25,7 @@ import org.aoju.bus.base.consts.ErrorCode;
 import org.aoju.bus.base.spring.BaseController;
 import org.aoju.bus.core.key.ObjectID;
 import org.aoju.bus.core.lang.exception.InstrumentException;
-import org.aoju.bus.core.utils.StringUtils;
+import org.aoju.bus.core.toolkit.StringKit;
 import org.aoju.bus.crypto.Builder;
 import org.aoju.bus.example.entity.CommonVersion;
 import org.aoju.bus.example.service.CommonPreviewService;
@@ -65,7 +65,7 @@ public class CommonPreviewController extends BaseController<CommonPreviewService
             return write(ErrorCode.EM_100506);
         }
 
-        if (StringUtils.isBlank(type)) {
+        if (StringKit.isBlank(type)) {
             return write(ErrorCode.EM_100506);
         }
 
@@ -240,7 +240,7 @@ public class CommonPreviewController extends BaseController<CommonPreviewService
             Logger.error("下载pdf文件失败", e);
         } finally {
             if (inputStream != null) {
-                IoUtils.close(inputStream);
+                IoKit.close(inputStream);
             }
         }
     }

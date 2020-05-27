@@ -2,7 +2,7 @@ package org.aoju.bus.core.io;
 
 import org.aoju.bus.core.io.resource.ClassPathResource;
 import org.aoju.bus.core.lang.Charset;
-import org.aoju.bus.core.utils.StringUtils;
+import org.aoju.bus.core.toolkit.StringKit;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -18,14 +18,14 @@ public class ClassPathResourceTest {
     public void readStringTest() {
         ClassPathResource resource = new ClassPathResource("test.properties");
         String content = resource.readString(Charset.UTF_8);
-        Assertions.assertTrue(StringUtils.isNotEmpty(content));
+        Assertions.assertTrue(StringKit.isNotEmpty(content));
     }
 
     @Test
     public void readStringTest2() {
         ClassPathResource resource = new ClassPathResource("/");
         String content = resource.readString(Charset.UTF_8);
-        Assertions.assertTrue(StringUtils.isNotEmpty(content));
+        Assertions.assertTrue(StringKit.isNotEmpty(content));
     }
 
     @Test

@@ -2,7 +2,7 @@ package org.aoju.bus.core.text;
 
 import org.aoju.bus.core.date.TimeInterval;
 import org.aoju.bus.core.lang.Console;
-import org.aoju.bus.core.utils.DateUtils;
+import org.aoju.bus.core.toolkit.DateKit;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +16,7 @@ public class StrBuilderTest {
      */
     @Test
     public void benchTest() {
-        TimeInterval timer = DateUtils.timer();
+        TimeInterval timer = DateKit.timer();
         StrBuilder builder = StrBuilder.create();
         for (int i = 0; i < 1000000; i++) {
             builder.append("test");

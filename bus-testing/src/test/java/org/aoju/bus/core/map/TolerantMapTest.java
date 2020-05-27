@@ -1,6 +1,6 @@
 package org.aoju.bus.core.map;
 
-import org.aoju.bus.core.utils.ObjectUtils;
+import org.aoju.bus.core.toolkit.ObjectKit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,15 +18,15 @@ public class TolerantMapTest {
 
     @Test
     public void testSerialize() {
-        byte[] bytes = ObjectUtils.serialize(map);
-        TolerantMap<String, String> serializedMap = ObjectUtils.deserialize(bytes);
+        byte[] bytes = ObjectKit.serialize(map);
+        TolerantMap<String, String> serializedMap = ObjectKit.deserialize(bytes);
         assert serializedMap != map;
         assert map.equals(serializedMap);
     }
 
     @Test
     public void testClone() {
-        TolerantMap<String, String> clonedMap = ObjectUtils.clone(map);
+        TolerantMap<String, String> clonedMap = ObjectKit.clone(map);
         assert clonedMap != map;
         assert map.equals(clonedMap);
     }

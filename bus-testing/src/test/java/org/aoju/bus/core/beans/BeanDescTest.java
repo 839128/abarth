@@ -1,7 +1,7 @@
 package org.aoju.bus.core.beans;
 
 import lombok.Data;
-import org.aoju.bus.core.utils.BeanUtils;
+import org.aoju.bus.core.toolkit.BeanKit;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +12,7 @@ public class BeanDescTest {
 
     @Test
     public void propDescTes() {
-        BeanDesc desc = BeanUtils.getBeanDesc(User.class);
+        BeanDesc desc = BeanKit.getBeanDesc(User.class);
         Assertions.assertEquals("User", desc.getSimpleName());
         Assertions.assertEquals("age", desc.getField("age").getName());
         Assertions.assertEquals("getAge", desc.getGetter("age").getName());
@@ -24,7 +24,7 @@ public class BeanDescTest {
 
     @Test
     public void propDescTes2() {
-        BeanDesc desc = BeanUtils.getBeanDesc(User.class);
+        BeanDesc desc = BeanKit.getBeanDesc(User.class);
 
         BeanDesc.PropDesc prop = desc.getProp("name");
         Assertions.assertEquals("name", prop.getFieldName());
@@ -36,7 +36,7 @@ public class BeanDescTest {
 
     @Test
     public void propDescOfBooleanTest() {
-        BeanDesc desc = BeanUtils.getBeanDesc(User.class);
+        BeanDesc desc = BeanKit.getBeanDesc(User.class);
 
         Assertions.assertEquals("isAdmin", desc.getGetter("isAdmin").getName());
         Assertions.assertEquals("setAdmin", desc.getSetter("isAdmin").getName());
@@ -46,7 +46,7 @@ public class BeanDescTest {
 
     @Test
     public void getSetTest() {
-        BeanDesc desc = BeanUtils.getBeanDesc(User.class);
+        BeanDesc desc = BeanKit.getBeanDesc(User.class);
 
         User user = new User();
         desc.getProp("name").setValue(user, "张三");

@@ -1,7 +1,7 @@
 package org.aoju.bus.core.date;
 
 import org.aoju.bus.core.lang.Fields;
-import org.aoju.bus.core.utils.DateUtils;
+import org.aoju.bus.core.toolkit.DateKit;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -51,12 +51,12 @@ public class DateTimeTest {
 
         // 精确到毫秒
         DateTime beginTime = new DateTime("2017-10-01 00:00:00.000", Fields.NORM_DATETIME_MS_FORMAT);
-        dateTime = DateUtils.beginOfQuarter(dateTime);
+        dateTime = DateKit.beginOfQuarter(dateTime);
         Assertions.assertEquals(beginTime, dateTime);
 
         // 精确到毫秒
         DateTime endTime = new DateTime("2017-12-31 23:59:59.999", Fields.NORM_DATETIME_MS_FORMAT);
-        dateTime = DateUtils.endOfQuarter(dateTime);
+        dateTime = DateKit.endOfQuarter(dateTime);
         Assertions.assertEquals(endTime, dateTime);
     }
 
@@ -85,15 +85,16 @@ public class DateTimeTest {
 
     @Test
     public void monthTest() {
-        int month = DateUtils.parse("2017-07-01").month();
+        int month = DateKit.parse("2017-07-01").month();
         Assertions.assertEquals(6, month);
     }
 
     @Test
     public void weekOfYearTest() {
-        DateTime date = DateUtils.parse("2016-12-27");
+        DateTime date = DateKit.parse("2016-12-27");
         Assertions.assertEquals(2016, date.year());
         //跨年的周返回的总是1
         Assertions.assertEquals(1, date.weekOfYear());
     }
+
 }

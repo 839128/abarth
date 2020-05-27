@@ -1,7 +1,7 @@
 package org.aoju.bus.core.convert;
 
 import org.aoju.bus.core.lang.Console;
-import org.aoju.bus.core.utils.FileUtils;
+import org.aoju.bus.core.toolkit.FileKit;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -117,7 +117,7 @@ public class ConvertToArrayTest {
 
     @Test
     public void toUrlArrayTest() {
-        File[] files = FileUtils.file("D:\\workspace").listFiles();
+        File[] files = FileKit.file("D:\\workspace").listFiles();
 
         URL[] urls = Convert.convert(URL[].class, files);
 
@@ -125,4 +125,5 @@ public class ConvertToArrayTest {
             Console.log(url.getPath());
         }
     }
+
 }

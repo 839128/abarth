@@ -1,6 +1,6 @@
 package org.aoju.bus.core.lang;
 
-import org.aoju.bus.core.utils.ThreadUtils;
+import org.aoju.bus.core.toolkit.ThreadKit;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -40,7 +40,7 @@ public class ConsoleTest {
     public void printProgressTest() {
         for (int i = 0; i < 100; i++) {
             Console.printProgress('#', 100, i / 100D);
-            ThreadUtils.sleep(200);
+            ThreadKit.sleep(200);
         }
     }
 

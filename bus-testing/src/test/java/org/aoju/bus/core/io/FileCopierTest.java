@@ -1,7 +1,7 @@
 package org.aoju.bus.core.io;
 
 import org.aoju.bus.core.io.file.FileCopier;
-import org.aoju.bus.core.utils.FileUtils;
+import org.aoju.bus.core.toolkit.FileKit;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -21,7 +21,7 @@ public class FileCopierTest {
         FileCopier copier = FileCopier.create("/data/eclipse/.metadata", "/data/eclipse/temp");
         copier.copy();
 
-        FileUtils.copy("/data/eclipse/bus/.git", "/data/eclipse/temp", true);
+        FileKit.copy("/data/eclipse/bus/.git", "/data/eclipse/temp", true);
     }
 
     @Test

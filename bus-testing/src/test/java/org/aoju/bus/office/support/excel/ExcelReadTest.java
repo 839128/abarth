@@ -2,8 +2,8 @@ package org.aoju.bus.office.support.excel;
 
 import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.aoju.bus.core.lang.Console;
-import org.aoju.bus.core.utils.FileUtils;
-import org.aoju.bus.core.utils.MapUtils;
+import org.aoju.bus.core.toolkit.FileKit;
+import org.aoju.bus.core.toolkit.MapKit;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -14,13 +14,13 @@ public class ExcelReadTest {
 
     @Test
     public void aliasTest() {
-        ExcelReader reader = ExcelUtils.getReader(FileUtils.getStream("test.xlsx"));
+        ExcelReader reader = ExcelKit.getReader(FileKit.getStream("test.xlsx"));
 
         //读取单个单元格内容测试
         Object value = reader.readCellValue(1, 2);
         Assertions.assertEquals("仓库", value);
 
-        Map<String, String> headerAlias = MapUtils.newHashMap();
+        Map<String, String> headerAlias = MapKit.newHashMap();
         headerAlias.put("用户姓名", "userName");
         headerAlias.put("库房", "storageName");
         headerAlias.put("盘点权限", "checkPerm");
@@ -45,7 +45,7 @@ public class ExcelReadTest {
 
     @Test
     public void excelReadTestOfEmptyLine() {
-        ExcelReader reader = ExcelUtils.getReader(FileUtils.getStream("test.xls"));
+        ExcelReader reader = ExcelKit.getReader(FileKit.getStream("test.xls"));
         List<Map<String, Object>> readAll = reader.readAll();
 
         Assertions.assertEquals(4, readAll.size());
@@ -53,7 +53,7 @@ public class ExcelReadTest {
 
     @Test
     public void excelReadTest() {
-        ExcelReader reader = ExcelUtils.getReader(FileUtils.getStream("test.xlsx"));
+        ExcelReader reader = ExcelKit.getReader(FileKit.getStream("test.xlsx"));
         List<List<Object>> readAll = reader.read();
 
         // 标题
@@ -71,13 +71,13 @@ public class ExcelReadTest {
 
     @Test
     public void excelReadAsTextTest() {
-        ExcelReader reader = ExcelUtils.getReader(FileUtils.getStream("test.xlsx"));
+        ExcelReader reader = ExcelKit.getReader(FileKit.getStream("test.xlsx"));
         Assertions.assertNotNull(reader.readAsText(false));
     }
 
     @Test
     public void excel03ReadTest() {
-        ExcelReader reader = ExcelUtils.getReader(FileUtils.getStream("test.xls"));
+        ExcelReader reader = ExcelKit.getReader(FileKit.getStream("test.xls"));
         List<List<Object>> readAll = reader.read();
 
         // for (List<Object> list : readAll) {
@@ -99,7 +99,7 @@ public class ExcelReadTest {
 
     @Test
     public void excel03ReadTest2() {
-        ExcelReader reader = ExcelUtils.getReader(FileUtils.getStream("test.xls"), "入学");
+        ExcelReader reader = ExcelKit.getReader(FileKit.getStream("test.xls"), "入学");
         List<List<Object>> readAll = reader.read();
 
         // 标题
@@ -112,7 +112,7 @@ public class ExcelReadTest {
 
     @Test
     public void excelReadToMapListTest() {
-        ExcelReader reader = ExcelUtils.getReader(FileUtils.getStream("test.xlsx"));
+        ExcelReader reader = ExcelKit.getReader(FileKit.getStream("test.xlsx"));
         List<Map<String, Object>> readAll = reader.readAll();
 
         Assertions.assertEquals("张三", readAll.get(0).get("姓名"));
@@ -122,7 +122,7 @@ public class ExcelReadTest {
 
     @Test
     public void excelReadToBeanListTest() {
-        ExcelReader reader = ExcelUtils.getReader(FileUtils.getStream("test.xlsx"));
+        ExcelReader reader = ExcelKit.getReader(FileKit.getStream("test.xlsx"));
         reader.addHeaderAlias("姓名", "name");
         reader.addHeaderAlias("年龄", "age");
         reader.addHeaderAlias("性别", "gender");
@@ -136,7 +136,7 @@ public class ExcelReadTest {
     @Test
     @Ignore
     public void excelReadToBeanListTest2() {
-        ExcelReader reader = ExcelUtils.getReader("test.xlsx");
+        ExcelReader reader = ExcelKit.getReader("test.xlsx");
         reader.addHeaderAlias("姓名", "name");
         reader.addHeaderAlias("年龄", "age");
         reader.addHeaderAlias("性别", "gender");
@@ -150,7 +150,7 @@ public class ExcelReadTest {
     @Test
     @Ignore
     public void readDoubleTest() {
-        ExcelReader reader = ExcelUtils.getReader("test.xls");
+        ExcelReader reader = ExcelKit.getReader("test.xls");
         final List<List<Object>> read = reader.read();
         for (List<Object> list : read) {
             Console.log(list.get(8));
@@ -159,7 +159,7 @@ public class ExcelReadTest {
 
     @Test
     public void mergeReadTest() {
-        final ExcelReader reader = ExcelUtils.getReader("test.xlsx");
+        final ExcelReader reader = ExcelKit.getReader("test.xlsx");
         final List<List<Object>> read = reader.read();
         // 验证合并单元格在两行中都可以取到值
         Assertions.assertEquals(11L, read.get(1).get(2));

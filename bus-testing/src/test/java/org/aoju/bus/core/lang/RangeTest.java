@@ -1,7 +1,7 @@
 package org.aoju.bus.core.lang;
 
 import org.aoju.bus.core.date.DateTime;
-import org.aoju.bus.core.utils.DateUtils;
+import org.aoju.bus.core.toolkit.DateKit;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -12,8 +12,8 @@ public class RangeTest {
 
     @Test
     public void dateRangeTest() {
-        DateTime start = DateUtils.parse("2017-01-01");
-        DateTime end = DateUtils.parse("2017-01-02");
+        DateTime start = DateKit.parse("2017-01-01");
+        DateTime end = DateKit.parse("2017-01-02");
 
         final Range<DateTime> range = new Range<>(start, end, (current, end1, index) -> {
             if (current.isAfterOrEquals(end1)) {
@@ -23,7 +23,7 @@ public class RangeTest {
         });
 
         Assertions.assertTrue(range.hasNext());
-        Assertions.assertEquals(range.next(), DateUtils.parse("2017-01-02"));
+        Assertions.assertEquals(range.next(), DateKit.parse("2017-01-02"));
     }
 
     @Test

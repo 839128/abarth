@@ -1,7 +1,7 @@
 package org.aoju.bus.office.support.excel;
 
 import org.aoju.bus.core.key.ObjectID;
-import org.aoju.bus.core.utils.*;
+import org.aoju.bus.core.toolkit.*;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.Font;
@@ -18,8 +18,8 @@ public class ExcelWriteTest {
     @Test
     @Ignore
     public void writeTest2() {
-        List<String> row = CollUtils.newArrayList("姓名", "加班日期", "下班时间", "加班时长", "餐补", "车补次数", "车补", "总计");
-        ExcelWriter overtimeWriter = ExcelUtils.getWriter("e:/excel/single_line.xlsx");
+        List<String> row = CollKit.newArrayList("姓名", "加班日期", "下班时间", "加班时长", "餐补", "车补次数", "车补", "总计");
+        ExcelWriter overtimeWriter = ExcelKit.getWriter("e:/excel/single_line.xlsx");
         overtimeWriter.writeRow(row);
         overtimeWriter.close();
     }
@@ -27,19 +27,19 @@ public class ExcelWriteTest {
     @Test
     @Ignore
     public void writeWithSheetTest() {
-        ExcelWriter writer = ExcelUtils.getWriter((File) null, "表格1");
+        ExcelWriter writer = ExcelKit.getWriter((File) null, "表格1");
 
         // 写出第一张表
-        List<String> row = CollUtils.newArrayList("姓名", "加班日期", "下班时间", "加班时长", "餐补", "车补次数", "车补", "总计");
+        List<String> row = CollKit.newArrayList("姓名", "加班日期", "下班时间", "加班时长", "餐补", "车补次数", "车补", "总计");
         writer.writeRow(row);
 
         // 写出第二张表
         writer.setSheet("表格2");
-        List<String> row2 = CollUtils.newArrayList("姓名2", "加班日期2", "下班时间2", "加班时长2", "餐补2", "车补次数2", "车补2", "总计2");
+        List<String> row2 = CollKit.newArrayList("姓名2", "加班日期2", "下班时间2", "加班时长2", "餐补2", "车补次数2", "车补2", "总计2");
         writer.writeRow(row2);
 
         // 生成文件或导出Excel
-        writer.flush(FileUtils.file("f:/test/writeWithSheetTest.xlsx"));
+        writer.flush(FileKit.file("f:/test/writeWithSheetTest.xlsx"));
 
         writer.close();
     }
@@ -47,22 +47,22 @@ public class ExcelWriteTest {
     @Test
     @Ignore
     public void writeTest() {
-        List<?> row1 = CollUtils.newArrayList("aaaaa", "bb", "cc", "dd", DateUtils.date(), 3.22676575765);
-        List<?> row2 = CollUtils.newArrayList("aa1", "bb1", "cc1", "dd1", DateUtils.date(), 250.7676);
-        List<?> row3 = CollUtils.newArrayList("aa2", "bb2", "cc2", "dd2", DateUtils.date(), 0.111);
-        List<?> row4 = CollUtils.newArrayList("aa3", "bb3", "cc3", "dd3", DateUtils.date(), 35);
-        List<?> row5 = CollUtils.newArrayList("aa4", "bb4", "cc4", "dd4", DateUtils.date(), 28.00);
+        List<?> row1 = CollKit.newArrayList("aaaaa", "bb", "cc", "dd", DateKit.date(), 3.22676575765);
+        List<?> row2 = CollKit.newArrayList("aa1", "bb1", "cc1", "dd1", DateKit.date(), 250.7676);
+        List<?> row3 = CollKit.newArrayList("aa2", "bb2", "cc2", "dd2", DateKit.date(), 0.111);
+        List<?> row4 = CollKit.newArrayList("aa3", "bb3", "cc3", "dd3", DateKit.date(), 35);
+        List<?> row5 = CollKit.newArrayList("aa4", "bb4", "cc4", "dd4", DateKit.date(), 28.00);
 
-        List<List<?>> rows = CollUtils.newArrayList(row1, row2, row3, row4, row5);
+        List<List<?>> rows = CollKit.newArrayList(row1, row2, row3, row4, row5);
         for (int i = 0; i < 400; i++) {
             // 超大列表写出测试
-            rows.add(ObjectUtils.clone(row1));
+            rows.add(ObjectKit.clone(row1));
         }
 
         String filePath = "d:/test/writeTest.xlsx";
-        FileUtils.delete(filePath);
+        FileKit.delete(filePath);
         // 通过工具类创建writer
-        ExcelWriter writer = ExcelUtils.getWriter(filePath);
+        ExcelWriter writer = ExcelKit.getWriter(filePath);
         // 通过构造方法创建writer
         // ExcelWriter writer = new ExcelWriter("d:/writeTest.xls");
 
@@ -82,18 +82,18 @@ public class ExcelWriteTest {
     @Test
     @Ignore
     public void mergeTest() {
-        List<?> row1 = CollUtils.newArrayList("aa", "bb", "cc", "dd", DateUtils.date(), 3.22676575765);
-        List<?> row2 = CollUtils.newArrayList("aa1", "bb1", "cc1", "dd1", DateUtils.date(), 250.7676);
-        List<?> row3 = CollUtils.newArrayList("aa2", "bb2", "cc2", "dd2", DateUtils.date(), 0.111);
-        List<?> row4 = CollUtils.newArrayList("aa3", "bb3", "cc3", "dd3", DateUtils.date(), 35);
-        List<?> row5 = CollUtils.newArrayList("aa4", "bb4", "cc4", "dd4", DateUtils.date(), 28.00);
+        List<?> row1 = CollKit.newArrayList("aa", "bb", "cc", "dd", DateKit.date(), 3.22676575765);
+        List<?> row2 = CollKit.newArrayList("aa1", "bb1", "cc1", "dd1", DateKit.date(), 250.7676);
+        List<?> row3 = CollKit.newArrayList("aa2", "bb2", "cc2", "dd2", DateKit.date(), 0.111);
+        List<?> row4 = CollKit.newArrayList("aa3", "bb3", "cc3", "dd3", DateKit.date(), 35);
+        List<?> row5 = CollKit.newArrayList("aa4", "bb4", "cc4", "dd4", DateKit.date(), 28.00);
 
-        List<List<?>> rows = CollUtils.newArrayList(row1, row2, row3, row4, row5);
+        List<List<?>> rows = CollKit.newArrayList(row1, row2, row3, row4, row5);
 
         // 通过工具类创建writer
-        ExcelWriter writer = ExcelUtils.getWriter("d:/test/mergeTest.xlsx");
+        ExcelWriter writer = ExcelKit.getWriter("d:/test/mergeTest.xlsx");
         CellStyle style = writer.getStyleSet().getHeadCellStyle();
-        StyleUtils.setColor(style, IndexedColors.RED, FillPatternType.SOLID_FOREGROUND);
+        StyleKit.setColor(style, IndexedColors.RED, FillPatternType.SOLID_FOREGROUND);
 
         // 跳过当前行，即第一行，非必须，在此演示用
         writer.passCurrentRow();
@@ -117,19 +117,19 @@ public class ExcelWriteTest {
         row1.put("年龄", 23);
         row1.put("成绩", 88.32);
         row1.put("是否合格", true);
-        row1.put("考试日期", DateUtils.date());
+        row1.put("考试日期", DateKit.date());
 
         Map<String, Object> row2 = new LinkedHashMap<>();
         row2.put("姓名", "李四");
         row2.put("年龄", 33);
         row2.put("成绩", 59.50);
         row2.put("是否合格", false);
-        row2.put("考试日期", DateUtils.date());
+        row2.put("考试日期", DateKit.date());
 
-        ArrayList<Map<String, Object>> rows = CollUtils.newArrayList(row1, row2);
+        ArrayList<Map<String, Object>> rows = CollKit.newArrayList(row1, row2);
 
         // 通过工具类创建writer
-        ExcelWriter writer = ExcelUtils.getWriter("d:/test/writeMapTest.xlsx");
+        ExcelWriter writer = ExcelKit.getWriter("d:/test/writeMapTest.xlsx");
         // 合并单元格后的标题行，使用默认标题样式
         writer.merge(row1.size() - 1, "一班成绩单");
 
@@ -147,19 +147,19 @@ public class ExcelWriteTest {
         row1.put("年龄", 23);
         row1.put("成绩", 88.32);
         row1.put("是否合格", true);
-        row1.put("考试日期", DateUtils.date());
+        row1.put("考试日期", DateKit.date());
 
         Map<String, Object> row2 = new LinkedHashMap<>();
         row2.put("姓名", "李四");
         row2.put("年龄", 33);
         row2.put("成绩", 59.50);
         row2.put("是否合格", false);
-        row2.put("考试日期", DateUtils.date());
+        row2.put("考试日期", DateKit.date());
 
-        ArrayList<Map<String, Object>> rows = CollUtils.newArrayList(row1, row2);
+        ArrayList<Map<String, Object>> rows = CollKit.newArrayList(row1, row2);
 
         // 通过工具类创建writer
-        ExcelWriter writer = ExcelUtils.getWriter("e:/excel/writeMapTest.xlsx");
+        ExcelWriter writer = ExcelKit.getWriter("e:/excel/writeMapTest.xlsx");
 
         // 设置内容字体
         Font font = writer.createFont();
@@ -179,15 +179,15 @@ public class ExcelWriteTest {
     @Test
     @Ignore
     public void writeMapTest2() {
-        Map<String, Object> row1 = MapUtils.newHashMap(true);
+        Map<String, Object> row1 = MapKit.newHashMap(true);
         row1.put("姓名", "张三");
         row1.put("年龄", 23);
         row1.put("成绩", 88.32);
         row1.put("是否合格", true);
-        row1.put("考试日期", DateUtils.date());
+        row1.put("考试日期", DateKit.date());
 
         // 通过工具类创建writer
-        ExcelWriter writer = ExcelUtils.getWriter("e:/writeMapTest2.xlsx");
+        ExcelWriter writer = ExcelKit.getWriter("e:/writeMapTest2.xlsx");
 
         // 一次性写出内容，使用默认样式
         writer.writeRow(row1, true);
@@ -198,17 +198,17 @@ public class ExcelWriteTest {
     @Test
     @Ignore
     public void writeMapWithStyleTest() {
-        Map<String, Object> row1 = MapUtils.newHashMap(true);
+        Map<String, Object> row1 = MapKit.newHashMap(true);
         row1.put("姓名", "张三");
         row1.put("年龄", 23);
         row1.put("成绩", 88.32);
         row1.put("是否合格", true);
-        row1.put("考试日期", DateUtils.date());
+        row1.put("考试日期", DateKit.date());
 
         // 通过工具类创建writer
         String path = "f:/test/writeMapWithStyleTest.xlsx";
-        FileUtils.delete(path);
-        ExcelWriter writer = ExcelUtils.getWriter(path);
+        FileKit.delete(path);
+        ExcelWriter writer = ExcelKit.getWriter(path);
         writer.setStyleSet(null);
 
         // 一次性写出内容，使用默认样式
@@ -216,7 +216,7 @@ public class ExcelWriteTest {
 
         // 设置某个单元格样式
         CellStyle orCreateRowStyle = writer.getOrCreateCellStyle(0, 1);
-        StyleUtils.setColor(orCreateRowStyle, IndexedColors.RED.getIndex(), FillPatternType.SOLID_FOREGROUND);
+        StyleKit.setColor(orCreateRowStyle, IndexedColors.RED.getIndex(), FillPatternType.SOLID_FOREGROUND);
 
         // 关闭writer，释放内存
         writer.close();
@@ -230,19 +230,19 @@ public class ExcelWriteTest {
         row1.put("age", 22);
         row1.put("isPass", true);
         row1.put("score", 66.30);
-        row1.put("examDate", DateUtils.date());
+        row1.put("examDate", DateKit.date());
         Map<Object, Object> row2 = new LinkedHashMap<>();
         row2.put("name", "李四");
         row2.put("age", 233);
         row2.put("isPass", false);
         row2.put("score", 32.30);
-        row2.put("examDate", DateUtils.date());
+        row2.put("examDate", DateKit.date());
 
-        List<Map<Object, Object>> rows = CollUtils.newArrayList(row1, row2);
+        List<Map<Object, Object>> rows = CollKit.newArrayList(row1, row2);
         // 通过工具类创建writer
         String file = "d:/test/writeMapAlias.xlsx";
-        FileUtils.delete(file);
-        ExcelWriter writer = ExcelUtils.getWriter(file);
+        FileKit.delete(file);
+        ExcelWriter writer = ExcelKit.getWriter(file);
         // 自定义标题
         writer.addHeaderAlias("name", "姓名");
         writer.addHeaderAlias("age", "年龄");
@@ -265,19 +265,19 @@ public class ExcelWriteTest {
         row1.put("age", 22);
         row1.put("isPass", true);
         row1.put("score", 66.30);
-        row1.put("examDate", DateUtils.date());
+        row1.put("examDate", DateKit.date());
         Map<Object, Object> row2 = new LinkedHashMap<>();
         row2.put("name", "李四");
         row2.put("age", 233);
         row2.put("isPass", false);
         row2.put("score", 32.30);
-        row2.put("examDate", DateUtils.date());
+        row2.put("examDate", DateKit.date());
 
-        List<Map<Object, Object>> rows = CollUtils.newArrayList(row1, row2);
+        List<Map<Object, Object>> rows = CollKit.newArrayList(row1, row2);
         // 通过工具类创建writer
         String file = "f:/test/test_alias.xlsx";
-        FileUtils.delete(file);
-        ExcelWriter writer = ExcelUtils.getWriter(file);
+        FileKit.delete(file);
+        ExcelWriter writer = ExcelKit.getWriter(file);
         writer.setOnlyAlias(true);
         // 自定义标题
         writer.addHeaderAlias("name", "姓名");
@@ -298,18 +298,18 @@ public class ExcelWriteTest {
         row1.put("age", 22);
         row1.put("isPass", true);
         row1.put("score", 66.30);
-        row1.put("examDate", DateUtils.date());
+        row1.put("examDate", DateKit.date());
         Map<Object, Object> row2 = new LinkedHashMap<>();
         row2.put("name", "李四");
         row2.put("age", 233);
         row2.put("isPass", false);
         row2.put("score", 32.30);
-        row2.put("examDate", DateUtils.date());
+        row2.put("examDate", DateKit.date());
 
-        List<Map<Object, Object>> rows = CollUtils.newArrayList(row1, row2);
+        List<Map<Object, Object>> rows = CollKit.newArrayList(row1, row2);
         // 通过工具类创建writer
         String file = "f:/test/test_alias.xls";
-        ExcelWriter writer = ExcelUtils.getWriter(file, "test1");
+        ExcelWriter writer = ExcelKit.getWriter(file, "test1");
 //		writer.setOnlyAlias(true);
         // 自定义标题
         writer.addHeaderAlias("name", "姓名");
@@ -328,20 +328,20 @@ public class ExcelWriteTest {
         bean1.setAge(22);
         bean1.setPass(true);
         bean1.setScore(66.30);
-        bean1.setExamDate(DateUtils.date());
+        bean1.setExamDate(DateKit.date());
 
         TestBean bean2 = new TestBean();
         bean2.setName("李四");
         bean2.setAge(28);
         bean2.setPass(false);
         bean2.setScore(38.50);
-        bean2.setExamDate(DateUtils.date());
+        bean2.setExamDate(DateKit.date());
 
-        List<TestBean> rows = CollUtils.newArrayList(bean1, bean2);
+        List<TestBean> rows = CollKit.newArrayList(bean1, bean2);
         // 通过工具类创建writer
         String file = "e:/writeBeanTest.xlsx";
-        FileUtils.delete(file);
-        ExcelWriter writer = ExcelUtils.getWriter(file);
+        FileKit.delete(file);
+        ExcelWriter writer = ExcelKit.getWriter(file);
         // 自定义标题
         writer.addHeaderAlias("name", "姓名");
         writer.addHeaderAlias("age", "年龄");
@@ -369,11 +369,11 @@ public class ExcelWriteTest {
         order1.setNum("456");
         order1.setBody("body2");
 
-        List<OrderExcel> rows = CollUtils.newArrayList(order1, order2);
+        List<OrderExcel> rows = CollKit.newArrayList(order1, order2);
         // 通过工具类创建writer
         String file = "f:/test/writeBeanTest2.xlsx";
-        FileUtils.delete(file);
-        ExcelWriter writer = ExcelUtils.getWriter(file);
+        FileKit.delete(file);
+        ExcelWriter writer = ExcelKit.getWriter(file);
         // 自定义标题
         writer.addHeaderAlias("id", "编号");
         writer.addHeaderAlias("num", "序号");
@@ -396,8 +396,8 @@ public class ExcelWriteTest {
     @Test
     @Ignore
     public void addSelectTest() {
-        List<String> row = CollUtils.newArrayList("姓名", "加班日期", "下班时间", "加班时长", "餐补", "车补次数", "车补", "总计");
-        ExcelWriter overtimeWriter = ExcelUtils.getWriter("d:/test/single_line.xlsx");
+        List<String> row = CollKit.newArrayList("姓名", "加班日期", "下班时间", "加班时长", "餐补", "车补次数", "车补", "总计");
+        ExcelWriter overtimeWriter = ExcelKit.getWriter("d:/test/single_line.xlsx");
         overtimeWriter.writeCellValue(3, 4, "AAAA");
         overtimeWriter.addSelect(3, 4, row.toArray(new String[0]));
         overtimeWriter.close();
@@ -406,7 +406,7 @@ public class ExcelWriteTest {
     @Test
 //	@Ignore
     public void addSelectTest2() {
-        ExcelWriter writer = ExcelUtils.getWriter("d:/test/select.xls");
+        ExcelWriter writer = ExcelKit.getWriter("d:/test/select.xls");
         writer.writeCellValue(0, 0, "请选择科目");
         int firstRow = 0;
         int lastRow = 0;
@@ -432,7 +432,7 @@ public class ExcelWriteTest {
             }
             rows.add(tempList);
         }
-        ExcelWriter writer = ExcelUtils.getWriter("D:\\test\\multiSheet.xlsx", "正常数据");
+        ExcelWriter writer = ExcelKit.getWriter("D:\\test\\multiSheet.xlsx", "正常数据");
         writer.addHeaderAlias("1", "row1");
         writer.addHeaderAlias("3", "row2");
         writer.setOnlyAlias(true);
@@ -479,7 +479,7 @@ public class ExcelWriteTest {
         rows.add(map2);
         rows.add(map3);
 
-        final ExcelWriter writer = ExcelUtils.getWriter("d:/test/rows.xlsx");
+        final ExcelWriter writer = ExcelKit.getWriter("d:/test/rows.xlsx");
         writer.write(rows);
         writer.close();
     }

@@ -2,8 +2,8 @@ package org.aoju.bus.crypto;
 
 import org.aoju.bus.core.lang.Algorithm;
 import org.aoju.bus.core.lang.Charset;
-import org.aoju.bus.core.utils.RandomUtils;
-import org.aoju.bus.core.utils.StringUtils;
+import org.aoju.bus.core.toolkit.RandomKit;
+import org.aoju.bus.core.toolkit.StringKit;
 import org.aoju.bus.crypto.symmetric.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -28,7 +28,7 @@ public class SymmetricTest {
         // 解密
         byte[] decrypt = aes.decrypt(encrypt);
 
-        Assertions.assertEquals(content, StringUtils.toString(decrypt, Charset.UTF_8));
+        Assertions.assertEquals(content, StringKit.toString(decrypt, Charset.UTF_8));
 
         // 加密为16进制表示
         String encryptHex = aes.encryptHex(content);
@@ -53,7 +53,7 @@ public class SymmetricTest {
         // 解密
         byte[] decrypt = aes.decrypt(encrypt);
 
-        Assertions.assertEquals(content, StringUtils.toString(decrypt));
+        Assertions.assertEquals(content, StringKit.toString(decrypt));
 
         // 加密为16进制表示
         String encryptHex = aes.encryptHex(content);
@@ -74,7 +74,7 @@ public class SymmetricTest {
         // 解密
         byte[] decrypt = aes.decrypt(encrypt);
 
-        Assertions.assertEquals(content, StringUtils.toString(decrypt));
+        Assertions.assertEquals(content, StringKit.toString(decrypt));
 
         // 加密为16进制表示
         String encryptHex = aes.encryptHex(content);
@@ -97,7 +97,7 @@ public class SymmetricTest {
 
     @Test
     public void aesZeroPaddingTest() {
-        String content = RandomUtils.randomString(RandomUtils.randomInt(200));
+        String content = RandomKit.randomString(RandomKit.randomInt(200));
         AES aes = new AES(Mode.CBC, Padding.ZeroPadding, "0123456789ABHAEQ".getBytes(), "DYgjCEIMVrj2W9xN".getBytes());
 
         // 加密为16进制表示
@@ -117,7 +117,7 @@ public class SymmetricTest {
         byte[] encrypt = des.encrypt(content);
         byte[] decrypt = des.decrypt(encrypt);
 
-        Assertions.assertEquals(content, StringUtils.toString(decrypt));
+        Assertions.assertEquals(content, StringKit.toString(decrypt));
 
         String encryptHex = des.encryptHex(content);
         String decryptStr = des.decryptStr(encryptHex);
@@ -135,7 +135,7 @@ public class SymmetricTest {
         byte[] encrypt = des.encrypt(content);
         byte[] decrypt = des.decrypt(encrypt);
 
-        Assertions.assertEquals(content, StringUtils.toString(decrypt));
+        Assertions.assertEquals(content, StringKit.toString(decrypt));
 
         String encryptHex = des.encryptHex(content);
         String decryptStr = des.decryptStr(encryptHex);
@@ -152,7 +152,7 @@ public class SymmetricTest {
         byte[] encrypt = des.encrypt(content);
         byte[] decrypt = des.decrypt(encrypt);
 
-        Assertions.assertEquals(content, StringUtils.toString(decrypt));
+        Assertions.assertEquals(content, StringKit.toString(decrypt));
 
         String encryptHex = des.encryptHex(content);
         String decryptStr = des.decryptStr(encryptHex);
@@ -171,7 +171,7 @@ public class SymmetricTest {
         byte[] encrypt = des.encrypt(content);
         byte[] decrypt = des.decrypt(encrypt);
 
-        Assertions.assertEquals(content, StringUtils.toString(decrypt));
+        Assertions.assertEquals(content, StringKit.toString(decrypt));
 
         String encryptHex = des.encryptHex(content);
         String decryptStr = des.decryptStr(encryptHex);
@@ -190,7 +190,7 @@ public class SymmetricTest {
         byte[] encrypt = des.encrypt(content);
         byte[] decrypt = des.decrypt(encrypt);
 
-        Assertions.assertEquals(content, StringUtils.toString(decrypt));
+        Assertions.assertEquals(content, StringKit.toString(decrypt));
 
         String encryptHex = des.encryptHex(content);
         String decryptStr = des.decryptStr(encryptHex);

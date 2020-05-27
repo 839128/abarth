@@ -1,7 +1,7 @@
 package org.aoju.bus.example.service.impl;
 
 import org.aoju.bus.base.service.impl.BaseServiceImpl;
-import org.aoju.bus.core.utils.FileUtils;
+import org.aoju.bus.core.toolkit.FileKit;
 import org.aoju.bus.example.entity.CommonVersion;
 import org.aoju.bus.example.mapper.CommonVersionMapper;
 import org.aoju.bus.example.service.CommonPreviewService;
@@ -26,7 +26,7 @@ public class CommonPreviewServiceImpl extends BaseServiceImpl<CommonVersionMappe
     public void preview(InputStream inputStream, OutputStream outputStream, String type, String filename) {
         Provider provider = officeProviderService.require(Registry.LOCAL);
         provider.convert(inputStream)
-                .as(DefaultFormatRegistry.getFormatByExtension(FileUtils.getExtension(filename)))
+                .as(DefaultFormatRegistry.getFormatByExtension(FileKit.getExtension(filename)))
                 .to(outputStream)
                 .as(DefaultFormatRegistry.getFormatByExtension(type))
                 .execute();

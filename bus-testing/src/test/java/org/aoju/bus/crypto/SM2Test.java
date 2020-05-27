@@ -1,8 +1,8 @@
 package org.aoju.bus.crypto;
 
 import org.aoju.bus.core.lang.Charset;
-import org.aoju.bus.core.utils.HexUtils;
-import org.aoju.bus.core.utils.StringUtils;
+import org.aoju.bus.core.toolkit.HexKit;
+import org.aoju.bus.core.toolkit.StringKit;
 import org.aoju.bus.crypto.asymmetric.KeyType;
 import org.aoju.bus.crypto.asymmetric.SM2;
 import org.bouncycastle.crypto.engines.SM2Engine;
@@ -30,8 +30,8 @@ public class SM2Test {
         // OBJECT IDENTIFIER 1.2.156.10197.1.301
         String OID = "06082A811CCF5501822D";
         KeyPair pair = Builder.generateKeyPair("SM2");
-        Assertions.assertTrue(HexUtils.encodeHexStr(pair.getPrivate().getEncoded()).toUpperCase().contains(OID));
-        Assertions.assertTrue(HexUtils.encodeHexStr(pair.getPublic().getEncoded()).toUpperCase().contains(OID));
+        Assertions.assertTrue(HexKit.encodeHexStr(pair.getPrivate().getEncoded()).toUpperCase().contains(OID));
+        Assertions.assertTrue(HexKit.encodeHexStr(pair.getPublic().getEncoded()).toUpperCase().contains(OID));
     }
 
     @Test
@@ -44,9 +44,9 @@ public class SM2Test {
         sm2.setMode(SM2Engine.Mode.C1C3C2);
 
         // 公钥加密，私钥解密
-        byte[] encrypt = sm2.encrypt(StringUtils.bytes("我是一段测试aaaa", Charset.UTF_8), KeyType.PublicKey);
+        byte[] encrypt = sm2.encrypt(StringKit.bytes("我是一段测试aaaa", Charset.UTF_8), KeyType.PublicKey);
         byte[] decrypt = sm2.decrypt(encrypt, KeyType.PrivateKey);
-        Assertions.assertEquals("我是一段测试aaaa", StringUtils.toString(decrypt, Charset.UTF_8));
+        Assertions.assertEquals("我是一段测试aaaa", StringKit.toString(decrypt, Charset.UTF_8));
     }
 
     @Test
@@ -60,9 +60,9 @@ public class SM2Test {
         Assertions.assertNotNull(sm2.getPrivateKeyBase64());
 
         // 公钥加密，私钥解密
-        byte[] encrypt = sm2.encrypt(StringUtils.bytes("我是一段测试aaaa", Charset.UTF_8), KeyType.PublicKey);
+        byte[] encrypt = sm2.encrypt(StringKit.bytes("我是一段测试aaaa", Charset.UTF_8), KeyType.PublicKey);
         byte[] decrypt = sm2.decrypt(encrypt, KeyType.PrivateKey);
-        Assertions.assertEquals("我是一段测试aaaa", StringUtils.toString(decrypt, Charset.UTF_8));
+        Assertions.assertEquals("我是一段测试aaaa", StringKit.toString(decrypt, Charset.UTF_8));
     }
 
     @Test
@@ -73,7 +73,7 @@ public class SM2Test {
 
         // 公钥加密，私钥解密
         String encryptStr = sm2.encryptBcd(text, KeyType.PublicKey);
-        String decryptStr = StringUtils.toString(sm2.decryptFromBcd(encryptStr, KeyType.PrivateKey));
+        String decryptStr = StringKit.toString(sm2.decryptFromBcd(encryptStr, KeyType.PrivateKey));
         Assertions.assertEquals(text, decryptStr);
     }
 
@@ -89,7 +89,7 @@ public class SM2Test {
 
         // 公钥加密，私钥解密
         String encryptStr = sm2.encryptBase64(text.toString(), KeyType.PublicKey);
-        String decryptStr = StringUtils.toString(sm2.decrypt(encryptStr, KeyType.PrivateKey));
+        String decryptStr = StringKit.toString(sm2.decrypt(encryptStr, KeyType.PrivateKey));
         Assertions.assertEquals(text.toString(), decryptStr);
 
         // 测试自定义密钥后是否生效
@@ -99,7 +99,7 @@ public class SM2Test {
         sm2 = Builder.sm2();
         sm2.setPrivateKey(privateKey);
         sm2.setPublicKey(publicKey);
-        String decryptStr2 = StringUtils.toString(sm2.decrypt(encryptStr, KeyType.PrivateKey));
+        String decryptStr2 = StringKit.toString(sm2.decrypt(encryptStr, KeyType.PrivateKey));
         Assertions.assertEquals(text.toString(), decryptStr2);
     }
 
@@ -121,8 +121,8 @@ public class SM2Test {
         KeyPair pair = Builder.generateKeyPair("SM2");
 
         final SM2 sm2 = new SM2(
-                HexUtils.encodeHexStr(pair.getPrivate().getEncoded()),
-                HexUtils.encodeHexStr(pair.getPublic().getEncoded())
+                HexKit.encodeHexStr(pair.getPrivate().getEncoded()),
+                HexKit.encodeHexStr(pair.getPublic().getEncoded())
         );
 
         byte[] sign = sm2.sign(content.getBytes());
