@@ -7,7 +7,7 @@
 
     <groupId>org.aoju</groupId>
     <artifactId>bus-example</artifactId>
-    <version>5.9.3</version>
+    <version>5.9.5</version>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
@@ -24,7 +24,7 @@
         <project.compiler.version>1.8</project.compiler.version>
         <lombok.version>1.18.12</lombok.version>
         <aspectj.version>1.9.5</aspectj.version>
-        <fastjson.version>1.2.67</fastjson.version>
+        <fastjson.version>1.2.70</fastjson.version>
         <bouncycastle.version>1.65</bouncycastle.version>
         <slf4j.version>1.7.30</slf4j.version>
         <mybatis.version>3.5.3</mybatis.version>
@@ -40,6 +40,7 @@
         <office.version>4.1.2</office.version>
         <druid.version>1.1.22</druid.version>
         <mysql.version>8.0.20</mysql.version>
+        <emoji.java.version>5.1.1</emoji.java.version>
     </properties>
 
     <dependencies>
@@ -57,6 +58,12 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.vdurmont</groupId>
+            <artifactId>emoji-java</artifactId>
+            <version>${emoji.java.version}</version>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.bouncycastle</groupId>
