@@ -24,11 +24,11 @@
         <project.compiler.version>1.8</project.compiler.version>
         <lombok.version>1.18.12</lombok.version>
         <aspectj.version>1.9.5</aspectj.version>
-        <fastjson.version>1.2.67</fastjson.version>
-        <bouncycastle.version>1.65</bouncycastle.version>
+        <fastjson.version>1.2.73</fastjson.version>
+        <bouncycastle.version>1.66</bouncycastle.version>
         <slf4j.version>1.7.30</slf4j.version>
-        <mybatis.version>3.5.3</mybatis.version>
-        <mybatis.spring.version>2.0.3</mybatis.spring.version>
+        <mybatis.version>3.5.5</mybatis.version>
+        <mybatis.spring.version>2.0.5</mybatis.spring.version>
         <persistence.version>2.2</persistence.version>
         <poi.version>4.1.2</poi.version>
         <jsqlparser.version>3.1</jsqlparser.version>

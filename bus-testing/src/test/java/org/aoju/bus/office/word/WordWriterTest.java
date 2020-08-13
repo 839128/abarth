@@ -1,7 +1,8 @@
-package org.aoju.bus.office.support.word;
+package org.aoju.bus.office.word;
 
 import org.aoju.bus.core.lang.Console;
 import org.aoju.bus.core.toolkit.FileKit;
+import org.aoju.bus.office.support.word.Word07Writer;
 import org.junit.Ignore;
 import org.junit.Test;
 
