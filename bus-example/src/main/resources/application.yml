@@ -232,9 +232,8 @@ extend:
     basePackage:
       org.aoju.bus.example.spring,
     title: Example Restful APIs
-    serviceUrl: www.aoju.org
+    termsOfServiceUrl: www.aoju.org
     description: 测试项目
-    contact: developer
     version: 1.0
   # 防止重复提交
   wrapper:
