@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @EnableMapper
 @EnableSwagger
+//@EnableOpenApi
 //@EnableOffice
 @EnableStorage
 @EnableValidate

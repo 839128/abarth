@@ -18,9 +18,6 @@
  */
 package org.aoju.bus.example.spring;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import org.aoju.bus.base.consts.ErrorCode;
 import org.aoju.bus.base.spring.BaseController;
 import org.aoju.bus.core.key.ObjectID;
@@ -44,22 +41,26 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Map;
 
+/**
+ * 版本管理
+ */
 @RestController
 @RequestMapping("/preview")
-@Api(value = "版本管理", tags = "OnlinePreviewController")
 public class CommonPreviewController extends BaseController<CommonPreviewService, CommonVersion> {
 
-    @ApiOperation(value = "将传入的文档转换为指定的格式", notes = "文档转换")
+    /**
+     * 文档转换
+     * 将传入的文档转换为指定的格式
+     *
+     * @param inputFile 文件
+     * @param type      格式
+     * @return 文档
+     */
     @PostMapping("/index")
     public Object convertToUsingParam(
-            @ApiParam(value = "The input document to convert.", required = true)
             @RequestParam("data") final MultipartFile inputFile,
-            @ApiParam(value = "The document format to convert the input document to.", required = true)
-            @RequestParam(name = "format") final String type,
-            @ApiParam(value = "The custom options to apply to the conversion.")
-            @RequestParam(required = false) final Map<String, String> parameters) {
+            @RequestParam(name = "type") final String type) {
         Logger.debug("convert > Converting file to {}", type);
         if (inputFile.isEmpty()) {
             return write(ErrorCode.EM_100506);
@@ -251,8 +252,6 @@ public class CommonPreviewController extends BaseController<CommonPreviewService
         previewProviderService.previewCache.addQueueTask(url);
         return "success";
     }
-
-
 
 */
 

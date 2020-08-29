@@ -95,7 +95,7 @@ extend:
   cors:
     allowedOrigins: '*'
     allowedHeaders: '*'
-    allowedMethods:  GET,DELETE, POST, PUT,OPTIONS
+    allowedMethods: GET,DELETE, POST, PUT,OPTIONS
     allowCredentials: true
     maxAge: 1800
     path: /**

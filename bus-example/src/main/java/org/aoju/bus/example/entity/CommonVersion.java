@@ -1,6 +1,5 @@
 package org.aoju.bus.example.entity;
 
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.aoju.bus.base.entity.BaseEntity;
 import org.aoju.bus.sensitive.Builder;
@@ -16,30 +15,45 @@ import javax.persistence.Table;
 @Table(name = "hi_common_version")
 public class CommonVersion extends BaseEntity {
 
-    @ApiModelProperty(value = "名称")
+    /**
+     * 名称
+     */
     @Privacy
     @Shield(type = Builder.Type.NAME)
     private String name;
 
-    @ApiModelProperty(value = "类型")
+    /**
+     * 类型
+     */
     @NotNull
     private String type;
 
-    @ApiModelProperty(value = "作用域")
+    /**
+     * 作用域
+     */
     @NotNull
     private String scope;
 
-    @ApiModelProperty(value = "URL")
+    /**
+     * URL
+     */
     @NotNull
     private String url;
-    @ApiModelProperty(value = "内容")
+
+    /**
+     * 内容
+     */
     private String content;
 
-    @ApiModelProperty(value = "版本信息")
+    /**
+     * 版本信息
+     */
     @NotNull
     private String version;
 
-    @ApiModelProperty(value = "描述")
+    /**
+     * 描述
+     */
     private String description;
 
 }

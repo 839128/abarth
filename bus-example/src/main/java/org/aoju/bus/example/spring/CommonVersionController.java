@@ -1,7 +1,5 @@
 package org.aoju.bus.example.spring;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.aoju.bus.base.consts.ErrorCode;
 import org.aoju.bus.base.entity.Result;
 import org.aoju.bus.base.spring.BaseController;
@@ -23,9 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
+/**
+ * 版本管理
+ */
 @RestController
 @RequestMapping("version")
-@Api(value = "版本管理", tags = "CommonVersionController")
 public class CommonVersionController extends BaseController<CommonVersionService, CommonVersion> {
 
     @Autowired
@@ -33,8 +33,13 @@ public class CommonVersionController extends BaseController<CommonVersionService
     @Autowired
     StorageProviderService storageProviderService;
 
+    /**
+     * 获取版本信息
+     *
+     * @param entity 版本信息
+     * @return json
+     */
     @RequestMapping(value = "/gets")
-    @ApiOperation(value = "获取版本信息", notes = "所属域或版本号", response = CommonVersion.class)
     @Sensitive(value = Builder.SENS, stage = Builder.OUT)
     public Object gets(@Valid(skip = {"url"}) CommonVersion entity) {
         if (StringKit.isEmpty(entity.getScope()) && StringKit.isEmpty(entity.getVersion())) {
