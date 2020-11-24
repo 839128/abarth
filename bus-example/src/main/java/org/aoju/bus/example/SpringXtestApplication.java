@@ -10,8 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @since JDK 1.8+
  */
 @EnableMapper
-@EnableSwagger
-//@EnableOpenApi
 //@EnableOffice
 @EnableStorage
 @EnableValidate

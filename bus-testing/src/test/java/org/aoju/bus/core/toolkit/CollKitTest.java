@@ -284,7 +284,7 @@ public class CollKitTest {
 
     @Test
     public void getTest() {
-        HashSet<String> set = CollKit.newHashSet(true, new String[]{"A", "B", "C", "D"});
+        HashSet<String> set = CollKit.newHashSet(true, "A", "B", "C", "D");
         String str = CollKit.get(set, 2);
         Assertions.assertEquals("C", str);
 

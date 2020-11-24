@@ -50,7 +50,7 @@ public class EnumKitTest {
     public enum TestEnum {
         TEST1("type1"), TEST2("type2"), TEST3("type3");
 
-        private String type;
+        private final String type;
         private String name;
 
         TestEnum(String type) {

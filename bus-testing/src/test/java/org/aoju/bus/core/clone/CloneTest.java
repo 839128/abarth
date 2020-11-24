@@ -27,8 +27,8 @@ public class CloneTest {
      * 猫猫类，使用实现Cloneable方式
      */
     private static class Cat implements Cloneable<Cat> {
-        private String name = "maomao";
-        private int age = 2;
+        private final String name = "maomao";
+        private final int age = 2;
 
         @Override
         public Cat clone() {
@@ -73,8 +73,8 @@ public class CloneTest {
      * 狗狗类，用于继承CloneSupport类
      */
     private static class Dog extends Support<Dog> {
-        private String name = "gougou";
-        private int age = 3;
+        private final String name = "gougou";
+        private final int age = 3;
 
         @Override
         public int hashCode() {

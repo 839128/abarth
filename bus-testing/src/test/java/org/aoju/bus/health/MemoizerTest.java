@@ -9,8 +9,9 @@ import java.util.Collection;
 import java.util.concurrent.*;
 import java.util.function.Supplier;
 
+import static org.aoju.bus.health.Memoize.memoize;
 import static org.junit.Assert.*;
-import static oshi.util.Memoizer.memoize;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public final class MemoizerTest {
     // We want enough threads that some of them are forced to wait
