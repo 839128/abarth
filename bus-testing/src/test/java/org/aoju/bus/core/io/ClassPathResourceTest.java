@@ -3,8 +3,8 @@ package org.aoju.bus.core.io;
 import org.aoju.bus.core.io.resource.ClassPathResource;
 import org.aoju.bus.core.lang.Charset;
 import org.aoju.bus.core.toolkit.StringKit;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -18,14 +18,14 @@ public class ClassPathResourceTest {
     public void readStringTest() {
         ClassPathResource resource = new ClassPathResource("test.properties");
         String content = resource.readString(Charset.UTF_8);
-        Assertions.assertTrue(StringKit.isNotEmpty(content));
+        Assert.assertTrue(StringKit.isNotEmpty(content));
     }
 
     @Test
     public void readStringTest2() {
         ClassPathResource resource = new ClassPathResource("/");
         String content = resource.readString(Charset.UTF_8);
-        Assertions.assertTrue(StringKit.isNotEmpty(content));
+        Assert.assertTrue(StringKit.isNotEmpty(content));
     }
 
     @Test
@@ -34,8 +34,8 @@ public class ClassPathResourceTest {
         Properties properties = new Properties();
         properties.load(resource.getStream());
 
-        Assertions.assertEquals("1", properties.get("a"));
-        Assertions.assertEquals("2", properties.get("b"));
+        Assert.assertEquals("1", properties.get("a"));
+        Assert.assertEquals("2", properties.get("b"));
     }
 
     @Test
@@ -43,18 +43,18 @@ public class ClassPathResourceTest {
         final ClassPathResource resource = new ClassPathResource("test.properties");
 
         String result = resource.readString(Charset.UTF_8);
-        Assertions.assertNotNull(result);
+        Assert.assertNotNull(result);
 
         //二次读取测试，用于测试关闭流对再次读取的影响
         result = resource.readString(Charset.UTF_8);
-        Assertions.assertNotNull(result);
+        Assert.assertNotNull(result);
     }
 
     @Test
     public void getAbsTest() {
         final ClassPathResource resource = new ClassPathResource("test.properties");
         String absPath = resource.getAbsolutePath();
-        Assertions.assertTrue(absPath.contains("test.properties"));
+        Assert.assertTrue(absPath.contains("test.properties"));
     }
 
 }

@@ -1,7 +1,7 @@
 package org.aoju.bus.core.toolkit;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
@@ -14,20 +14,20 @@ public class TypeKitTest {
     public void getEleTypeTest() {
         Method method = ReflectKit.getMethod(TestClass.class, "getList");
         Type type = TypeKit.getReturnType(method);
-        Assertions.assertEquals("java.util.List<java.lang.String>", type.toString());
+        Assert.assertEquals("java.util.List<java.lang.String>", type.toString());
 
         Type type2 = TypeKit.getTypeArgument(type);
-        Assertions.assertEquals(String.class, type2);
+        Assert.assertEquals(String.class, type2);
     }
 
     @Test
     public void getParamTypeTest() {
         Method method = ReflectKit.getMethod(TestClass.class, "intTest", Integer.class);
         Type type = TypeKit.getParamType(method, 0);
-        Assertions.assertEquals(Integer.class, type);
+        Assert.assertEquals(Integer.class, type);
 
         Type returnType = TypeKit.getReturnType(method);
-        Assertions.assertEquals(Integer.class, returnType);
+        Assert.assertEquals(Integer.class, returnType);
     }
 
     public static class TestClass {

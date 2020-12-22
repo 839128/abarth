@@ -3,8 +3,8 @@ package org.aoju.bus.core.io;
 import org.aoju.bus.core.lang.Console;
 import org.aoju.bus.core.lang.FileType;
 import org.aoju.bus.core.toolkit.FileKit;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -17,11 +17,11 @@ public class FileTypeUtilTest {
     public void fileTypeUtilTest() {
         File file = FileKit.file("123.jpg");
         String type = FileType.getType(file);
-        Assertions.assertEquals("jpg", type);
+        Assert.assertEquals("jpg", type);
 
         FileType.putFileType("ffd8ffe000104a464946", "new_jpg");
         String newType = FileType.getType(file);
-        Assertions.assertEquals("jpg", newType);
+        Assert.assertEquals("jpg", newType);
     }
 
     @Test

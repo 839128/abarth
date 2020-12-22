@@ -8,15 +8,15 @@ import org.aoju.bus.core.toolkit.StringKit;
 import org.aoju.bus.office.support.excel.ExcelKit;
 import org.aoju.bus.office.support.excel.sax.Excel03SaxReader;
 import org.aoju.bus.office.support.excel.sax.RowHandler;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class ExcelSaxReadTest {
 
     @Test
     public void excel07Test() {
         // 工具化快速读取
-        ExcelKit.read07BySax("test.xlsx", 0, createRowHandler());
+        ExcelKit.readBySax("test.xlsx", 0, createRowHandler());
     }
 
     @Test
@@ -24,7 +24,7 @@ public class ExcelSaxReadTest {
         Excel03SaxReader reader = new Excel03SaxReader(createRowHandler());
         reader.read("aaa.xls", 1);
         // Console.log("Sheet index: [{}], Sheet name: [{}]", reader.getSheetIndex(), reader.getSheetName());
-        ExcelKit.read03BySax("test.xls", 1, createRowHandler());
+        ExcelKit.readBySax("test.xls", 1, createRowHandler());
     }
 
     @Test
@@ -53,7 +53,7 @@ public class ExcelSaxReadTest {
         return (sheetIndex, rowIndex, rowlist) -> {
             if (5 != rowIndex && 6 != rowIndex) {
                 // 测试样例中除第五行、第六行都为非空行
-                Assertions.assertTrue(CollKit.isNotEmpty(rowlist));
+                Assert.assertTrue(CollKit.isNotEmpty(rowlist));
             }
         };
     }

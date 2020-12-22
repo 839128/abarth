@@ -1,7 +1,7 @@
 package org.aoju.bus.core.convert;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 /**
  * 类型转换工具单元测试
@@ -13,13 +13,13 @@ public class ConvertToSBCAndDBCTest {
     public void toSBCTest() {
         String a = "123456789";
         String sbc = Convert.toSBC(a);
-        Assertions.assertEquals("１２３４５６７８９", sbc);
+        Assert.assertEquals("１２３４５６７８９", sbc);
     }
 
     @Test
     public void toDBCTest() {
         String a = "１２３４５６７８９";
         String dbc = Convert.toDBC(a);
-        Assertions.assertEquals("123456789", dbc);
+        Assert.assertEquals("123456789", dbc);
     }
 }

@@ -1,7 +1,7 @@
 package org.aoju.bus.core.map;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,13 +18,13 @@ public class MapProxyTest {
 
         MapProxy mapProxy = new MapProxy(map);
         Integer b = mapProxy.getInt("b");
-        Assertions.assertEquals(new Integer(2), b);
+        Assert.assertEquals(new Integer(2), b);
 
         Set<Object> keys = mapProxy.keySet();
-        Assertions.assertFalse(keys.isEmpty());
+        Assert.assertFalse(keys.isEmpty());
 
         Set<Entry<Object, Object>> entrys = mapProxy.entrySet();
-        Assertions.assertFalse(entrys.isEmpty());
+        Assert.assertFalse(entrys.isEmpty());
     }
 
 }

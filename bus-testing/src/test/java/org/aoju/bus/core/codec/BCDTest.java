@@ -1,7 +1,7 @@
 package org.aoju.bus.core.codec;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class BCDTest {
 
@@ -13,7 +13,7 @@ public class BCDTest {
         byte[] bcd = BCD.strToBcd(strForTest);
         String str = BCD.bcdToStr(bcd);
         //解码BCD
-        Assertions.assertEquals(strForTest, str);
+        Assert.assertEquals(strForTest, str);
     }
 
 }

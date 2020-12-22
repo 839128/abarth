@@ -6,7 +6,7 @@ import org.aoju.bus.core.text.csv.CsvData;
 import org.aoju.bus.core.text.csv.CsvReader;
 import org.aoju.bus.core.text.csv.CsvRow;
 import org.aoju.bus.core.text.csv.CsvWriter;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class CsvKitTest {
     @Test
     public void readTest2() {
         CsvReader reader = CsvKit.getReader();
-        reader.read(FileKit.getUtf8Reader("test.csv"), (csvRow) -> {
+        reader.read(FileKit.getReader("test.csv"), (csvRow) -> {
             Assert.notEmpty(csvRow.getRawList());
         });
     }

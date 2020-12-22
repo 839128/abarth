@@ -2,8 +2,8 @@ package org.aoju.bus.core.convert;
 
 import lombok.Data;
 import org.aoju.bus.core.map.MapBuilder;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -21,8 +21,8 @@ public class MapConvertTest {
         user.setAge(45);
 
         HashMap<?, ?> map = Convert.convert(HashMap.class, user);
-        Assertions.assertEquals("AAA", map.get("name"));
-        Assertions.assertEquals(45, map.get("age"));
+        Assert.assertEquals("AAA", map.get("name"));
+        Assert.assertEquals(45, map.get("age"));
     }
 
     @Test
@@ -30,8 +30,8 @@ public class MapConvertTest {
         Map<String, Object> srcMap = MapBuilder.create(new HashMap<String, Object>()).put("name", "AAA").put("age", 45).map();
 
         LinkedHashMap<?, ?> map = Convert.convert(LinkedHashMap.class, srcMap);
-        Assertions.assertEquals("AAA", map.get("name"));
-        Assertions.assertEquals(45, map.get("age"));
+        Assert.assertEquals("AAA", map.get("name"));
+        Assert.assertEquals(45, map.get("age"));
     }
 
     @Data

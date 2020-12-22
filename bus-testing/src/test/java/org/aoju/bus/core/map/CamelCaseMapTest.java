@@ -1,7 +1,7 @@
 package org.aoju.bus.core.map;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class CamelCaseMapTest {
 
@@ -9,16 +9,16 @@ public class CamelCaseMapTest {
     public void caseInsensitiveMapTest() {
         CamelCaseMap<String, String> map = new CamelCaseMap<>();
         map.put("customKey", "OK");
-        Assertions.assertEquals("OK", map.get("customKey"));
-        Assertions.assertEquals("OK", map.get("custom_key"));
+        Assert.assertEquals("OK", map.get("customKey"));
+        Assert.assertEquals("OK", map.get("custom_key"));
     }
 
     @Test
     public void caseInsensitiveLinkedMapTest() {
         CamelCaseLinkedMap<String, String> map = new CamelCaseLinkedMap<>();
         map.put("customKey", "OK");
-        Assertions.assertEquals("OK", map.get("customKey"));
-        Assertions.assertEquals("OK", map.get("custom_key"));
+        Assert.assertEquals("OK", map.get("customKey"));
+        Assert.assertEquals("OK", map.get("custom_key"));
     }
 
 }

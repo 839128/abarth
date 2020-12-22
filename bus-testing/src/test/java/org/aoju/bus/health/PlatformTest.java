@@ -3,9 +3,8 @@ package org.aoju.bus.health;
 import org.aoju.bus.core.lang.Normal;
 import org.aoju.bus.health.builtin.hardware.*;
 import org.aoju.bus.health.builtin.software.*;
+import org.aoju.bus.logger.Logger;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -19,8 +18,6 @@ import static org.junit.Assert.assertFalse;
  */
 public class PlatformTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(PlatformTest.class);
-
     static List<String> oshi = new ArrayList<>();
 
     /**
@@ -29,7 +26,7 @@ public class PlatformTest {
      * @param args the arguments (unused)
      */
     public static void main(String[] args) {
-        logger.info("Initializing System...");
+        Logger.info("Initializing System...");
         Platform si = new Platform();
 
         HardwareAbstractionLayer hal = si.getHardware();
@@ -37,57 +34,57 @@ public class PlatformTest {
 
         printOperatingSystem(os);
 
-        logger.info("Checking computer system...");
+        Logger.info("Checking computer system...");
         printComputerSystem(hal.getComputerSystem());
 
-        logger.info("Checking Processor...");
+        Logger.info("Checking Processor...");
         printProcessor(hal.getProcessor());
 
-        logger.info("Checking Memory...");
+        Logger.info("Checking Memory...");
         printMemory(hal.getMemory());
 
-        logger.info("Checking CPU...");
+        Logger.info("Checking CPU...");
         printCpu(hal.getProcessor());
 
-        logger.info("Checking Processes...");
+        Logger.info("Checking Processes...");
         printProcesses(os, hal.getMemory());
 
-        logger.info("Checking Services...");
+        Logger.info("Checking Services...");
         printServices(os);
 
-        logger.info("Checking Sensors...");
+        Logger.info("Checking Sensors...");
         printSensors(hal.getSensors());
 
-        logger.info("Checking Power sources...");
+        Logger.info("Checking Power sources...");
         printPowerSources(hal.getPowerSources());
 
-        logger.info("Checking Disks...");
+        Logger.info("Checking Disks...");
         printDisks(hal.getDiskStores());
 
-        logger.info("Checking File System...");
+        Logger.info("Checking File System...");
         printFileSystem(os.getFileSystem());
 
-        logger.info("Checking Network interfaces...");
+        Logger.info("Checking Network interfaces...");
         printNetworkInterfaces(hal.getNetworkIFs());
 
-        logger.info("Checking Network parameters...");
+        Logger.info("Checking Network parameters...");
         printNetworkParameters(os.getNetworkParams());
 
-        logger.info("Checking IP statistics...");
+        Logger.info("Checking IP statistics...");
         printInternetProtocolStats(os.getInternetProtocolStats());
 
         // hardware: displays
-        logger.info("Checking Displays...");
+        Logger.info("Checking Displays...");
         printDisplays(hal.getDisplays());
 
         // hardware: USB devices
-        logger.info("Checking USB Devices...");
+        Logger.info("Checking USB Devices...");
         printUsbDevices(hal.getUsbDevices(true));
 
-        logger.info("Checking Sound Cards...");
+        Logger.info("Checking Sound Cards...");
         printSoundCards(hal.getSoundCards());
 
-        logger.info("Checking Graphics Cards...");
+        Logger.info("Checking Graphics Cards...");
         printGraphicsCards(hal.getGraphicsCards());
 
         StringBuilder output = new StringBuilder();
@@ -97,7 +94,7 @@ public class PlatformTest {
                 output.append('\n');
             }
         }
-        logger.info("Printing Operating System and Hardware Info:{}{}", '\n', output);
+        Logger.info("Printing Operating System and Hardware Info:{}{}", '\n', output);
     }
 
     private static void printOperatingSystem(final OperatingSystem os) {

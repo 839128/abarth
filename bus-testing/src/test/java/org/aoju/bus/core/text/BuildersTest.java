@@ -3,21 +3,21 @@ package org.aoju.bus.core.text;
 import org.aoju.bus.core.date.TimeInterval;
 import org.aoju.bus.core.lang.Console;
 import org.aoju.bus.core.toolkit.DateKit;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 /**
- * StrBuilder单元测试
+ * Builders单元测试
  */
-public class StrBuilderTest {
+public class BuildersTest {
 
     /**
-     * StrBuilder的性能测试
+     * Builders的性能测试
      */
     @Test
     public void benchTest() {
         TimeInterval timer = DateKit.timer();
-        StrBuilder builder = StrBuilder.create();
+        Builders builder = Builders.create();
         for (int i = 0; i < 1000000; i++) {
             builder.append("test");
         }
@@ -34,50 +34,50 @@ public class StrBuilderTest {
 
     @Test
     public void appendTest() {
-        StrBuilder builder = StrBuilder.create();
+        Builders builder = Builders.create();
         builder.append("aaa").append("你好").append('r');
-        Assertions.assertEquals("aaa你好r", builder.toString());
+        Assert.assertEquals("aaa你好r", builder.toString());
     }
 
     @Test
     public void insertTest() {
-        StrBuilder builder = StrBuilder.create(1);
+        Builders builder = Builders.create(1);
         builder.append("aaa").append("你好").append('r');
         builder.insert(3, "数据插入");
-        Assertions.assertEquals("aaa数据插入你好r", builder.toString());
+        Assert.assertEquals("aaa数据插入你好r", builder.toString());
     }
 
     @Test
     public void insertTest2() {
-        StrBuilder builder = StrBuilder.create(1);
+        Builders builder = Builders.create(1);
         builder.append("aaa").append("你好").append('r');
         builder.insert(6, "数据插入");
-        Assertions.assertEquals("aaa你好r数据插入", builder.toString());
+        Assert.assertEquals("aaa你好r数据插入", builder.toString());
     }
 
     @Test
     public void appendObjectTest() {
-        StrBuilder builder = StrBuilder.create(1);
+        Builders builder = Builders.create(1);
         builder.append(123).append(456.123D).append(true).append('\n');
-        Assertions.assertEquals("123456.123true\n", builder.toString());
+        Assert.assertEquals("123456.123true\n", builder.toString());
     }
 
     @Test
     public void delTest() {
         // 删除全部测试
-        StrBuilder strBuilder = new StrBuilder("ABCDEFG");
-        int length = strBuilder.length();
-        StrBuilder builder = strBuilder.delete(0, length);
-        Assertions.assertEquals("", builder.toString());
+        Builders Builders = new Builders("ABCDEFG");
+        int length = Builders.length();
+        Builders builder = Builders.delete(0, length);
+        Assert.assertEquals("", builder.toString());
     }
 
     @Test
     public void delTest2() {
         // 删除中间部分测试
-        StrBuilder strBuilder = new StrBuilder("ABCDEFG");
-        int length = strBuilder.length();
-        StrBuilder builder = strBuilder.delete(2, 6);
-        Assertions.assertEquals("ABG", builder.toString());
+        Builders Builders = new Builders("ABCDEFG");
+        int length = Builders.length();
+        Builders builder = Builders.delete(2, 6);
+        Assert.assertEquals("ABG", builder.toString());
     }
 
 }

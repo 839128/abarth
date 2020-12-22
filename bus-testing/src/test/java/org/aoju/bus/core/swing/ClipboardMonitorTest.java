@@ -2,7 +2,7 @@ package org.aoju.bus.core.swing;
 
 import org.aoju.bus.core.lang.Console;
 import org.aoju.bus.core.toolkit.SwingKit;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 public class ClipboardMonitorTest {
 

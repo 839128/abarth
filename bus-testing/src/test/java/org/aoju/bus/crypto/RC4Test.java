@@ -1,8 +1,8 @@
 package org.aoju.bus.crypto;
 
 import org.aoju.bus.crypto.symmetric.RC4;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class RC4Test {
 
@@ -13,12 +13,12 @@ public class RC4Test {
         String message = "Hello, World!";
         byte[] crypt = rc4.encrypt(message);
         String msg = rc4.decrypt(crypt);
-        Assertions.assertEquals(message, msg);
+        Assert.assertEquals(message, msg);
 
         String message2 = "Hello, World， this is megssage 2";
         byte[] crypt2 = rc4.encrypt(message2);
         String msg2 = rc4.decrypt(crypt2);
-        Assertions.assertEquals(message2, msg2);
+        Assert.assertEquals(message2, msg2);
     }
 
     @Test
@@ -28,12 +28,12 @@ public class RC4Test {
         RC4 rc4 = new RC4(key);
         byte[] crypt = rc4.encrypt(message);
         String msg = rc4.decrypt(crypt);
-        Assertions.assertEquals(message, msg);
+        Assert.assertEquals(message, msg);
 
         String message2 = "这是第二个中文消息！";
         byte[] crypt2 = rc4.encrypt(message2);
         String msg2 = rc4.decrypt(crypt2);
-        Assertions.assertEquals(message2, msg2);
+        Assert.assertEquals(message2, msg2);
     }
 
 }

@@ -1,8 +1,8 @@
 package org.aoju.bus.core.io;
 
 import org.aoju.bus.core.io.file.FileReader;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 
 /**
@@ -14,7 +14,7 @@ public class FileReaderTest {
     public void fileReaderTest() {
         FileReader fileReader = new FileReader("test.properties");
         String result = fileReader.readString();
-        Assertions.assertNotNull(result);
+        Assert.assertNotNull(result);
     }
 
 }

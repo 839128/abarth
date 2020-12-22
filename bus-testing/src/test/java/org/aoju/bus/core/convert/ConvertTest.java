@@ -2,8 +2,8 @@ package org.aoju.bus.core.convert;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class ConvertTest {
     @Test
     public void toObjectTest() {
         Object result = Convert.convert(Object.class, "aaaa");
-        Assertions.assertEquals("aaaa", result);
+        Assert.assertEquals("aaaa", result);
     }
 
     @Test
@@ -26,118 +26,118 @@ public class ConvertTest {
         int a = 1;
         long[] b = {1, 2, 3, 4, 5};
 
-        Assertions.assertEquals("[1, 2, 3, 4, 5]", Convert.convert(String.class, b));
+        Assert.assertEquals("[1, 2, 3, 4, 5]", Convert.convert(String.class, b));
 
         String aStr = Convert.toString(a);
-        Assertions.assertEquals("1", aStr);
+        Assert.assertEquals("1", aStr);
         String bStr = Convert.toString(b);
-        Assertions.assertEquals("[1, 2, 3, 4, 5]", Convert.toString(bStr));
+        Assert.assertEquals("[1, 2, 3, 4, 5]", Convert.toString(bStr));
     }
 
     @Test
     public void toStrTest2() {
         String result = Convert.convert(String.class, "aaaa");
-        Assertions.assertEquals("aaaa", result);
+        Assert.assertEquals("aaaa", result);
     }
 
     @Test
     public void toStrTest3() {
         char a = 'a';
         String result = Convert.convert(String.class, a);
-        Assertions.assertEquals("a", result);
+        Assert.assertEquals("a", result);
     }
 
     @Test
     public void toIntTest() {
         String a = " 34232";
         Integer aInteger = Convert.toInt(a);
-        Assertions.assertEquals(Integer.valueOf(34232), aInteger);
+        Assert.assertEquals(Integer.valueOf(34232), aInteger);
         int aInt = ConverterRegistry.getInstance().convert(int.class, a);
-        Assertions.assertEquals(34232, aInt);
+        Assert.assertEquals(34232, aInt);
 
         // 带小数测试
         String b = " 34232.00";
         Integer bInteger = Convert.toInt(b);
-        Assertions.assertEquals(Integer.valueOf(34232), bInteger);
+        Assert.assertEquals(Integer.valueOf(34232), bInteger);
         int bInt = ConverterRegistry.getInstance().convert(int.class, b);
-        Assertions.assertEquals(34232, bInt);
+        Assert.assertEquals(34232, bInt);
 
         // boolean测试
         boolean c = true;
         Integer cInteger = Convert.toInt(c);
-        Assertions.assertEquals(Integer.valueOf(1), cInteger);
+        Assert.assertEquals(Integer.valueOf(1), cInteger);
         int cInt = ConverterRegistry.getInstance().convert(int.class, c);
-        Assertions.assertEquals(1, cInt);
+        Assert.assertEquals(1, cInt);
 
         // boolean测试
         String d = "08";
         Integer dInteger = Convert.toInt(d);
-        Assertions.assertEquals(Integer.valueOf(8), dInteger);
+        Assert.assertEquals(Integer.valueOf(8), dInteger);
         int dInt = ConverterRegistry.getInstance().convert(int.class, d);
-        Assertions.assertEquals(8, dInt);
+        Assert.assertEquals(8, dInt);
     }
 
     @Test
     public void toIntTest2() {
         ArrayList<String> array = new ArrayList<>();
         Integer aInt = Convert.convert(Integer.class, array, -1);
-        Assertions.assertEquals(Integer.valueOf(-1), aInt);
+        Assert.assertEquals(Integer.valueOf(-1), aInt);
     }
 
     @Test
     public void toLongTest() {
         String a = " 342324545435435";
         Long aLong = Convert.toLong(a);
-        Assertions.assertEquals(Long.valueOf(342324545435435L), aLong);
+        Assert.assertEquals(Long.valueOf(342324545435435L), aLong);
         long aLong2 = ConverterRegistry.getInstance().convert(long.class, a);
-        Assertions.assertEquals(342324545435435L, aLong2);
+        Assert.assertEquals(342324545435435L, aLong2);
 
         // 带小数测试
         String b = " 342324545435435.245435435";
         Long bLong = Convert.toLong(b);
-        Assertions.assertEquals(Long.valueOf(342324545435435L), bLong);
+        Assert.assertEquals(Long.valueOf(342324545435435L), bLong);
         long bLong2 = ConverterRegistry.getInstance().convert(long.class, b);
-        Assertions.assertEquals(342324545435435L, bLong2);
+        Assert.assertEquals(342324545435435L, bLong2);
 
         // boolean测试
         boolean c = true;
         Long cLong = Convert.toLong(c);
-        Assertions.assertEquals(Long.valueOf(1), cLong);
+        Assert.assertEquals(Long.valueOf(1), cLong);
         long cLong2 = ConverterRegistry.getInstance().convert(long.class, c);
-        Assertions.assertEquals(1, cLong2);
+        Assert.assertEquals(1, cLong2);
 
         // boolean测试
         String d = "08";
         Long dLong = Convert.toLong(d);
-        Assertions.assertEquals(Long.valueOf(8), dLong);
+        Assert.assertEquals(Long.valueOf(8), dLong);
         long dLong2 = ConverterRegistry.getInstance().convert(long.class, d);
-        Assertions.assertEquals(8, dLong2);
+        Assert.assertEquals(8, dLong2);
     }
 
     @Test
     public void toCharTest() {
         String str = "aadfdsfs";
         Character c = Convert.toChar(str);
-        Assertions.assertEquals(Character.valueOf('a'), c);
+        Assert.assertEquals(Character.valueOf('a'), c);
 
         // 转换失败
         Object str2 = "";
         Character c2 = Convert.toChar(str2);
-        Assertions.assertNull(c2);
+        Assert.assertNull(c2);
     }
 
     @Test
     public void toNumberTest() {
         Object a = "12.45";
         Number number = Convert.toNumber(a);
-        Assertions.assertEquals(12.45D, number);
+        Assert.assertEquals(12.45D, number);
     }
 
     @Test
     public void emptyToNumberTest() {
         Object a = "";
         Number number = Convert.toNumber(a);
-        Assertions.assertNull(number);
+        Assert.assertNull(number);
     }
 
     @Test
@@ -145,10 +145,10 @@ public class ConvertTest {
         // 测试 int 转 byte
         int int0 = 234;
         byte byte0 = Convert.intToByte(int0);
-        Assertions.assertEquals(-22, byte0);
+        Assert.assertEquals(-22, byte0);
 
         int int1 = Convert.byteToUnsignedInt(byte0);
-        Assertions.assertEquals(int0, int1);
+        Assert.assertEquals(int0, int1);
     }
 
     @Test
@@ -159,7 +159,7 @@ public class ConvertTest {
 
         // 测试 byte 数组转 int
         int int3 = Convert.bytesToInt(bytesInt);
-        Assertions.assertEquals(int2, int3);
+        Assert.assertEquals(int2, int3);
     }
 
     @Test
@@ -170,7 +170,7 @@ public class ConvertTest {
         byte[] bytesLong = Convert.longToBytes(long1);
         long long2 = Convert.bytesToLong(bytesLong);
 
-        Assertions.assertEquals(long1, long2);
+        Assert.assertEquals(long1, long2);
     }
 
     @Test
@@ -179,7 +179,7 @@ public class ConvertTest {
         byte[] bytes = Convert.shortToBytes(short1);
         short short2 = Convert.bytesToShort(bytes);
 
-        Assertions.assertEquals(short2, short1);
+        Assert.assertEquals(short2, short1);
     }
 
     @Test
@@ -187,36 +187,36 @@ public class ConvertTest {
         List<String> list = Arrays.asList("1", "2");
         String str = Convert.toString(list);
         List<String> list2 = Convert.toList(String.class, str);
-        Assertions.assertEquals("1", list2.get(0));
-        Assertions.assertEquals("2", list2.get(1));
+        Assert.assertEquals("1", list2.get(0));
+        Assert.assertEquals("2", list2.get(1));
 
         List<Integer> list3 = Convert.toList(Integer.class, str);
-        Assertions.assertEquals(1, list3.get(0).intValue());
-        Assertions.assertEquals(2, list3.get(1).intValue());
+        Assert.assertEquals(1, list3.get(0).intValue());
+        Assert.assertEquals(2, list3.get(1).intValue());
     }
 
     @Test
     public void toListTest2() {
         String str = "1,2";
         List<String> list2 = Convert.toList(String.class, str);
-        Assertions.assertEquals("1", list2.get(0));
-        Assertions.assertEquals("2", list2.get(1));
+        Assert.assertEquals("1", list2.get(0));
+        Assert.assertEquals("2", list2.get(1));
 
         List<Integer> list3 = Convert.toList(Integer.class, str);
-        Assertions.assertEquals(1, list3.get(0).intValue());
-        Assertions.assertEquals(2, list3.get(1).intValue());
+        Assert.assertEquals(1, list3.get(0).intValue());
+        Assert.assertEquals(2, list3.get(1).intValue());
     }
 
     @Test
     public void toByteArrayTest() {
         // 测试Serializable转换为bytes，调用序列化转换
         final byte[] bytes = Convert.toPrimitiveByteArray(new Product("zhangsan", "张三", "5.1.1"));
-        Assertions.assertNotNull(bytes);
+        Assert.assertNotNull(bytes);
 
         final Product product = Convert.convert(Product.class, bytes);
-        Assertions.assertEquals("zhangsan", product.getName());
-        Assertions.assertEquals("张三", product.getCName());
-        Assertions.assertEquals("5.1.1", product.getVersion());
+        Assert.assertEquals("zhangsan", product.getName());
+        Assert.assertEquals("张三", product.getCName());
+        Assert.assertEquals("5.1.1", product.getVersion());
     }
 
     @Data

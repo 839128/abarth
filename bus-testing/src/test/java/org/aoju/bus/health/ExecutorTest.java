@@ -28,4 +28,5 @@ public class ExecutorTest {
         assertTrue(Executor.runNative(BAD_COMMAND).isEmpty());
         assertTrue(Executor.getFirstAnswer(BAD_COMMAND).isEmpty());
     }
+
 }

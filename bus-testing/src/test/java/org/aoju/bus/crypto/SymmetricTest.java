@@ -5,8 +5,8 @@ import org.aoju.bus.core.lang.Charset;
 import org.aoju.bus.core.toolkit.RandomKit;
 import org.aoju.bus.core.toolkit.StringKit;
 import org.aoju.bus.crypto.symmetric.*;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 /**
  * 对称加密算法单元测试
@@ -28,14 +28,14 @@ public class SymmetricTest {
         // 解密
         byte[] decrypt = aes.decrypt(encrypt);
 
-        Assertions.assertEquals(content, StringKit.toString(decrypt, Charset.UTF_8));
+        Assert.assertEquals(content, StringKit.toString(decrypt, Charset.UTF_8));
 
         // 加密为16进制表示
         String encryptHex = aes.encryptHex(content);
         // 解密为字符串
         String decryptStr = aes.decryptStr(encryptHex, Charset.UTF_8);
 
-        Assertions.assertEquals(content, decryptStr);
+        Assert.assertEquals(content, decryptStr);
     }
 
     @Test
@@ -53,14 +53,14 @@ public class SymmetricTest {
         // 解密
         byte[] decrypt = aes.decrypt(encrypt);
 
-        Assertions.assertEquals(content, StringKit.toString(decrypt));
+        Assert.assertEquals(content, StringKit.toString(decrypt));
 
         // 加密为16进制表示
         String encryptHex = aes.encryptHex(content);
         // 解密为字符串
         String decryptStr = aes.decryptStr(encryptHex, Charset.UTF_8);
 
-        Assertions.assertEquals(content, decryptStr);
+        Assert.assertEquals(content, decryptStr);
     }
 
     @Test
@@ -74,14 +74,14 @@ public class SymmetricTest {
         // 解密
         byte[] decrypt = aes.decrypt(encrypt);
 
-        Assertions.assertEquals(content, StringKit.toString(decrypt));
+        Assert.assertEquals(content, StringKit.toString(decrypt));
 
         // 加密为16进制表示
         String encryptHex = aes.encryptHex(content);
         // 解密为字符串
         String decryptStr = aes.decryptStr(encryptHex, Charset.UTF_8);
 
-        Assertions.assertEquals(content, decryptStr);
+        Assert.assertEquals(content, decryptStr);
     }
 
     @Test
@@ -92,7 +92,7 @@ public class SymmetricTest {
         // 加密为16进制表示
         String encryptHex = aes.encryptHex(content);
 
-        Assertions.assertEquals("cd0e3a249eaf0ed80c330338508898c4bddcfd665a1b414622164a273ca5daf7b4ebd2c00aaa66b84dd0a237708dac8e", encryptHex);
+        Assert.assertEquals("cd0e3a249eaf0ed80c330338508898c4bddcfd665a1b414622164a273ca5daf7b4ebd2c00aaa66b84dd0a237708dac8e", encryptHex);
     }
 
     @Test
@@ -104,7 +104,7 @@ public class SymmetricTest {
         String encryptHex = aes.encryptHex(content);
         // 解密
         String decryptStr = aes.decryptStr(encryptHex);
-        Assertions.assertEquals(content, decryptStr);
+        Assert.assertEquals(content, decryptStr);
     }
 
     @Test
@@ -117,12 +117,12 @@ public class SymmetricTest {
         byte[] encrypt = des.encrypt(content);
         byte[] decrypt = des.decrypt(encrypt);
 
-        Assertions.assertEquals(content, StringKit.toString(decrypt));
+        Assert.assertEquals(content, StringKit.toString(decrypt));
 
         String encryptHex = des.encryptHex(content);
         String decryptStr = des.decryptStr(encryptHex);
 
-        Assertions.assertEquals(content, decryptStr);
+        Assert.assertEquals(content, decryptStr);
     }
 
     @Test
@@ -135,12 +135,12 @@ public class SymmetricTest {
         byte[] encrypt = des.encrypt(content);
         byte[] decrypt = des.decrypt(encrypt);
 
-        Assertions.assertEquals(content, StringKit.toString(decrypt));
+        Assert.assertEquals(content, StringKit.toString(decrypt));
 
         String encryptHex = des.encryptHex(content);
         String decryptStr = des.decryptStr(encryptHex);
 
-        Assertions.assertEquals(content, decryptStr);
+        Assert.assertEquals(content, decryptStr);
     }
 
     @Test
@@ -152,12 +152,12 @@ public class SymmetricTest {
         byte[] encrypt = des.encrypt(content);
         byte[] decrypt = des.decrypt(encrypt);
 
-        Assertions.assertEquals(content, StringKit.toString(decrypt));
+        Assert.assertEquals(content, StringKit.toString(decrypt));
 
         String encryptHex = des.encryptHex(content);
         String decryptStr = des.decryptStr(encryptHex);
 
-        Assertions.assertEquals(content, decryptStr);
+        Assert.assertEquals(content, decryptStr);
     }
 
     @Test
@@ -171,12 +171,12 @@ public class SymmetricTest {
         byte[] encrypt = des.encrypt(content);
         byte[] decrypt = des.decrypt(encrypt);
 
-        Assertions.assertEquals(content, StringKit.toString(decrypt));
+        Assert.assertEquals(content, StringKit.toString(decrypt));
 
         String encryptHex = des.encryptHex(content);
         String decryptStr = des.decryptStr(encryptHex);
 
-        Assertions.assertEquals(content, decryptStr);
+        Assert.assertEquals(content, decryptStr);
     }
 
     @Test
@@ -190,12 +190,12 @@ public class SymmetricTest {
         byte[] encrypt = des.encrypt(content);
         byte[] decrypt = des.decrypt(encrypt);
 
-        Assertions.assertEquals(content, StringKit.toString(decrypt));
+        Assert.assertEquals(content, StringKit.toString(decrypt));
 
         String encryptHex = des.encryptHex(content);
         String decryptStr = des.decryptStr(encryptHex);
 
-        Assertions.assertEquals(content, decryptStr);
+        Assert.assertEquals(content, decryptStr);
     }
 
     @Test
@@ -204,9 +204,9 @@ public class SymmetricTest {
         String key = "CompleteVictory";
 
         String encrypt = Vigenere.encrypt(content, key);
-        Assertions.assertEquals("zXScRZ]KIOMhQjc0\\bYRXZOJK[Vi", encrypt);
+        Assert.assertEquals("zXScRZ]KIOMhQjc0\\bYRXZOJK[Vi", encrypt);
         String decrypt = Vigenere.decrypt(encrypt, key);
-        Assertions.assertEquals(content, decrypt);
+        Assert.assertEquals(content, decrypt);
     }
 
 }

@@ -1,6 +1,6 @@
 package org.aoju.bus.core.lang;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.Set;
 

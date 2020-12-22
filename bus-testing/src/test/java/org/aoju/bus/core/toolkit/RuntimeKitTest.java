@@ -1,7 +1,7 @@
 package org.aoju.bus.core.toolkit;
 
 import org.aoju.bus.core.lang.Console;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 /**
  * 命令行单元测试

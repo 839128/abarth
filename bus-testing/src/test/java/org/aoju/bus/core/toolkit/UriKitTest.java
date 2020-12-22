@@ -1,7 +1,7 @@
 package org.aoju.bus.core.toolkit;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -16,51 +16,51 @@ public class UriKitTest {
     public void normalizeTest() {
         String url = "http://www.aoju.org//aaa/bbb";
         String normalize = UriKit.normalize(url);
-        Assertions.assertEquals("http://www.aoju.org/aaa/bbb", normalize);
+        Assert.assertEquals("http://www.aoju.org/aaa/bbb", normalize);
 
         url = "www.aoju.org//aaa/bbb";
         normalize = UriKit.normalize(url);
-        Assertions.assertEquals("http://www.aoju.org/aaa/bbb", normalize);
+        Assert.assertEquals("http://www.aoju.org/aaa/bbb", normalize);
     }
 
     @Test
     public void normalizeTest2() {
         String url = "http://www.aoju.org//aaa/\\bbb?a=1&b=2";
         String normalize = UriKit.normalize(url);
-        Assertions.assertEquals("http://www.aoju.org/aaa/bbb?a=1&b=2", normalize);
+        Assert.assertEquals("http://www.aoju.org/aaa/bbb?a=1&b=2", normalize);
 
         url = "www.aoju.org//aaa/bbb?a=1&b=2";
         normalize = UriKit.normalize(url);
-        Assertions.assertEquals("http://www.aoju.org/aaa/bbb?a=1&b=2", normalize);
+        Assert.assertEquals("http://www.aoju.org/aaa/bbb?a=1&b=2", normalize);
     }
 
     @Test
     public void normalizeTest3() {
         String url = "http://www.aoju.org//aaa/\\bbb?a=1&b=2";
         String normalize = UriKit.normalize(url, false);
-        Assertions.assertEquals("http://www.aoju.org/aaa/bbb?a=1&b=2", normalize);
+        Assert.assertEquals("http://www.aoju.org/aaa/bbb?a=1&b=2", normalize);
 
         url = "www.aoju.org//aaa/bbb?a=1&b=2";
         normalize = UriKit.normalize(url, false);
-        Assertions.assertEquals("http://www.aoju.org/aaa/bbb?a=1&b=2", normalize);
+        Assert.assertEquals("http://www.aoju.org/aaa/bbb?a=1&b=2", normalize);
 
         url = "\\/www.aoju.org//aaa/bbb?a=1&b=2";
         normalize = UriKit.normalize(url, false);
-        Assertions.assertEquals("http://www.aoju.org/aaa/bbb?a=1&b=2", normalize);
+        Assert.assertEquals("http://www.aoju.org/aaa/bbb?a=1&b=2", normalize);
     }
 
     @Test
     public void normalizeIpv6Test() {
         String url = "http://[fe80::8f8:2022:a603:d180]:9439";
         String normalize = UriKit.normalize("http://[fe80::8f8:2022:a603:d180]:9439", true);
-        Assertions.assertEquals(url, normalize);
+        Assert.assertEquals(url, normalize);
     }
 
     @Test
     public void formatTest() {
         String url = "//www.aoju.org//aaa/\\bbb?a=1&b=2";
         String normalize = UriKit.normalize(url);
-        Assertions.assertEquals("http://www.aoju.org/aaa/bbb?a=1&b=2", normalize);
+        Assert.assertEquals("http://www.aoju.org/aaa/bbb?a=1&b=2", normalize);
     }
 
     @Test
@@ -68,18 +68,18 @@ public class UriKitTest {
         String url = "https://www.aoju.org//aaa/\\bbb?a=1&b=2";
         String normalize = UriKit.normalize(url);
         URI host = UriKit.getHost(new URL(normalize));
-        Assertions.assertEquals("https://www.aoju.org", host.toString());
+        Assert.assertEquals("https://www.aoju.org", host.toString());
     }
 
     @Test
     public void encodeTest() {
         String body = "366466 - 副本.jpg";
         String encode = UriKit.encode(body);
-        Assertions.assertEquals("366466%20-%20%E5%89%AF%E6%9C%AC.jpg", encode);
-        Assertions.assertEquals(body, UriKit.decode(encode));
+        Assert.assertEquals("366466%20-%20%E5%89%AF%E6%9C%AC.jpg", encode);
+        Assert.assertEquals(body, UriKit.decode(encode));
 
         String encode2 = UriKit.encodeQuery(body);
-        Assertions.assertEquals("366466%20-%20%E5%89%AF%E6%9C%AC.jpg", encode2);
+        Assert.assertEquals("366466%20-%20%E5%89%AF%E6%9C%AC.jpg", encode2);
     }
 
 }

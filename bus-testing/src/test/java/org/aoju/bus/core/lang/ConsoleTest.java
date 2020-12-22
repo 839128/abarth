@@ -1,7 +1,7 @@
 package org.aoju.bus.core.lang;
 
 import org.aoju.bus.core.toolkit.ThreadKit;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 /**
  * 控制台单元测试

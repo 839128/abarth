@@ -1,8 +1,8 @@
 package org.aoju.bus.core.toolkit;
 
 import org.aoju.bus.core.lang.Console;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.math.RoundingMode;
 import java.util.List;
@@ -13,19 +13,19 @@ public class RandomKitTest {
     @Test
     public void randomEleSetTest() {
         Set<Integer> set = RandomKit.randomEleSet(CollKit.newArrayList(1, 2, 3, 4, 5, 6), 2);
-        Assertions.assertEquals(set.size(), 2);
+        Assert.assertEquals(set.size(), 2);
     }
 
     @Test
     public void randomElesTest() {
         List<Integer> result = RandomKit.randomEles(CollKit.newArrayList(1, 2, 3, 4, 5, 6), 2);
-        Assertions.assertEquals(result.size(), 2);
+        Assert.assertEquals(result.size(), 2);
     }
 
     @Test
     public void randomDoubleTest() {
         double randomDouble = RandomKit.randomDouble(0, 1, 0, RoundingMode.HALF_UP);
-        Assertions.assertTrue(randomDouble <= 1);
+        Assert.assertTrue(randomDouble <= 1);
     }
 
     @Test

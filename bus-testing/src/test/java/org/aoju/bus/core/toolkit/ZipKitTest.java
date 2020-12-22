@@ -2,8 +2,8 @@ package org.aoju.bus.core.toolkit;
 
 import org.aoju.bus.core.lang.Charset;
 import org.aoju.bus.core.lang.Console;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.io.File;
 
@@ -43,7 +43,7 @@ public class ZipKitTest {
     @Test
     public void unzipFileBytesTest() {
         byte[] fileBytes = ZipKit.unzipFileBytes(FileKit.file("/data/02 电力相关设备及服务2-241-.zip"), Charset.GBK, "images/CE-EP-HY-MH01-ES-0001.jpg");
-        Assertions.assertNotNull(fileBytes);
+        Assert.assertNotNull(fileBytes);
     }
 
     @Test
@@ -53,11 +53,11 @@ public class ZipKitTest {
         byte[] gzip = ZipKit.gzip(bytes);
 
         //保证gzip长度正常
-        Assertions.assertEquals(68, gzip.length);
+        Assert.assertEquals(68, gzip.length);
 
         byte[] unGzip = ZipKit.unGzip(gzip);
         //保证正常还原
-        Assertions.assertEquals(data, StringKit.toString(unGzip));
+        Assert.assertEquals(data, StringKit.toString(unGzip));
     }
 
     @Test
@@ -67,17 +67,17 @@ public class ZipKitTest {
         byte[] gzip = ZipKit.zlib(bytes, 0);
 
         //保证zlib长度正常
-        Assertions.assertEquals(62, gzip.length);
+        Assert.assertEquals(62, gzip.length);
         byte[] unGzip = ZipKit.unZlib(gzip);
         //保证正常还原
-        Assertions.assertEquals(data, StringKit.toString(unGzip));
+        Assert.assertEquals(data, StringKit.toString(unGzip));
 
         gzip = ZipKit.zlib(bytes, 9);
         //保证zlib长度正常
-        Assertions.assertEquals(56, gzip.length);
+        Assert.assertEquals(56, gzip.length);
         byte[] unGzip2 = ZipKit.unZlib(gzip);
         //保证正常还原
-        Assertions.assertEquals(data, StringKit.toString(unGzip2));
+        Assert.assertEquals(data, StringKit.toString(unGzip2));
     }
 
 }

@@ -2,8 +2,8 @@ package org.aoju.bus.core.lang;
 
 import org.aoju.bus.core.text.Similarity;
 import org.aoju.bus.core.toolkit.StringKit;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class SimhashTest {
 
@@ -14,11 +14,11 @@ public class SimhashTest {
 
         Similarity simhash = new Similarity();
         long hash = simhash.hash(StringKit.split(text1, ' '));
-        Assertions.assertTrue(hash != 0);
+        Assert.assertTrue(hash != 0);
 
         simhash.store(hash);
         boolean duplicate = simhash.equals(StringKit.split(text2, ' '));
-        Assertions.assertTrue(duplicate);
+        Assert.assertTrue(duplicate);
     }
 
 }

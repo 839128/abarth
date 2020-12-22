@@ -1,8 +1,8 @@
 package org.aoju.bus.core.convert;
 
 import org.aoju.bus.core.toolkit.DateKit;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -14,42 +14,42 @@ public class DateConvertTest {
     public void toDateTest() {
         String a = "2017-05-06";
         Date value = Convert.toDate(a);
-        Assertions.assertEquals(a, DateKit.formatDate(value));
+        Assert.assertEquals(a, DateKit.formatDate(value));
 
         long timeLong = DateKit.date().getTime();
         Date value2 = Convert.toDate(timeLong);
-        Assertions.assertEquals(timeLong, value2.getTime());
+        Assert.assertEquals(timeLong, value2.getTime());
     }
 
     @Test
     public void toDateFromIntTest() {
         int dateLong = -1497600000;
         Date value = Convert.toDate(dateLong);
-        Assertions.assertNotNull(value);
-        Assertions.assertEquals("Mon Dec 15 00:00:00 CST 1969", value.toString());
+        Assert.assertNotNull(value);
+        Assert.assertEquals("Mon Dec 15 00:00:00 CST 1969", value.toString());
 
         final java.sql.Date sqlDate = Convert.convert(java.sql.Date.class, dateLong);
-        Assertions.assertNotNull(sqlDate);
-        Assertions.assertEquals("1969-12-15", sqlDate.toString());
+        Assert.assertNotNull(sqlDate);
+        Assert.assertEquals("1969-12-15", sqlDate.toString());
     }
 
     @Test
     public void toDateFromLocalDateTimeTest() {
         LocalDateTime localDateTime = LocalDateTime.parse("2017-05-06T08:30:00", DateTimeFormatter.ISO_DATE_TIME);
         Date value = Convert.toDate(localDateTime);
-        Assertions.assertNotNull(value);
-        Assertions.assertEquals("2017-05-06", DateKit.formatDate(value));
+        Assert.assertNotNull(value);
+        Assert.assertEquals("2017-05-06", DateKit.formatDate(value));
     }
 
     @Test
     public void toSqlDateTest() {
         String a = "2017-05-06";
         java.sql.Date value = Convert.convert(java.sql.Date.class, a);
-        Assertions.assertEquals("2017-05-06", value.toString());
+        Assert.assertEquals("2017-05-06", value.toString());
 
         long timeLong = DateKit.date().getTime();
         java.sql.Date value2 = Convert.convert(java.sql.Date.class, timeLong);
-        Assertions.assertEquals(timeLong, value2.getTime());
+        Assert.assertEquals(timeLong, value2.getTime());
     }
 
 }

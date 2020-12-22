@@ -1,8 +1,8 @@
 package org.aoju.bus.core.clone;
 
 import org.aoju.bus.core.lang.exception.InstrumentException;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 /**
  * 克隆单元测试
@@ -15,12 +15,12 @@ public class CloneTest {
         //实现Cloneable接口
         Cat cat = new Cat();
         Cat cat2 = cat.clone();
-        Assertions.assertEquals(cat, cat2);
+        Assert.assertEquals(cat, cat2);
 
         //继承CloneSupport类
         Dog dog = new Dog();
         Dog dog2 = dog.clone();
-        Assertions.assertEquals(dog, dog2);
+        Assert.assertEquals(dog, dog2);
     }
 
     /**

@@ -2,7 +2,7 @@ package org.aoju.bus.core.io.file;
 
 import org.aoju.bus.core.lang.Charset;
 import org.aoju.bus.core.toolkit.FileKit;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 public class TailerTest {
 

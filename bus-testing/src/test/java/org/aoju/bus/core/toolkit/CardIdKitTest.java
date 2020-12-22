@@ -1,6 +1,7 @@
 package org.aoju.bus.core.toolkit;
 
-import org.junit.jupiter.api.Test;
+
+import org.junit.Test;
 
 public class CardIdKitTest {
 

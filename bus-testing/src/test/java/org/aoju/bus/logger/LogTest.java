@@ -1,7 +1,7 @@
 package org.aoju.bus.logger;
 
 import org.aoju.bus.logger.level.Level;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 /**
  * 日志门面单元测试

@@ -2,8 +2,8 @@ package org.aoju.bus.core.codec;
 
 import org.aoju.bus.core.lang.Charset;
 import org.aoju.bus.core.toolkit.StringKit;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 /**
  * Base64单元测试
@@ -16,7 +16,7 @@ public class Base64Test {
         String encode = Base64.encode(a);
 
         String decodeStr = Base64.decodeStr(encode);
-        Assertions.assertEquals(a, decodeStr);
+        Assert.assertEquals(a, decodeStr);
     }
 
     @Test
@@ -25,27 +25,27 @@ public class Base64Test {
         String encode = Base64.encode(a, Charset.UTF_8);
 
         String decodeStr = Base64.decodeStr(encode, Charset.UTF_8);
-        Assertions.assertEquals(a, decodeStr);
+        Assert.assertEquals(a, decodeStr);
     }
 
     @Test
     public void encodeAndDecodeTest3() {
         String a = ":";
         String encode = Base64.encode(a);
-        Assertions.assertEquals("Og==", encode);
+        Assert.assertEquals("Og==", encode);
 
         String decodeStr = Base64.decodeStr(encode);
-        Assertions.assertEquals(a, decodeStr);
+        Assert.assertEquals(a, decodeStr);
     }
 
     @Test
     public void urlSafeEncodeAndDecodeTest() {
         String a = "需要安全感123";
         String encode = StringKit.toString(Base64.encodeUrlSafe(StringKit.bytes(a), false));
-        Assertions.assertEquals("6ZyA6KaB5a6J5YWo5oSfMTIz", encode);
+        Assert.assertEquals("6ZyA6KaB5a6J5YWo5oSfMTIz", encode);
 
         String decodeStr = Base64.decodeStr(encode);
-        Assertions.assertEquals(a, decodeStr);
+        Assert.assertEquals(a, decodeStr);
     }
 
 }

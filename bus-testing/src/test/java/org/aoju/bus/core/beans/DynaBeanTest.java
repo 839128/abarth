@@ -1,8 +1,8 @@
 package org.aoju.bus.core.beans;
 
 import lombok.Data;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 /**
  * {@link DynaBean}单元测试
@@ -17,18 +17,18 @@ public class DynaBeanTest {
         bean.set("age", 12);
 
         String name = bean.get("name");
-        Assertions.assertEquals(user.getName(), name);
+        Assert.assertEquals(user.getName(), name);
         int age = bean.get("age");
-        Assertions.assertEquals(user.getAge(), age);
+        Assert.assertEquals(user.getAge(), age);
 
         //重复包装测试
         DynaBean bean2 = new DynaBean(bean);
         User user2 = bean2.getBean();
-        Assertions.assertEquals(user, user2);
+        Assert.assertEquals(user, user2);
 
         //执行指定方法
         Object invoke = bean2.invoke("test");
-        Assertions.assertEquals("test for 李华", invoke);
+        Assert.assertEquals("test for 李华", invoke);
     }
 
     @Data

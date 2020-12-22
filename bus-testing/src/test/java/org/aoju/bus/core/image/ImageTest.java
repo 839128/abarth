@@ -1,7 +1,7 @@
 package org.aoju.bus.core.image;
 
 import org.aoju.bus.core.toolkit.FileKit;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 public class ImageTest {
 

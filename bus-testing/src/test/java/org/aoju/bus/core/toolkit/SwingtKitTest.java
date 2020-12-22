@@ -1,7 +1,8 @@
 package org.aoju.bus.core.toolkit;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
+
 
 public class SwingtKitTest {
 
@@ -21,7 +22,7 @@ public class SwingtKitTest {
             SwingKit.setStr("test");
 
             String test = SwingKit.getStr();
-            Assertions.assertEquals("test", test);
+            Assert.assertEquals("test", test);
         } catch (java.awt.HeadlessException e) {
             // ignore
         }

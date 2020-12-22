@@ -7,7 +7,7 @@
 
     <groupId>org.aoju</groupId>
     <artifactId>bus-example</artifactId>
-    <version>6.1.2</version>
+    <version>6.1.6</version>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
@@ -52,6 +52,11 @@
             <groupId>org.aoju</groupId>
             <artifactId>bus-opencv</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aoju</groupId>
+            <artifactId>lancia</artifactId>
+            <version>1.2.0</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

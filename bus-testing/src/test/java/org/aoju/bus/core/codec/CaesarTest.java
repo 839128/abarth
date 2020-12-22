@@ -1,7 +1,7 @@
 package org.aoju.bus.core.codec;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class CaesarTest {
 
@@ -12,7 +12,7 @@ public class CaesarTest {
         String encode = Caesar.encode(str, 3);
 
         String decode = Caesar.decode(encode, 3);
-        Assertions.assertEquals(str, decode);
+        Assert.assertEquals(str, decode);
     }
 
 }

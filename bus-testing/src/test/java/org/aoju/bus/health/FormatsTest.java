@@ -7,6 +7,7 @@ import java.text.DecimalFormatSymbols;
 
 import static org.junit.Assert.assertEquals;
 
+
 /**
  * The Class FormatsTest.
  */
@@ -114,17 +115,6 @@ public class FormatsTest {
         assertEquals("0 days, 03:25:45", Formats.formatElapsedSecs(12345));
         assertEquals("1 days, 10:17:36", Formats.formatElapsedSecs(123456));
         assertEquals("14 days, 06:56:07", Formats.formatElapsedSecs(1234567));
-    }
-
-    /**
-     * Test round.
-     */
-    @Test
-    public void testRound() {
-        assertEquals(42.42, Formats.round(42.423f, 2), 0.00001f);
-        assertEquals(42.43, Formats.round(42.425f, 2), 0.00001f);
-        assertEquals(42.5, Formats.round(42.499f, 2), 0.00001f);
-        assertEquals(42, Formats.round(42, 2), 0.00001f);
     }
 
     /**

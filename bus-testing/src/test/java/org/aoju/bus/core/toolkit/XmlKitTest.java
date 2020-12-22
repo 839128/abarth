@@ -2,8 +2,8 @@ package org.aoju.bus.core.toolkit;
 
 import org.aoju.bus.core.lang.Console;
 import org.aoju.bus.core.map.MapBuilder;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 import org.w3c.dom.Document;
 
 import javax.xml.xpath.XPathConstants;
@@ -27,7 +27,7 @@ public class XmlKitTest {
                 + "</returnsms>";
         Document docResult = XmlKit.parseXml(result);
         String elementText = XmlKit.getText(docResult.getDocumentElement(), "returnstatus");
-        Assertions.assertEquals("Success", elementText);
+        Assert.assertEquals("Success", elementText);
     }
 
     @Test
@@ -56,7 +56,7 @@ public class XmlKitTest {
                 + "</returnsms>";
         Document docResult = XmlKit.parseXml(result);
         Object value = XmlKit.getByXPath("//returnsms/message", docResult, XPathConstants.STRING);
-        Assertions.assertEquals("ok", value);
+        Assert.assertEquals("ok", value);
     }
 
     @Test
@@ -73,13 +73,13 @@ public class XmlKitTest {
         Map<String, Object> map = XmlKit.xmlToMap(xml);
         Console.log(map);
 
-        Assertions.assertEquals(6, map.size());
-        Assertions.assertEquals("Success", map.get("returnstatus"));
-        Assertions.assertEquals("ok", map.get("message"));
-        Assertions.assertEquals("1490", map.get("remainpoint"));
-        Assertions.assertEquals("885", map.get("taskID"));
-        Assertions.assertEquals("1", map.get("successCounts"));
-        Assertions.assertEquals("subText", map.get("newNode").toString());
+        Assert.assertEquals(6, map.size());
+        Assert.assertEquals("Success", map.get("returnstatus"));
+        Assert.assertEquals("ok", map.get("message"));
+        Assert.assertEquals("1490", map.get("remainpoint"));
+        Assert.assertEquals("885", map.get("taskID"));
+        Assert.assertEquals("1", map.get("successCounts"));
+        Assert.assertEquals("subText", map.get("newNode").toString());
     }
 
     @Test
@@ -87,8 +87,8 @@ public class XmlKitTest {
         String xml = "<root><name>张三</name><name>李四</name></root>";
         Map<String, Object> map = XmlKit.xmlToMap(xml);
 
-        Assertions.assertEquals(1, map.size());
-        Assertions.assertEquals(CollKit.newArrayList("张三", "李四"), map.get("name"));
+        Assert.assertEquals(1, map.size());
+        Assert.assertEquals(CollKit.newArrayList("张三", "李四"), map.get("name"));
     }
 
     @Test
@@ -100,7 +100,7 @@ public class XmlKitTest {
                 .build();
         Document doc = XmlKit.mapToXml(map, "user");
         // Console.log(XmlKit.toStr(doc, false));
-        Assertions.assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>"//
+        Assert.assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>"//
                         + "<user>"//
                         + "<name>张三</name>"//
                         + "<age>12</age>"//
@@ -115,7 +115,7 @@ public class XmlKitTest {
     @Test
     public void readTest() {
         Document doc = XmlKit.readXML("test.xml");
-        Assertions.assertNotNull(doc);
+        Assert.assertNotNull(doc);
     }
 
 }

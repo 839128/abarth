@@ -3,8 +3,8 @@ package org.aoju.bus.core.toolkit;
 import org.aoju.bus.core.lang.tree.TreeEntity;
 import org.aoju.bus.core.lang.tree.TreeMap;
 import org.aoju.bus.core.lang.tree.TreeNode;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class TreeKitTest {
     public void sampleTree() {
         List<TreeMap<String>> treeNodes = TreeKit.build(nodeList, "0");
         for (TreeMap<String> tree : treeNodes) {
-            Assertions.assertNotNull(tree);
+            Assert.assertNotNull(tree);
         }
     }
 
@@ -57,7 +57,7 @@ public class TreeKitTest {
                     tree.putExtra("other", new Object());
                 });
 
-        Assertions.assertEquals(treeNodes.size(), 2);
+        Assert.assertEquals(treeNodes.size(), 2);
     }
 
 }

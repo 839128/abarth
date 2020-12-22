@@ -8,7 +8,7 @@ import org.aoju.bus.logger.dialect.log4j.Log4jLogFactory;
 import org.aoju.bus.logger.dialect.log4j2.Log4j2LogFactory;
 import org.aoju.bus.logger.dialect.slf4j.Slf4jLogFactory;
 import org.aoju.bus.logger.dialect.tinylog.TinyLogFactory;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 /**
  * 日志门面单元测试

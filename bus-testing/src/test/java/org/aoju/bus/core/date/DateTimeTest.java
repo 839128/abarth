@@ -2,8 +2,8 @@ package org.aoju.bus.core.date;
 
 import org.aoju.bus.core.lang.Fields;
 import org.aoju.bus.core.toolkit.DateKit;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 /**
  * DateTime单元测试
@@ -16,48 +16,48 @@ public class DateTimeTest {
 
         // 年
         int year = dateTime.year();
-        Assertions.assertEquals(2017, year);
+        Assert.assertEquals(2017, year);
 
         // 季度（非季节）
         Fields.Quarter season = dateTime.quarterEnum();
-        Assertions.assertEquals(Fields.Quarter.Q1, season);
+        Assert.assertEquals(Fields.Quarter.Q1, season);
 
         // 月份
         Fields.Month month = dateTime.monthEnum();
-        Assertions.assertEquals(Fields.Month.JANUARY, month);
+        Assert.assertEquals(Fields.Month.JANUARY, month);
 
         // 日
         int day = dateTime.dayOfMonth();
-        Assertions.assertEquals(5, day);
+        Assert.assertEquals(5, day);
     }
 
     @Test
     public void quarterTest() {
         DateTime dateTime = new DateTime("2017-01-05 12:34:23", Fields.NORM_DATETIME_FORMAT);
         Fields.Quarter quarter = dateTime.quarterEnum();
-        Assertions.assertEquals(Fields.Quarter.Q1, quarter);
+        Assert.assertEquals(Fields.Quarter.Q1, quarter);
 
         dateTime = new DateTime("2017-04-05 12:34:23", Fields.NORM_DATETIME_FORMAT);
         quarter = dateTime.quarterEnum();
-        Assertions.assertEquals(Fields.Quarter.Q2, quarter);
+        Assert.assertEquals(Fields.Quarter.Q2, quarter);
 
         dateTime = new DateTime("2017-07-05 12:34:23", Fields.NORM_DATETIME_FORMAT);
         quarter = dateTime.quarterEnum();
-        Assertions.assertEquals(Fields.Quarter.Q3, quarter);
+        Assert.assertEquals(Fields.Quarter.Q3, quarter);
 
         dateTime = new DateTime("2017-10-05 12:34:23", Fields.NORM_DATETIME_FORMAT);
         quarter = dateTime.quarterEnum();
-        Assertions.assertEquals(Fields.Quarter.Q4, quarter);
+        Assert.assertEquals(Fields.Quarter.Q4, quarter);
 
         // 精确到毫秒
         DateTime beginTime = new DateTime("2017-10-01 00:00:00.000", Fields.NORM_DATETIME_MS_FORMAT);
         dateTime = DateKit.beginOfQuarter(dateTime);
-        Assertions.assertEquals(beginTime, dateTime);
+        Assert.assertEquals(beginTime, dateTime);
 
         // 精确到毫秒
         DateTime endTime = new DateTime("2017-12-31 23:59:59.999", Fields.NORM_DATETIME_MS_FORMAT);
         dateTime = DateKit.endOfQuarter(dateTime);
-        Assertions.assertEquals(endTime, dateTime);
+        Assert.assertEquals(endTime, dateTime);
     }
 
     @Test
@@ -65,36 +65,36 @@ public class DateTimeTest {
         DateTime dateTime = new DateTime("2017-01-05 12:34:23", Fields.NORM_DATETIME_FORMAT);
 
         // 默认情况下DateTime为可变对象
-        DateTime offsite = dateTime.offset(Fields.DateField.YEAR, 0);
-        Assertions.assertTrue(offsite == dateTime);
+        DateTime offsite = dateTime.offset(Fields.Type.YEAR, 0);
+        Assert.assertTrue(offsite == dateTime);
 
         // 设置为不可变对象后变动将返回新对象
         dateTime.setMutable(false);
-        offsite = dateTime.offset(Fields.DateField.YEAR, 0);
-        Assertions.assertFalse(offsite == dateTime);
+        offsite = dateTime.offset(Fields.Type.YEAR, 0);
+        Assert.assertFalse(offsite == dateTime);
     }
 
     @Test
     public void toStringTest() {
         DateTime dateTime = new DateTime("2017-01-05 12:34:23", Fields.NORM_DATETIME_FORMAT);
-        Assertions.assertEquals("2017-01-05 12:34:23", dateTime.toString());
+        Assert.assertEquals("2017-01-05 12:34:23", dateTime.toString());
 
         String dateStr = dateTime.toString("yyyy/MM/dd");
-        Assertions.assertEquals("2017/01/05", dateStr);
+        Assert.assertEquals("2017/01/05", dateStr);
     }
 
     @Test
     public void monthTest() {
         int month = DateKit.parse("2017-07-01").month();
-        Assertions.assertEquals(6, month);
+        Assert.assertEquals(6, month);
     }
 
     @Test
     public void weekOfYearTest() {
         DateTime date = DateKit.parse("2016-12-27");
-        Assertions.assertEquals(2016, date.year());
+        Assert.assertEquals(2016, date.year());
         //跨年的周返回的总是1
-        Assertions.assertEquals(1, date.weekOfYear());
+        Assert.assertEquals(1, date.weekOfYear());
     }
 
 }

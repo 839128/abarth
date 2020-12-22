@@ -1,7 +1,7 @@
 package org.aoju.bus.core.codec;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class MorseTest {
 
@@ -11,24 +11,24 @@ public class MorseTest {
     public void test0() {
         String text = "Hello World!";
         String morse = "...././.-../.-../---/-...../.--/---/.-./.-../-../-.-.--/";
-        Assertions.assertEquals(morse, morseCoder.encode(text));
-        Assertions.assertEquals(morseCoder.decode(morse), text.toUpperCase());
+        Assert.assertEquals(morse, morseCoder.encode(text));
+        Assert.assertEquals(morseCoder.decode(morse), text.toUpperCase());
     }
 
     @Test
     public void test1() {
         String text = "你好，世界！";
         String morse = "-..----.--...../-.--..-.-----.-/--------....--../-..---....-.--./---.-.-.-..--../--------.......-/";
-        Assertions.assertEquals(morseCoder.encode(text), morse);
-        Assertions.assertEquals(morseCoder.decode(morse), text);
+        Assert.assertEquals(morseCoder.encode(text), morse);
+        Assert.assertEquals(morseCoder.decode(morse), text);
     }
 
     @Test
     public void test2() {
         String text = "こんにちは";
         String morse = "--.....-.-..--/--....-..-..--/--.....--.-.--/--.....--....-/--.....--.----/";
-        Assertions.assertEquals(morseCoder.encode(text), morse);
-        Assertions.assertEquals(morseCoder.decode(morse), text);
+        Assert.assertEquals(morseCoder.encode(text), morse);
+        Assert.assertEquals(morseCoder.decode(morse), text);
     }
 
 }

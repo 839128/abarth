@@ -2,7 +2,7 @@ package org.aoju.bus.core.io;
 
 import org.aoju.bus.core.io.file.FileCopier;
 import org.aoju.bus.core.toolkit.FileKit;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 /**
  * 文件拷贝单元测试

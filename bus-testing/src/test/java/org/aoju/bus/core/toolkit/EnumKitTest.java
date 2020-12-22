@@ -1,7 +1,7 @@
 package org.aoju.bus.core.toolkit;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.util.List;
 import java.util.Map;
@@ -14,37 +14,37 @@ public class EnumKitTest {
     @Test
     public void getNamesTest() {
         List<String> names = EnumKit.getNames(TestEnum.class);
-        Assertions.assertEquals(CollKit.newArrayList("TEST1", "TEST2", "TEST3"), names);
+        Assert.assertEquals(CollKit.newArrayList("TEST1", "TEST2", "TEST3"), names);
     }
 
     @Test
     public void getFieldValuesTest() {
         List<Object> types = EnumKit.getFieldValues(TestEnum.class, "type");
-        Assertions.assertEquals(CollKit.newArrayList("type1", "type2", "type3"), types);
+        Assert.assertEquals(CollKit.newArrayList("type1", "type2", "type3"), types);
     }
 
     @Test
     public void getFieldNamesTest() {
         List<String> names = EnumKit.getFieldNames(TestEnum.class);
-        Assertions.assertEquals(CollKit.newArrayList("type", "name"), names);
+        Assert.assertEquals(CollKit.newArrayList("type", "name"), names);
     }
 
     @Test
     public void likeValueOfTest() {
         TestEnum value = EnumKit.likeValueOf(TestEnum.class, "type2");
-        Assertions.assertEquals(TestEnum.TEST2, value);
+        Assert.assertEquals(TestEnum.TEST2, value);
     }
 
     @Test
     public void getEnumMapTest() {
         Map<String, TestEnum> enumMap = EnumKit.getEnumMap(TestEnum.class);
-        Assertions.assertEquals(TestEnum.TEST1, enumMap.get("TEST1"));
+        Assert.assertEquals(TestEnum.TEST1, enumMap.get("TEST1"));
     }
 
     @Test
     public void getNameFieldMapTest() {
         Map<String, Object> enumMap = EnumKit.getFieldNames(TestEnum.class, "type");
-        Assertions.assertEquals("type1", enumMap.get("TEST1"));
+        Assert.assertEquals("type1", enumMap.get("TEST1"));
     }
 
     public enum TestEnum {
