@@ -65,9 +65,9 @@ public class HolidayTest {
         put("2021-10-09", "2021-10-09 国庆节调休 2021-10-01");
       }
     };
-    Solar solar = Solar.fromYmd(2021, 1, 1);
-    while (solar.toYmd().compareTo("2022-01-01") < 0) {
-      String ymd = solar.toYmd();
+    Solar solar = new Solar(2021, 1, 1);
+    while (solar.build().compareTo("2022-01-01") < 0) {
+      String ymd = solar.build();
       String holiday = holidays.get(ymd);
       Assert.assertEquals(ymd, holiday + "", Holiday.getHoliday(ymd) + "");
 

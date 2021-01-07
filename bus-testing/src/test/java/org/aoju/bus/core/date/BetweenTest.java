@@ -59,7 +59,7 @@ public class BetweenTest {
     public void betweenMinuteTest() {
         Date date1 = DateKit.parse("2017-03-01 20:33:23");
         Date date2 = DateKit.parse("2017-03-01 23:33:23");
-        String formatBetween = DateKit.formatBetween(date1, date2, Fields.Level.SECOND);
+        String formatBetween = DateKit.formatBetween(date1, date2, Fields.Units.SECOND);
         Assert.assertEquals("3小时", formatBetween);
     }
 

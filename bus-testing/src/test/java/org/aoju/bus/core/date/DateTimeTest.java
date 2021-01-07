@@ -24,7 +24,7 @@ public class DateTimeTest {
 
         // 月份
         Fields.Month month = dateTime.monthEnum();
-        Assert.assertEquals(Fields.Month.JANUARY, month);
+        Assert.assertEquals(Fields.Month.Jan, month);
 
         // 日
         int day = dateTime.dayOfMonth();

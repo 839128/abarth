@@ -2,13 +2,10 @@ package org.aoju.bus.core.toolkit;
 
 import org.aoju.bus.core.date.Boundary;
 import org.aoju.bus.core.date.DateTime;
-import org.aoju.bus.core.date.TimeInterval;
-import org.aoju.bus.core.date.format.FormatBuilder;
 import org.aoju.bus.core.lang.Fields;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.*;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -40,7 +37,7 @@ public class DateKitTest {
         Assert.assertNotNull(date3);
 
         // 当前日期字符串，格式：yyyy-MM-dd HH:mm:ss
-        String now = DateKit.now();
+        String now = DateKit.today();
         Assert.assertNotNull(now);
         // 当前日期字符串，格式：yyyy-MM-dd
         String today = DateKit.format(DateKit.date(), Fields.NORM_DATE_PATTERN);
@@ -58,7 +55,7 @@ public class DateKitTest {
         // 常用格式的格式化
         String formatDate = DateKit.formatDate(date);
         Assert.assertEquals("2017-03-01", formatDate);
-        String formatDateTime = DateKit.formatDateTime(date);
+        String formatDateTime = DateKit.formatTime(date);
         Assert.assertEquals("2017-03-01 00:00:00", formatDateTime);
         String formatTime = DateKit.formatTime(date);
         Assert.assertEquals("00:00:00", formatTime);
@@ -81,7 +78,7 @@ public class DateKitTest {
     public void beginAndWeedTest() {
         String dateStr = "2017-03-01 22:33:23";
         DateTime date = DateKit.parse(dateStr);
-        Objects.requireNonNull(date).setFirstDayOfWeek(Fields.Week.MONDAY);
+        Objects.requireNonNull(date).setFirstDayOfWeek(Fields.Week.Mon);
 
         // 一周的开始
         Date beginOfWeek = DateKit.beginOfWeek(date);
@@ -90,7 +87,7 @@ public class DateKitTest {
         Date endOfWeek = DateKit.endOfWeek(date);
         Assert.assertEquals("2017-03-05 23:59:59", endOfWeek.toString());
 
-        Calendar calendar = DateKit.calendar(date);
+        Calendar calendar = DateKit.toCalendar(date);
         // 一周的开始
         Calendar begin = DateKit.beginOfWeek(calendar);
         Assert.assertEquals("2017-02-27 00:00:00", DateKit.date(begin).toString());
@@ -149,44 +146,44 @@ public class DateKitTest {
         Assert.assertEquals(1, betweenMonth);// 相差一个月
 
         // 相差天
-        long betweenDay = DateKit.between(date1, date2, Fields.Time.DAY);
+        long betweenDay = DateKit.between(date1, date2, Fields.Units.DAY);
         Assert.assertEquals(31, betweenDay);// 相差一个月，31天
         // 反向
-        betweenDay = DateKit.between(date2, date1, Fields.Time.DAY);
+        betweenDay = DateKit.between(date2, date1, Fields.Units.DAY);
         Assert.assertEquals(31, betweenDay);// 相差一个月，31天
 
         // 相差小时
-        long betweenHour = DateKit.between(date1, date2, Fields.Time.HOUR);
+        long betweenHour = DateKit.between(date1, date2, Fields.Units.HOUR);
         Assert.assertEquals(745, betweenHour);
         // 反向
-        betweenHour = DateKit.between(date2, date1, Fields.Time.HOUR);
+        betweenHour = DateKit.between(date2, date1, Fields.Units.HOUR);
         Assert.assertEquals(745, betweenHour);
 
         // 相差分
-        long betweenMinute = DateKit.between(date1, date2, Fields.Time.MINUTE);
+        long betweenMinute = DateKit.between(date1, date2, Fields.Units.MINUTE);
         Assert.assertEquals(44721, betweenMinute);
         // 反向
-        betweenMinute = DateKit.between(date2, date1, Fields.Time.MINUTE);
+        betweenMinute = DateKit.between(date2, date1, Fields.Units.MINUTE);
         Assert.assertEquals(44721, betweenMinute);
 
         // 相差秒
-        long betweenSecond = DateKit.between(date1, date2, Fields.Time.SECOND);
+        long betweenSecond = DateKit.between(date1, date2, Fields.Units.SECOND);
         Assert.assertEquals(2683311, betweenSecond);
         // 反向
-        betweenSecond = DateKit.between(date2, date1, Fields.Time.SECOND);
+        betweenSecond = DateKit.between(date2, date1, Fields.Units.SECOND);
         Assert.assertEquals(2683311, betweenSecond);
 
         // 相差秒
-        long betweenMS = DateKit.between(date1, date2, Fields.Time.MS);
+        long betweenMS = DateKit.between(date1, date2, Fields.Units.MILLISECOND);
         Assert.assertEquals(2683311000L, betweenMS);
         // 反向
-        betweenMS = DateKit.between(date2, date1, Fields.Time.MS);
+        betweenMS = DateKit.between(date2, date1, Fields.Units.MILLISECOND);
         Assert.assertEquals(2683311000L, betweenMS);
     }
 
     @Test
     public void betweenTest2() {
-        long between = DateKit.between(DateKit.parse("2019-05-06 02:15:00"), DateKit.parse("2019-05-06 02:20:00"), Fields.Time.HOUR);
+        long between = DateKit.between(DateKit.parse("2019-05-06 02:15:00"), DateKit.parse("2019-05-06 02:20:00"), Fields.Units.HOUR);
         Assert.assertEquals(0, between);
     }
 
@@ -198,17 +195,9 @@ public class DateKitTest {
         String dateStr2 = "2020-02-01 23:56:14";
         Date date2 = DateKit.parse(dateStr2);
 
-        long between = DateKit.between(date1, date2, Fields.Time.MS);
-        String formatBetween = DateKit.formatBetween(between, Fields.Level.MINUTE);
+        long between = DateKit.between(date1, date2, Fields.Units.MILLISECOND);
+        String formatBetween = DateKit.formatBetween(between, Fields.Units.MINUTE);
         Assert.assertEquals("31天1小时21分", formatBetween);
-    }
-
-    @Test
-    public void timerTest() {
-        TimeInterval timer = DateKit.timer();
-        timer.interval();// 花费毫秒数
-        timer.intervalRestart();// 返回花费时间，并重置开始时间
-        timer.intervalMinute();// 花费分钟数
     }
 
     @Test
@@ -235,36 +224,28 @@ public class DateKitTest {
 
     @Test
     public void timeToSecondTest() {
-        int second = DateKit.timeToSecond("00:01:40");
+        int second = DateKit.toSecond("00:01:40");
         Assert.assertEquals(100, second);
-        second = DateKit.timeToSecond("00:00:40");
+        second = DateKit.toSecond("00:00:40");
         Assert.assertEquals(40, second);
-        second = DateKit.timeToSecond("01:00:00");
+        second = DateKit.toSecond("01:00:00");
         Assert.assertEquals(3600, second);
-        second = DateKit.timeToSecond("00:00:00");
+        second = DateKit.toSecond("00:00:00");
         Assert.assertEquals(0, second);
     }
 
     @Test
     public void secondToTimeTest() {
-        String time = DateKit.secondToTime(3600);
+        String time = DateKit.toTime(3600);
         Assert.assertEquals("01:00:00", time);
-        time = DateKit.secondToTime(3800);
+        time = DateKit.toTime(3800);
         Assert.assertEquals("01:03:20", time);
-        time = DateKit.secondToTime(0);
+        time = DateKit.toTime(0);
         Assert.assertEquals("00:00:00", time);
-        time = DateKit.secondToTime(30);
+        time = DateKit.toTime(30);
         Assert.assertEquals("00:00:30", time);
     }
 
-    @Test
-    public void secondToTimeTest2() {
-        String s1 = "55:02:18";
-        String s2 = "55:00:50";
-        int i = DateKit.timeToSecond(s1) + DateKit.timeToSecond(s2);
-        String s = DateKit.secondToTime(i);
-        Assert.assertEquals("110:03:08", s);
-    }
 
     @Test
     public void parseTest2() {
@@ -272,7 +253,7 @@ public class DateKitTest {
         String birthday = "700403";
         Date birthDate = DateKit.parse(birthday, "yyMMdd");
         // 获取出生年(完全表现形式,如：2010)
-        int sYear = DateKit.year(birthDate);
+        int sYear = DateKit.getYear(birthDate);
         Assert.assertEquals(1970, sYear);
     }
 
@@ -517,17 +498,17 @@ public class DateKitTest {
         DateTime endOfWeek = DateKit.endOfWeek(now);
         Assert.assertEquals("2019-09-15 23:59:59", endOfWeek.toString());
 
-        long between = DateKit.between(endOfWeek, startOfWeek, Fields.Time.DAY);
+        long between = DateKit.between(endOfWeek, startOfWeek, Fields.Units.DAY);
         // 周一和周日相距6天
         Assert.assertEquals(6, between);
     }
 
     @Test
     public void dayOfWeekTest() {
-        int dayOfWeek = DateKit.dayOfWeek(DateKit.parse("2018-03-07"));
+        int dayOfWeek = DateKit.getDayOfWeek(DateKit.parse("2018-03-07"));
         Assert.assertEquals(Calendar.WEDNESDAY, dayOfWeek);
         Fields.Week week = DateTime.of(DateKit.parse("2018-03-07")).dayOfWeekEnum();
-        Assert.assertEquals(Fields.Week.WEDNESDAY, week);
+        Assert.assertEquals(Fields.Week.Wed, week);
     }
 
     @Test
@@ -569,30 +550,6 @@ public class DateKitTest {
     }
 
     @Test
-    public void yearAndQTest() {
-        String yearAndQuarter = DateKit.yearAndQuarter(DateKit.parse("2018-12-01"));
-        Assert.assertEquals("20184", yearAndQuarter);
-
-        LinkedHashSet<String> yearAndQuarters = DateKit.yearAndQuarter(DateKit.parse("2018-09-10"), DateKit.parse("2018-12-20"));
-        List<String> list = CollKit.list(false, yearAndQuarters);
-        Assert.assertEquals(2, list.size());
-        Assert.assertEquals("20183", list.get(0));
-        Assert.assertEquals("20184", list.get(1));
-
-        LinkedHashSet<String> yearAndQuarters2 = DateKit.yearAndQuarter(DateKit.parse("2018-10-10"), DateKit.parse("2018-12-10"));
-        List<String> list2 = CollKit.list(false, yearAndQuarters2);
-        Assert.assertEquals(1, list2.size());
-        Assert.assertEquals("20184", list2.get(0));
-    }
-
-    @Test
-    public void formatHttpDateTest() {
-        DateTime dateTime = DateKit.parse("2019-01-02 22:32:01");
-        String formatHttpDate = DateKit.formatHttpDate(dateTime);
-        Assert.assertEquals("Wed, 02 Jan 2019 14:32:01 GMT", formatHttpDate);
-    }
-
-    @Test
     public void toInstantTest() {
         LocalDateTime localDateTime = LocalDateTime.parse("2017-05-06T08:30:00", DateTimeFormatter.ISO_DATE_TIME);
         Instant instant = DateKit.toInstant(localDateTime);
@@ -630,14 +587,6 @@ public class DateKitTest {
         Assert.assertEquals(18, age);
     }
 
-
-    @Test
-    public void getZodiacTest() {
-        Assert.assertEquals("摩羯座", DateKit.getZodiac(Fields.Month.JANUARY, 19));
-        Assert.assertEquals("水瓶座", DateKit.getZodiac(Fields.Month.JANUARY, 20));
-        Assert.assertEquals("巨蟹座", DateKit.getZodiac(6, 17));
-    }
-
     @Test
     public void getChineseZodiacTest() {
         Assert.assertEquals("狗", DateKit.getAnimal(1994));
@@ -645,93 +594,5 @@ public class DateKitTest {
         Assert.assertEquals("猪", DateKit.getAnimal(2019));
     }
 
-    @Test
-    public void timeZoneConvertTest() {
-        DateTime dt = DateKit.parse("2018-07-10 21:44:32",
-                FormatBuilder.getInstance(Fields.NORM_DATETIME_PATTERN, TimeZone.getTimeZone("GMT+8:00")));
-        Assert.assertEquals("2018-07-10 21:44:32", dt.toString());
-
-        dt.setTimeZone(TimeZone.getTimeZone("Europe/London"));
-        int hour = dt.getField(Fields.Type.HOUR_OF_DAY);
-        Assert.assertEquals(14, hour);
-        Assert.assertEquals("2018-07-10 14:44:32", dt.toString());
-    }
-
-    /**
-     * 打印MINI_YEAR-01-31到MAX_YEAR-12-31所有的农历,并输出到txt中
-     */
-    @Test
-    public void localTest1() {
-        java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd");
-        // start
-        Calendar start = Calendar.getInstance();
-        start.set(Calendar.YEAR, 1970);
-        start.set(Calendar.MONTH, 1);
-        start.set(Calendar.DATE, 12);
-        // end
-        Calendar end = Calendar.getInstance();
-        end.set(Calendar.YEAR, 2500);
-        end.set(Calendar.MONTH, 11);
-        end.set(Calendar.DATE, 31);
-        FileOutputStream out = null;
-        PrintStream p = null;
-        try {
-            File testFile = new File("./resources/solar2lunar.txt");
-            if (!testFile.exists()) {
-                testFile.createNewFile();
-            }
-            out = new FileOutputStream(testFile);
-            p = new PrintStream(out);
-            Calendar t = start;
-            while (t.before(end) || t.equals(end)) {
-                DateKit lunar = new DateKit(t);
-                System.out.println(df.format(t.getTime()) + " <====> " + lunar.getSolar().toString());
-                p.println(df.format(t.getTime()) + " <====> " + lunar.getSolar().toString());
-                t.add(Calendar.DATE, 1);
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("未找到solar2lunar.txt文件，或者文件创建失败.");
-            e.printStackTrace();
-        } catch (IOException e) {
-            System.out.println("未找到solar2lunar.txt文件，或者文件创建失败.");
-            e.printStackTrace();
-        } finally {
-            try {
-                out.close();
-                p.close();
-            } catch (IOException e) {
-                System.out.println("关闭流出错。");
-                e.printStackTrace();
-            }
-        }
-    }
-
-    @Test
-    public void localTest2() {
-        final java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd");
-
-        int lunarDay = 9;
-        int lunarMonth = 12;
-        int lunarYear = 1048;
-        Assert.assertEquals("初九", DateKit.getDayName(lunarDay));
-        Assert.assertEquals('腊', DateKit.getMonthName(lunarMonth));
-        Assert.assertEquals("一〇四八", DateKit.getYearName(lunarYear));
-
-        Calendar c = Calendar.getInstance();
-        c.set(Calendar.YEAR, 2019);
-        c.set(Calendar.MONTH, 2);
-        c.set(Calendar.DATE, 31);
-        DateKit lunar = new DateKit(c);
-        System.out.println(df.format(c.getTime()) + " -> " + lunar);
-        Assert.assertEquals("二〇一九年二月廿五", lunar.toString());
-
-        Calendar c1 = Calendar.getInstance();
-        Calendar c2 = Calendar.getInstance();
-        System.out.println(df.format(c1.getTime()));
-        c1.add(Calendar.MONTH, 10);
-        System.out.println(df.format(c1.getTime()));
-
-
-    }
 
 }
