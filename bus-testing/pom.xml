@@ -35,7 +35,7 @@
         <zxing.version>3.4.1</zxing.version>
         <guava.version>29.0-jre</guava.version>
         <guice.version>4.2.3</guice.version>
-        <yaml.version>1.25</yaml.version>
+        <yaml.version>1.26</yaml.version>
         <jna.version>5.6.0</jna.version>
         <jsch.version>0.1.54</jsch.version>
         <office.version>4.1.2</office.version>
