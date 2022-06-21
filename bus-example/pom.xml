@@ -38,7 +38,7 @@
         <jna.version>5.6.0</jna.version>
         <office.version>4.1.2</office.version>
         <druid.version>1.1.22</druid.version>
-        <mysql.version>8.0.21</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <emoji.java.version>5.1.1</emoji.java.version>
     </properties>
 
