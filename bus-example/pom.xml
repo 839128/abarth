@@ -34,7 +34,7 @@
         <jsqlparser.version>3.1</jsqlparser.version>
         <guava.version>29.0-jre</guava.version>
         <guice.version>4.2.3</guice.version>
-        <yaml.version>1.25</yaml.version>
+        <yaml.version>1.32</yaml.version>
         <jna.version>5.6.0</jna.version>
         <office.version>4.1.2</office.version>
         <druid.version>1.1.22</druid.version>
