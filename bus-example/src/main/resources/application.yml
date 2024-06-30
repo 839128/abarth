@@ -2,15 +2,9 @@ version: 3.6.6
 
 logging:
   level:
-    org.aoju: DEBUG
+    org.miaixz: DEBUG
 
 spring:
-  mvc:
-    throw-exception-if-no-handler-found: true
-  resources:
-    add-mappings: false
-  session:
-    store-type: none
   application:
     name: example
   # 文件上传配置
@@ -26,8 +20,8 @@ spring:
   datasource:
     name: hi_example
     url: jdbc:mysql://127.0.0.1:3006/hi_example?useSSL=false&useUnicode=true&characterEncoding=utf8
-    username: hiexample
-    password: example
+    username: example
+    password: password
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
     filters: stat
@@ -50,8 +44,8 @@ spring:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
         url: jdbc:mysql://127.0.0.1:3006/hi_example?useSSL=false&useUnicode=true&characterEncoding=utf8
-        username: hiexample
-        password: example
+        username: example
+        password: password
         filters: stat
         maxActive: 20
         initialSize: 1
@@ -69,8 +63,8 @@ spring:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
         url: jdbc:mysql://127.0.0.1:3006/hi_example?useSSL=false&useUnicode=true&characterEncoding=utf8
-        username: hiexample
-        password: example
+        username: example
+        password: password
         filters: stat
         maxActive: 20
         initialSize: 1
@@ -113,10 +107,10 @@ extend:
   # dubbo配置
   dubbo:
     container: logback,spring
-    basePackage: org.aoju.bus.example.service
+    basePackage: org.miaixz.bus.example.service
     application:
-      id: lincoln
-      name: lincoln
+      id: example
+      name: example
       enableQrs: false
     registry:
       address: zookeeper://172.171.0.2:2001
@@ -150,7 +144,7 @@ extend:
   # mybatis配置
   mybatis:
     basePackage:
-      org.aoju.bus.example.mapper
+      org.miaixz.bus.example.mapper
     xmlLocation: classpath:mapper/**/*.xml
     autoDelimitKeywords: true
     reasonable: false
@@ -166,11 +160,11 @@ extend:
       github:
         client-id: 2d25******d5f01086
         client-secret: 5a2919b************************d7871306d1
-        redirect-uri: http://oauth.aoju.org//github/callback
+        redirect-uri: http://oauth.miaixz.org//github/callback
       dingtalk:
         client-id: ding1xqvzg2gafw8ygj6
         client-secret: hLbaM7yOXJ31UxoYajJyYPVnjYVhGWTZoJqCNxllx3mrpjI9r_X1RLFXUaBIWWDd
-        redirect-uri: http://oauth.aoju.org//wechat/callback
+        redirect-uri: http://oauth.miaixz.org//wechat/callback
   # 数据脱敏加解密配置
   sensitive:
     debug: false
@@ -189,7 +183,7 @@ extend:
       aliyun:
         accessKey: 10******85
         secretKey: 1f7d************************d629e
-        prefix: http://oauth.aoju.org/qq/callback
+        prefix: http://oauth.miaixz.org/qq/callback
       local:
         region: /data/800x/file/upload
   # 文件在线预览
@@ -230,9 +224,9 @@ extend:
   # swagger配置
   swagger:
     basePackage:
-      org.aoju.bus.example.spring,
+      org.miaixz.bus.example.spring,
     title: Example Restful APIs
-    termsOfServiceUrl: www.aoju.org
+    termsOfServiceUrl: www.miaixz.org
     description: 测试项目
     version: 1.0
   # 防止重复提交
