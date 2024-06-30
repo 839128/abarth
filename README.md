@@ -1,5 +1,5 @@
 <p align="center">
-	<a href="https://www.miaixz.org"><img src="/839128/bus/raw/main/LOGO.svg" width="45%"></a>
+	<a href="https://www.miaixz.org"><img src="https://github.com/839128/bus/raw/main/LOGO.svg" width="45%"></a>
 </p>
 <p align="center">
 	<a href="http://www.miaixz.org">http://www.miaixz.org</a>
