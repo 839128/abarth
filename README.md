@@ -1,42 +1,45 @@
 <p align="center">
-    <a target="_blank" href="https://search.maven.org/search?q=org.aoju">
-		<img src="https://img.shields.io/badge/maven--central-v5.2.1-blue.svg?label=Maven%20Central" ></img>
+	<a href="https://www.miaixz.org"><img src="LOGO.svg" width="45%"></a>
+</p>
+<p align="center">
+	<a href="http://www.miaixz.org">http://www.miaixz.org</a>
+</p>
+<p align="center">
+    <a target="_blank" href="https://search.maven.org/search?q=org.miaixz">
+		<img src="https://img.shields.io/badge/maven--central-v8.0.5-blue.svg?label=Maven%20Central" />
 	</a>
-	<a target="_blank" href="https://travis-ci.org/aoju/bus">
-		<img src="https://travis-ci.org/aoju/bus.svg?branch=master">
+	<a target="_blank" href="https://travis-ci.org/839128/bus">
+		<img src="https://app.travis-ci.com/839128/bus.svg?token=TZPNK5FQiKMp9cao3SnY&branch=main">
 	</a>
-	<a target="_blank" href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">
-		<img src="https://img.shields.io/badge/JDK-1.8+-green.svg">
+	<a target="_blank" href="https://jdk.java.net/">
+		<img src="https://img.shields.io/badge/Java-17+-green.svg">
 	</a>
 	<a target="_blank" href="https://spring.io/projects/spring-boot">
-		<img src="https://img.shields.io/badge/Spring Boot-2.1.9-brightgreen.svg">
+		<img src="https://img.shields.io/badge/Spring Boot-3.0.5-brightgreen.svg">
 	</a>
 	<a target="_blank" href="https://www.mysql.com">
-		<img src="https://img.shields.io/badge/Mysql-5.7-blue.svg">
-	</a>
-	<a target="_blank" href="https://swagger.io">
-		<img src="https://img.shields.io/badge/swagger-2.9.2-brightgreen.svg">
+		<img src="https://img.shields.io/badge/Mysql-8.x-blue.svg">
 	</a>
 	<a target="_blank" href="http://dubbo.apache.org">
-		<img src="https://img.shields.io/badge/dubbo-2.6.6-yellow.svg">
+		<img src="https://img.shields.io/badge/dubbo-3.2.11-yellow.svg">
 	</a>
 	<a target="_blank" href="http://poi.apache.org">
-		<img src="https://img.shields.io/badge/poi-3.1.7-blue.svg">
+		<img src="https://img.shields.io/badge/poi-5.2.5-blue.svg">
 	</a>
-	<a target="_blank" href="https://www.mit-license.org">
+	<a target="_blank" href="https://opensource.org/licenses/MIT">
 		<img src="https://img.shields.io/badge/license-MIT-green.svg">
 	</a>
-</p>
+</p> 
 
 <p align="center">
-	-- QQ群①：<a href="https://shang.qq.com/wpa/qunwpa?idkey=17fadd02891457034c6536c984f0d7db29b73ea14c9b86bba39ce18ed7a90e18">839128</a> --
-	-- QQ群②：<a href="https://shang.qq.com/wpa/qunwpa?idkey=c207666cbc107d03d368bde8fc15605bb883ebc482e28d440de149e3e2217460">839120</a> --
+	-- QQ群①：839128 --
 </p>
 
 ---
 
 ## 项目说明
-本项目为[Bus](https://github.com/aoju/bus.git)项目中相关组件及功能使用示例及测试
+
+本项目为 [Bus](https://github.com/839128/bus.git) 项目中相关组件及功能使用示例及测试
 
 欢迎大家来 这里 踩踩,生命有限！少写重复代码！给颗星奖励下呗~
 
@@ -56,7 +59,7 @@
 ### Maven
 ```
 <dependency>
-    <groupId>org.aoju</groupId>
+    <groupId>org.miaixz</groupId>
     <artifactId>bus-all</artifactId>
     <version>x.x.x</version>
 </dependency>
@@ -64,14 +67,14 @@
 
 ### Gradle
 ```
-implementation 'org.aoju:bus-all:x.x.x'
+implementation 'org.miaixz:bus-all:x.x.x'
 ```
 
 ### Other
 
 点击以下任一链接，下载`bus-*-x.x.x.jar`即可：
 
-- [Maven中央库①](https://repo1.maven.org/maven2/org/aoju)
+- [Maven中央库①](https://repo1.maven.org/maven2/org/miaixz)
 
 > 注意
 > Bus项目支持JDK8+，对Android平台部分模块没有测试，不能保证所有工具类获工具方法可用。
