@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<package
+        xmlns="http://www.idpf.org/2007/opf"
+        unique-identifier="bookId" version="2.0">
+    <manifest>
+        <item href="toc.ncx" id="ncx" media-type="application/x-dtbncx+xml"/>
+    </manifest>
+    <spine toc="ncx"></spine>
+</package>
