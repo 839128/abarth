@@ -1,6 +1,6 @@
 package org.miaixz.bus.example.entity;
 
-import org.miaixz.bus.core.basics.normal.ErrorCode;
+import org.miaixz.bus.core.basic.normal.ErrorCode;
 
 public class AbarthErrorCode extends ErrorCode {
 

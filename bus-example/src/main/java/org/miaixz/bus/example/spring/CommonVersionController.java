@@ -1,7 +1,7 @@
 package org.miaixz.bus.example.spring;
 
 import org.miaixz.bus.base.spring.BaseController;
-import org.miaixz.bus.core.basics.normal.ErrorCode;
+import org.miaixz.bus.core.basic.normal.ErrorCode;
 import org.miaixz.bus.core.xyz.StringKit;
 import org.miaixz.bus.example.entity.CommonVersion;
 import org.miaixz.bus.example.service.CommonVersionService;
